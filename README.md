@@ -23,9 +23,9 @@
 ## Data Structure and Algorithms
 #### Papers
 #### Courses
-
+[我的博客](http://blog.csdn.net/guodongxiaren "")
 |               Name              | 1<br>Level | 2<br> Progress   | 3<br>Feedback |
 |:-------------------------------- |:-----------------:|:----------------------:|:----------------:|
-|**Building Recommender Systems with Machine Learning and AI**                         | ![done][done]     | ![done][done]          | ![done][done]    |
+|**[Building Recommender Systems with Machine Learning and AI]** (https://www.udemy.com/course/building-recommender-systems-with-machine-learning-and-ai/)                        | ![done][done]     | ![done][done]          | ![done][done]    |
 |**CSS3**                          | ![done][done]     | ![done][done]          | ![done][done]    |
 
