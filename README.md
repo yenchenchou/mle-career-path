@@ -14,13 +14,12 @@
 |:-------------------------------- |:-----------------:|:----------------------:|:----------------:|
 |[Hybrid Web Recommender Systems ](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.435.7538&rep=rep1&type=pdf)   | Basic  | 90%  | |
 |[Content-Boosted Collaborative Filtering for Improved Recommendations](https://www.cs.utexas.edu/~ml/papers/cbcf-aaai-02.pdf)|Medium|||
-|[Bigclam](http://infolab.stanford.edu/~crucis/pubs/paper-nmfagm.pdf)|Hard|50%||
-|[CODA](https://cs.stanford.edu/people/jure/pubs/coda-wsdm14.pdf)|Hard|50%||
 
 #### Courses
 |               Name               | 1<br>Level        | 2<br> Progress         | 3<br>Feedback    |
 |:-------------------------------- |:-----------------:|:----------------------:|:----------------:|
 |[Building Recommender Systems with Machine Learning and AI](https://www.udemy.com/course/building-recommender-systems-with-machine-learning-and-ai/)   | Medium  | 60%  | Great introductory tutorial for building a near production code for recommendation system. Better to have Python programming skills.|
+
 ----
 ### Deep Learning Framework
 #### Courses
@@ -31,7 +30,8 @@
 |               Name               | 1<br>Level        | 2<br> Progress         | 3<br>Feedback    |
 |:-------------------------------- |:-----------------:|:----------------------:|:----------------:|
 |[Normalized Cuts and Image Segmentation](https://people.eecs.berkeley.edu/~malik/papers/SM-ncut.pdf)|Medium|70%||
-|[Normalized Cuts and Image Segmentation](https://people.eecs.berkeley.edu/~malik/papers/SM-ncut.pdf)|Medium|70%||
+|[Bigclam](http://infolab.stanford.edu/~crucis/pubs/paper-nmfagm.pdf)|Hard|50%||
+|[CODA](https://cs.stanford.edu/people/jure/pubs/coda-wsdm14.pdf)|Hard|50%||
 
 #### Courses
 |               Name               | 1<br>Level        | 2<br> Progress         | 3<br>Feedback    |
