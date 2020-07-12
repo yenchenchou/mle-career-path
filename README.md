@@ -7,6 +7,13 @@
 
 
 ## Machine learning
+### Basics
+#### Papers
+#### Courses/Books
+|               Name               | 1<br>Level        | 2<br> Progress         | 3<br>Feedback    |
+|:-------------------------------- |:-----------------:|:----------------------:|:----------------:|
+||||
+
 ### Natural Language Processing
 #### Papers
 #### Courses/Books
