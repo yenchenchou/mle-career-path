@@ -15,7 +15,7 @@
 #### Courses/Books
 |               Name               | Level        | Progress         | Feedback    |
 |:-------------------------------- |:-----------------:|:----------------------:|:----------------:|
-|[A brief introduction to weakly supervised learning](https://watermark.silverchair.com/nwx106.pdf?token=AQECAHi208BE49Ooan9kkhW_Ercy7Dm3ZL_9Cf3qfKAc485ysgAAApwwggKYBgkqhkiG9w0BBwagggKJMIIChQIBADCCAn4GCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMExJ3btTQL8-bfdPMAgEQgIICT5US_PG8RcVCrtsOX8fU50jXWO-vgcHXsfDGTcEjvZwQyLd8U_c1Swr9BMZJVOAks_ZUzUpZd7j7M7kqx_s2kW1oaevZG2RSLtotnycxXpQ7tCznk_3nK2T7Bwfe328Js8B6IaqmtI7YLhvmCfcN_jlkoB04HjSCLr170pi_DRuq3gT04i_ZQbwzL7oRoYgYWsnXy18Ckc-_JOHiOclQdG3DwarXzrJVUDEYgLFakBtm3v6gsNQfBCCEbJiZJ_ufX4zRe6qKfcYvMZBPBi2q2xXNenDP2hdxIOhte-gycLOqgBD8VChCLyhrSZaBx2iKUNiuvdQc5Z5qsnl0rT1oTDZvtJRRrrfN-vBJLYWklHHqz3Vm8CpYp0DmJViQrTHcmsQ0mqqtM1sbG8DamvTtiQVZ-i9CUxWmYYOjwaIIfNUlJKe_zMe8PMIz_lmiIYoUAOq0pL2nvZqpMkoPgYwZlkJ_rN4t-xhZX4OMmleTOvnamJtGd_9XPSdlGOBsKwNTBN0Hvn3FVLBmWHfaOdtST7fBdvKncKRzXem-Ev4dmjnFK2Hy8l6DNGxOF0Yt84WQBRW4RcmHdSvPxt6IgId16_L0-uOZ9oS96uevZjaTjEUvHIAa1KB5vCjxVZOoiP5xLswMfHhuFaep8D-6D2ImITdf0RJWRD_bnOBV4vJ3NLwQCPMMewFAQwN1UT6ESd9UyZPo0EjgubQguF9P-8S36RRnjnRY16FFplIbbt6wGl9cceKu9BGPJrjQrA3ombADw3Yo1MMS3x66_1qUfSLhNg) | Fundamental | Very common on real data and this paper provides a new thought to handle supervised learning|
+|[A brief introduction to weakly supervised learning](https://pdfs.semanticscholar.org/3adc/fd254b271bcc2fb7e2a62d750db17e6c2c08.pdf) | Fundamental | Very common on real data and this paper provides a new thought to handle supervised learning|
 
 ### Natural Language Processing
 #### Papers
@@ -26,8 +26,11 @@
 #### Papers
 |               Name               | Level        | Progress         | Feedback    |
 |:-------------------------------- |:-----------------:|:----------------------:|:----------------:|
-|[Hybrid Web Recommender Systems ](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.435.7538&rep=rep1&type=pdf)   | Basic  | 90%  | |
+|[Hybrid Web Recommender Systems ](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.435.7538&rep=rep1&type=pdf)   | Medium  | 90%  | |
 |[Content-Boosted Collaborative Filtering for Improved Recommendations](https://www.cs.utexas.edu/~ml/papers/cbcf-aaai-02.pdf)| Medium | 0%||
+|[A Survey of Accuracy Evaluation Metrics of Recommendation Tasks](http://jmlr.csail.mit.edu/papers/volume10/gunawardana09a/gunawardana09a.pdf)| Basic | 0% |
+|[Recommendation systems: Principles, methods and evaluation](https://www.sciencedirect.com/science/article/pii/S1110866515000341)| Medium | 0%  ||
+|[Evaluating Recommendation Systems](http://www.bgu.ac.il/~shanigu/Publications/EvaluationMetrics.17.pdf)| Medium | 50% ||
 
 #### Courses/Books
 |               Name               | Level        | Progress         | Feedback    |
@@ -60,6 +63,10 @@
 ## Data Structure and Algorithms
 #### Papers
 #### Courses/Books
+#### Articles
+|               Name               | Level        | Progress         | Feedback    |
+|:-------------------------------- |:-----------------:|:----------------------:|:----------------:|
+|[How to write a production-level code in Data Science?](https://towardsdatascience.com/how-to-write-a-production-level-code-in-data-science-5d87bd75ced)| Fundamental | 100% | Intro to write production level code|
 
 
 
