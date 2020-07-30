@@ -69,4 +69,12 @@
 |[How to write a production-level code in Data Science?](https://towardsdatascience.com/how-to-write-a-production-level-code-in-data-science-5d87bd75ced)| Fundamental | 100% | Intro to write production level code|
 
 
+## Database
+#### Papers
+#### Courses/Books
+#### Articles
+|               Name               | Level        | Progress         | Feedback    |
+|:-------------------------------- |:-----------------:|:----------------------:|:----------------:|
+[SQL Tutorial: How To Write Better Queries](https://www.datacamp.com/community/tutorials/sql-tutorial-query)Fundamental | 100% | Better to understand how each query work behind the scene|
+
 
