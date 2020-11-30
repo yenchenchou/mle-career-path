@@ -3,8 +3,8 @@
 
 
 const sing = async () => {
-    throw "OH NO, PROBLEM!"
-    return 'LA LA LA LA'
+    throw "OH NO, PROBLEM!" // if get reject situation
+    return 'LA LA LA LA'   // if async function return any value, then the promise will be resolved with that value
 }
 
 sing()
