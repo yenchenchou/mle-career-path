@@ -1,20 +1,20 @@
 # Syntax and Tips Reminder
 
-### Distinct
+#### 1. Distinct
 1. Remember to consider select distinct and everything that may need to consider distinct
 
-### Union
+#### 2. Union
 1. UNION only appends distinct values. Which means not only union only keeps one distinct value after you combine the 
 table but also each of you table will remain only distinct value
 
-### Matching words
+#### 3. Matching words
 1. wild cards: %, _, -, [], ^
 
-### where + group by
+#### 4. where + group by
 1, Using group by + where is okay, it's just the order where(condition on single row) -> groupb y -> having 
     (condition on group)
     
-### Time and Timestamp
+#### 5. Time and Timestamp
 Date and time values can be represented in several formats, such as quoted strings or as numbers, depending on the exact
  type of the value and other factors. For example, in contexts where MySQL expects a date, it interprets any of 
  '2015-07-21', '20150721', and 20150721 as a date. [Reference to MySQL](https://dev.mysql.com/doc/refman/8.0/en/date-and-time-literals.html)
@@ -48,9 +48,9 @@ Date and time values can be represented in several formats, such as quoted strin
     3. As a number in either YYYYMMDDhhmmss or YYMMDDhhmmss format, provided that the number makes sense as a date. For 
     example, 19830905132800 and 830905132800 are interpreted as '1983-09-05 13:28:00'.
     
-**Difference between datetime and timestamp**
+* **Difference between datetime and timestamp**
 
-    * A DATETIME stores a literal value of a date and time with no reference to any particular timezone. Whereas 
+    0. A DATETIME stores a literal value of a date and time with no reference to any particular timezone. Whereas 
     timestamp includes time zone. TIMESTAMP as taking the value you are setting and converting it from the current 
     session time zone to UTC for storing and then converting it back to the current session time zone for displaying.
     That's why timestamp and datetime looks the same on the UI.
@@ -59,6 +59,16 @@ Date and time values can be represented in several formats, such as quoted strin
     
     2. 
     
+#### 6. Window function
+
+A window function performs a calculation across a set of table rows that are somehow related to the current row. 
+This is comparable to the type of calculation that can be done with an aggregate function. But unlike regular 
+aggregate functions, use of a window function does not cause rows to become grouped into a single output row — the 
+rows retain their separate identities. Behind the scenes, the window function is able to access more than just the 
+current row of the query result. Common combination: `SUM, AVG, COUNT, ROW_NUMER, RANK, DENSERANK, NTILE, LAG, LEAD`
+
+   1. [mode](https://mode.com/sql-tutorial/sql-window-functions/#ntile)
     
+   2.  
     
     
