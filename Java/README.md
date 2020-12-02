@@ -12,7 +12,9 @@
    3. class: define a states and behavior of an object
    4. object: as known as instance
    5. reference: the address where the object store
-   6. dereference: the action of visiting the object according to the reference called dereference
+   6. dereference: the action of visiting the object according to the reference called dereference (like below 
+   `rose.getnewname()`, rose is reference, this action is dereference)
+   
    
 ## Working with objects (Class 1)
 
@@ -25,9 +27,10 @@
         Student firstStudent = new Student("Tom")
     ```
    -> there are three main operations in total:
-        * declaration: associate a variable with an object type `Student firstStudent`
+        * declaration: associate a variable with an object type `Student firstStudent`. `firstStudent` is a reference
         * instantiation: The `new` keyword is a Java operator that creates the object `firstStudent = new Student(...)`
         * initialization: The `new` operator is followed by a call to a constructor, which initialize the new object
+    
     
 ## Object Memory layout (Class 1)
 
@@ -40,10 +43,10 @@
    (the fields). That is to say, the thing you use new to create is in Java heap
    
    
-## Refrence and Object:
+## Reference and Object defining (Class 1):
    * Example:
    
-    Student jack = new Student("jack")
+    Student Student
     Student rose = new Student("rose")
     jack = rose
    -> This only mean the reference value of rose is copied and assign to object jack
@@ -56,5 +59,79 @@
    The order matters. Not include return value's type and not include exception list.
    *  
     
+    
+## Static, final, and more things to know (Class 1)
+   * `final`: can use everywhere `final class` (can't be inherited), `final method` (can't be overwrite), `final field`.
+   **final is not saying the content of the object can't be changed, it is saying the reference will not change
+   (point to the same reference) -> class 1 2:06:00**
+   * `static`:  keyword is mainly used for memory management. It can be used with variables, methods, blocks and nested 
+   classes. It is a keyword which is used to share the same variable or method of a given class. Basically, 
+   `static` is used for a constant variable or a method that is same for every instance of a class.
+   * Example code
+
+    ```
+    public class Student {
+    
+        public int age;  // (member) field, of course this field is a variable
+        private final String name;  // constant field
+        private static String name; // static field
+        private static final String Breeting="Hello"  // static constant field 
+        
+        public Student(String name){
+            this.name = name  // constructor: a special method that is used to initialize the params of objects
+        }
+        
+        public int getAge(){  // (member) method
+            return age;
+        }
+        
+        public void setAge(int age){  // (member) method
+            this.age = age;
+        }
+
+        public String getName(){  // (member) method
+            return name;
+        }    
+    }
+    
+    ```
+
+## Primitive type and Class type (Class 1)
+   * class types: store in heap, operated by reference
+   * primitive types: not objects, no reference, think of as original data structure from the beginning of java appears
+   
+   
+## Constructor, NUll, pointers (Class 1)
+   * Constructor: constructor: a special method that is used to initialize a custom objects with self defined 
+   parameters. The name should be the as the class name, see above code.
+   * this: point to the instance (current object itself) -> the instance name in front of .methods. 調用這個method 
+   的當前instance. Mandatory to write `this` when argument name same as field name. Look below:
+   
+   ```
+   public class Student{
+        String name,
+        void setName(String name){
+            this.name = name;
+        }
+   }
+   ```
+    
+   * NULL: empty reference (talk about this latter)
+   * NUllPointerException 
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
    
    
