@@ -1,20 +1,25 @@
 # Syntax and Tips Reminder
+#### `COUNT`
+1. `COUNT` does not include `NULL`. **Aggregate functions like COUNT and SUM always ignore NULLs**
 
-#### 1. Distinct
+#### `DISTINCT`
 1. Remember to consider select distinct and everything that may need to consider distinct
 
-#### 2. Union
+#### Matching words
+1. wild cards: %, _, -, [], ^
+
+#### `UNION`
 1. UNION only appends distinct values. Which means not only union only keeps one distinct value after you combine the 
 table but also each of you table will remain only distinct value
 
-#### 3. Matching words
-1. wild cards: %, _, -, [], ^
+#### `WHERE`
+1. When using `WHERE`, `NULL` value will be exclude by default. Remember to use `WHERE XXX OR <feature> IS NULL`
 
-#### 4. where + group by
+#### `WHERE` + `GROUP BY`
 1, Using group by + where is okay, it's just the order where(condition on single row) -> groupb y -> having 
     (condition on group)
     
-#### 5. Time and Timestamp
+#### Time and Timestamp
 Date and time values can be represented in several formats, such as quoted strings or as numbers, depending on the exact
  type of the value and other factors. For example, in contexts where MySQL expects a date, it interprets any of 
  '2015-07-21', '20150721', and 20150721 as a date. [Reference to MySQL](https://dev.mysql.com/doc/refman/8.0/en/date-and-time-literals.html)
@@ -59,7 +64,7 @@ Date and time values can be represented in several formats, such as quoted strin
     
     2. 
     
-#### 6. Window function
+#### Window function
 
 A window function performs a calculation across a set of table rows that are somehow related to the current row. 
 This is comparable to the type of calculation that can be done with an aggregate function. But unlike regular 

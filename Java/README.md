@@ -117,8 +117,8 @@
    ```
     
    * NULL: empty reference
-   * NUllPointerException: happens when deferencing but does not get anything then it is a NUllPointerException. **Not because you find a NULL value**
-   * ArrayIndexOutOfBound
+   * NUllPointerException: happens when deferencing but does not get anything then it is a NUllPointerException. **Not because you find a NULL**
+   * ArrayIndexOutOfBound: 
 
 
 ## Java parameter passing
