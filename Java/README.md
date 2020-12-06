@@ -116,22 +116,15 @@
    }
    ```
     
-   * NULL: empty reference (talk about this latter)
-   * NUllPointerException 
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
+   * NULL: empty reference
+   * NUllPointerException: happens when deferencing but does not get anything then it is a NUllPointerException. **Not because you find a NULL value**
+   * ArrayIndexOutOfBound
+
+
+## Java parameter passing
+**Java is always pass by value during parameter passing:**
+    * primitive type: copy of the value itself
+    * object: copy of the object reference (複製名片)
+
+    * Notice: be precise when describing, things like "reference", "dereference" actions need to be mentioned instead of inprofessional word
    
