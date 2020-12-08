@@ -23,3 +23,11 @@
 Docker image prune only cleans up dangling images. A dangling image is one that is not tagged and is not referenced 
 by any container.
 
+
+## Some basic concept
+#### Purpose of docker compose and docker compose cli
+1. separate docker cli that gets installed along with Docker
+2. Run multiple containers at the same time -> Docker compose create a network automatically for the containers inside 
+the docker compose file (.yml) 
+3. Automate some complex arguments passing the `docker run`
+

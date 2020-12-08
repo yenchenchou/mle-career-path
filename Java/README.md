@@ -66,7 +66,22 @@
    (point to the same reference) -> class 1 2:06:00**
    * `static`:  keyword is mainly used for memory management. It can be used with variables, methods, blocks and nested 
    classes. It is a keyword which is used to share the same variable or method of a given class. Basically, 
-   `static` is used for a constant variable or a method that is same for every instance of a class.
+   `static` is used for a constant variable, a method, class that belongs to class not object. So you don't need to call
+    the a instance to modify the field method What does it mean?
+   * Example
+   ```
+   Hey peter = new Hey();
+   Hey jason = new Hey();
+   peter.age = 12;
+   jason.age = 10;
+   Hey.isPoor = false;  -> everyone is the same
+   public class Hey {
+       public static void broke {
+          isPoor = true;
+       }
+   }
+   ```
+
    * Example code
 
     ```
@@ -116,6 +131,7 @@
    }
    ```
     
+<<<<<<< Updated upstream
    * NULL: empty reference
    * NUllPointerException: happens when deferencing but does not get anything then it is a NUllPointerException. **Not because you find a NULL**
    * ArrayIndexOutOfBound: 
@@ -127,4 +143,33 @@
     * object: copy of the object reference (複製名片)
 
     * Notice: be precise when describing, things like "reference", "dereference" actions need to be mentioned instead of inprofessional word
+=======
+   * NULL: empty reference (talk about this latter)
+   * NUllPointerException 
+   
+
+# Class variable vs instance variable (Class 1)
+
+   * class variable vs instance variable -> class method vs instance method
+   * Don't use instance method to modify class method
+   
+   
+# Access Modifier (Class 1)
+   * public:
+   * protected: same package can access
+   * private: only myself (other method in the same class can use)
+
+   * Private > Protected > Public (as strict as possible)
+
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+>>>>>>> Stashed changes
    
