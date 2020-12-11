@@ -19,7 +19,7 @@
 ## Working with objects (Class 1)
 
    1. Suppose we say:
-   
+  
     From a senmantic standpoint, the belowe means you create a reference called firstStudent that point to a class 
     (Student) with parameter called "Tom"
     
