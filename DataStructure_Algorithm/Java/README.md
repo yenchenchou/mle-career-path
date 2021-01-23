@@ -131,11 +131,9 @@
    }
    ```
     
-<<<<<<< Updated upstream
    * NULL: empty reference
    * NUllPointerException: happens when deferencing but does not get anything then it is a NUllPointerException. **Not because you find a NULL**
    * ArrayIndexOutOfBound: 
-
 
 ## Java parameter passing
 **Java is always pass by value during parameter passing:**
@@ -143,7 +141,6 @@
     * object: copy of the object reference (複製名片)
 
     * Notice: be precise when describing, things like "reference", "dereference" actions need to be mentioned instead of inprofessional word
-=======
    * NULL: empty reference (talk about this latter)
    * NUllPointerException 
    
@@ -152,7 +149,6 @@
 
    * class variable vs instance variable -> class method vs instance method
    * Don't use instance method to modify class method
-   
    
 # Access Modifier (Class 1)
    * public:
@@ -171,5 +167,4 @@
    
    
    
->>>>>>> Stashed changes
    

@@ -20,3 +20,10 @@ vise versa. Exists is a bit faster when two tables are equally sized.
    Reading:
       1. [Select Count(*) / Count(1) / Count(欄位名) 的差異
    ](https://dotblogs.com.tw/jeff-yeh/2011/01/12/20767)
+   
+#### Self join related
+There are three common ways when using self join: 
+1. `CROSS JOIN`: readable style
+2. `FROM <table1> as a, <table1> as b WHERE a.x > b.x`: using `WHERE`
+3. `select CAST(min(diff) as unsigned) as shortest from (
+  select x - @prev as diff, @prev := x from point, (select @prev:=-100000000) tt order by x) t `
