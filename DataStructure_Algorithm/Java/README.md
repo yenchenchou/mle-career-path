@@ -154,7 +154,6 @@
    * public:
    * protected: same package can access
    * private: only myself (other method in the same class can use)
-
-   * Private > Protected > Public (as strict as possible)
+   * Priority: Private > Protected > Public (as strict as possible)
 
    
