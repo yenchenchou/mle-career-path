@@ -17,7 +17,7 @@
 
 #### remove containers by name
 1. `docker container rm $(docker container ps -a | grep yc_explore)`
-2. 
+2. `docker rm <container_ID>`
 
 #### remove dangling containers with filter
 Docker image prune only cleans up dangling images. A dangling image is one that is not tagged and is not referenced 
