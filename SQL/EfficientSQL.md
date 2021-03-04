@@ -2,8 +2,7 @@
 
 #### `JOIN` vs `EXISTS` vs `IN`
 **`EXIST` works by looping each row of the outer table a time and check in the inner table, return true is 
-exist; while `IN` get the all values from the inner table.** That's why outer big inner smaller user `IN` and use `EXIST` 
-vise versa. Exists is a bit faster when two tables are equally sized.
+exist; while `IN` get the all values from the inner table.** That's why outer big inner smaller use `IN` and use `EXIST` vise versa. Exists is a bit faster when two tables are equally sized.
 
    Reading:
 

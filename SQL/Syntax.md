@@ -84,3 +84,9 @@ rows retain their separate identities. Behind the scenes, the window function is
 current row of the query result. Common combination: `SUM, AVG, COUNT, ROW_NUMER, RANK, DENSERANK, NTILE, LAG, LEAD`
 
    1. [mode](https://mode.com/sql-tutorial/sql-window-functions/#ntile)
+
+
+#### `WITH`
+
+Allows giving your sub-query block a name. You can do the following things
+1. 
