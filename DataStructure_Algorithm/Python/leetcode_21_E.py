@@ -50,7 +50,7 @@ class Solution:
         #     p.next = l2
         p.next = l1 or l2
         return newList.next # [[None], [None]], [[1], [None]], [[1], [1]], [[1,1], [2]], [[1,1], [1,2]]
-# Time: O(n+m), Space: O(n+m)
+# Time: O(n+m), Space: O(1): just arranging the pointers
 
 
 # Solution2: Recursion
