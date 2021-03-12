@@ -8,7 +8,7 @@
 
 
 class Solution:
-    def hasCycle(self, head);
+    def hasCycle(self, head):
         fast = head
         slow = head
         while fast is not None and fast.next is not None:
@@ -33,7 +33,7 @@ class Solution:
 
 
 # Question: why this logic is not working
-def hasCycle(self, head);
+def hasCycle(self, head):
     if head is None:
         return None
     fast = head.next
