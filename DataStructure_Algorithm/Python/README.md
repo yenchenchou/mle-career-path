@@ -24,4 +24,8 @@
 |       Cycle in LinkedList(141)      |    Easy    |        sentinel, fast slow pointer        |      3     |
 |                                     |            |                                           |            |
 
-# Recursion
+## Recursion
+
+## Binary Tree
+
+A data structure in which each node has at most two children, which are referred to as the left child and the right child.
