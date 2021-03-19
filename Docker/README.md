@@ -30,4 +30,3 @@ by any container.
 2. Run multiple containers at the same time -> Docker compose create a network automatically for the containers inside 
 the docker compose file (.yml) 
 3. Automate some complex arguments passing the `docker run`
-
