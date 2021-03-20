@@ -21,7 +21,7 @@ class Solution:
                 stack.append(node.right)
             if node.left:
                 stack.append(node.left)
-        return res  # [None], [1], [1,2,None,3]
+        return res  # [None], [1], [1,2,None,3]nod
     # O(n), O(n)
 
 
