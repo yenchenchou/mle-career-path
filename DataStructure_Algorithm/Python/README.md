@@ -34,10 +34,16 @@ When you need to find one or more targets from a sorted sequence or a sequence n
     1. An advanced way to implement Binary Search.
     2. Search Condition needs to access element's immediate right neighbor
     3. Use element's right neighbor to determine if condition is met and decide whether to go left or right
-    4. **Gurantees Search Space is at least 2 in size at each step**
+    4. **Gurantees Search Space is at least 2 in size at each step (because left ,< right)**
     5. Post-processing required. Loop/Recursion ends when you **have 1 element left**, such as `while left < right`. Need to assess if the remaining element meets the condition.
+    6. There is a chance that we need to examine right neignbor index
 
 3. Type 3:
+    1. An alternative way to implement Binary Search
+    2. Search Condition needs to access element's immediate left and right neighbors
+    3. Use element's neighbors to determine if condition is met and decide whether to go left or right
+    4. Gurantees Search Space is at least 3 in size at each step
+    5. Post-processing required. Loop/Recursion ends when you have 2 elements left. Need to assess if the remaining elements meet the condition.
 
 4. Other tricks
 
@@ -108,4 +114,4 @@ When you need to find one or more targets from a sorted sequence or a sequence n
 
 ### **6.4 Common mistake points**
 
-A data structure in which each node has at most two children, which are referred to as the left child and the right child.
+A data structure in which each node has at most two children, which are referred to as the left child and the right child. 
