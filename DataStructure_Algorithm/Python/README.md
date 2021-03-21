@@ -31,6 +31,11 @@ When you need to find one or more targets from a sorted sequence or a sequence n
     3. Usually will invloved `while left <= right`, `left = mid + 1`, `right = mid - 1`, terminate at `left > right`
 
 2. Type 2:
+    1. An advanced way to implement Binary Search.
+    2. Search Condition needs to access element's immediate right neighbor
+    3. Use element's right neighbor to determine if condition is met and decide whether to go left or right
+    4. **Gurantees Search Space is at least 2 in size at each step**
+    5. Post-processing required. Loop/Recursion ends when you **have 1 element left**, such as `while left < right`. Need to assess if the remaining element meets the condition.
 
 3. Type 3:
 
