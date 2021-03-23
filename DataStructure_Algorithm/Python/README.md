@@ -1,5 +1,7 @@
 # **Coding Path**
 
+# **Algorithms**
+
 ## **1. Sorting**
 
 ## **2. Binary Search**
@@ -45,10 +47,14 @@ When you need to find one or more targets from a sorted sequence or a sequence n
     4. Gurantees Search Space is at least 3 in size at each step
     5. Post-processing required. Loop/Recursion ends when you have 2 elements left. Need to assess if the remaining elements meet the condition.
 
-4. Other tricks
+4. Other tricks or self summary
+    * Check if `left <= right`, `left < right`, or `left < right - 1`
+    * Compare with the target value or left most, right most, left neighbor, right neighbor
+    * Whether skipping the mid is correct way
+    * Becareful of index out of bound when point 1 is specified
 
 5. Other summary
-    * square root related problems: #69, #367
+    * square root or pow related problems: #69, #367, #50
 
 ### **2.4 Common mistake points**
 
@@ -114,4 +120,23 @@ When you need to find one or more targets from a sorted sequence or a sequence n
 
 ### **6.4 Common mistake points**
 
+## **Binary Serch Tree**
+
+### **7.1 Definition**
+
+A node based binary tree with the following properties:
+
+1. The left subtree of a node should only contains node with keys smaller than the node's key
+2. The right subtree of a node should only contains nide with keys greater than the node's key
+3. The left and right subtree each must also be a binary search tree
+4. Some rare cases the right index doen't need to be len(arr)-1
+
+### **7.2 How to identify**
+
+### **7.3 ommon tricks in Binary search**
+
+### **8.4 Common mistake points**
+
 A data structure in which each node has at most two children, which are referred to as the left child and the right child. 
+
+If the tree is balanced, we call a tree balanced if for all nodes the difference between the heights of left and right subtrees is not greater than one
