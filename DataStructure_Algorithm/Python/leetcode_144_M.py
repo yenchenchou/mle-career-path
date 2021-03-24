@@ -58,4 +58,4 @@ class Solution:
             res.append(root.val)
             self.dfs(root.left, res)
             self.dfs(root.right, res)
-    #O()stackre
+    #O(n), O(n)
