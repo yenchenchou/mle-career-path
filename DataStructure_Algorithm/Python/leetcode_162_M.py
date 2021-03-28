@@ -18,7 +18,7 @@ class Solution:
         else:
             return 0
         #[2], [1,2], [1,3,2], [1,2,3]
-        
+    # O(n), O(1)
 
 # Solution 1.2: Linear search and compare the curr and the next index
 # observation is that if it is not peak then the number will continue to go up, if it is peak
@@ -29,7 +29,7 @@ class Solution:
             if nums[i] > nums[i+1]:
                 return i
         return len(nums) - 1
-
+    # O(n), O(1)
 
 # Solution 2: Binary Search Iteration
 class Solution:
@@ -42,6 +42,6 @@ class Solution:
             else:
                 left = mid + 1
         return left #[1,2], [1,3,2]
-
+    # O(logn), O(1)
         
 # Solution3: Recursive Binary Search

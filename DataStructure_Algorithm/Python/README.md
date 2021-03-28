@@ -17,6 +17,11 @@ When solving binary search, there are several things included most of the time:
 3. left, right: the indices from which we use to maintain our search space
 4. mid: the index used to apply a condition to determine if we should saerch left or right
 
+Principles:
+
+1. We must guarantee that the search space decreases over time
+2. We must guarantee that the target cannot be ruled out accidentally
+
 ### **2.2 How to identify**
 
 When you need to find one or more targets from a sorted sequence or a sequence need to be sorted
@@ -53,8 +58,30 @@ When you need to find one or more targets from a sorted sequence or a sequence n
     * Whether skipping the mid is correct way
     * Becareful of index out of bound when point 1 is specified
 
-5. Other summary
-    * square root or pow related problems: #69, #367, #50
+5. Question summary
+    * square root/pow/product related problems:
+        * #69 Sqrt
+        * #367 Valid Perfect Square
+        * #50 Pow
+    * First/last occurence:
+        * #34. Find First and Last Position of Element in Sorted Array (two ways of thinking first/last)
+    * Rotated:
+        * #33. Search in Rotated Sorted Array
+        * #153. Find Minimum in Rotated Sorted Array
+        * #154. Find Minimum in Rotated Sorted Array II
+    * COmparing left/right index in comparision, neighbor, return left/right index instead:
+        * #35. Search Insert Position
+        * #162. Find Peak Element
+        * #278. First Bad Version
+        * #162. Find Peak Element
+    * Unknown size:
+        * #702. Search in a Sorted Array of Unknown Size
+    * Findclosest number:
+        * #658. Find K Closest Elements
+        * #270. Closest Binary Search Tree Value
+    * Intersection:
+        * #349 Intersection of Two Arrays  
+        * #350 Intersection of Two Arrays II
 
 ### **2.4 Common mistake points**
 

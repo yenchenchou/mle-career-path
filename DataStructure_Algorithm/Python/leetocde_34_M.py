@@ -51,4 +51,65 @@ class Solution:
             else:
                 right = mid - 1
         return left if nums[left] == target else -1
-                
+
+# other way of search first occurence
+def find_first_occurence(nums, target):
+    if len(nums) == 0: return -1
+    left, right = 0, len(nums) -1 
+    while left < right:
+        mid = (right-left)//2 + left
+        if nums[mid] < target:
+            left = mid + 1
+        else:
+            right = mid
+    if nums[left] == target:
+        return left
+    else:
+        return -1
+
+
+# other way of search first occurence
+def find_first_occurence(nums, target):
+    if len(nums) == 0: return -1
+    left, right = 0, len(nums) -1 
+    while left < right - 1:
+        mid = (right-left)//2 + left
+        if nums[mid] < target:
+            left = mid + 1
+        else:
+            right = mid
+    if nums[left] == target:
+        return left
+    if nums[right] == target:
+        return right
+    return -1
+
+
+# other way of search last occurence
+def find_last_occurence(nums, target):
+    if len(nums) == 0: return -1
+    left, right = 0, len(nums) -1 
+    while left < right:
+        mid = (right-left)//2 + left + 1
+        if nums[mid] <= target:
+            left = mid
+        else:
+            right = mid - 1
+    return left if nums[left] == target else -1
+
+
+# other way of search last occurence
+def find_last_occurence(nums, target):
+    if len(nums) == 0: return -1
+    left, right = 0, len(nums) -1 
+    while left < right - 1:
+        mid = (right-left)//2 + left
+        if nums[mid] <= target:
+            left = mid
+        else:
+            right = mid - 1
+    if nums[left] == target:
+        return left
+    if nums[right] == target:
+        return right
+    return -1
