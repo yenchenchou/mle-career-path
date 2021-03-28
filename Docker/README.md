@@ -30,3 +30,26 @@ by any container.
 2. Run multiple containers at the same time -> Docker compose create a network automatically for the containers inside 
 the docker compose file (.yml) 
 3. Automate some complex arguments passing the `docker run`
+
+
+# 2. Kubernetes
+
+## Def
+
+1. What is Kubernetes?:
+
+    portable, extensible, open-source platform for managing containerized workloads and services, that facilitates both declarative configuration and automation.
+
+2. Kubernete cluster:
+
+    A Kubernete cluster is consist of a master node and 1 or more nodes where each node is a virtual machine or physicla computer. Each node contains one or more containers. We control the cluster by controling the cluster.
+
+## Components of Kubernetes
+
+## Differences between Docker compose and Kubernetes
+
+| Docker Compose | Kubernetes |
+|-|-|
+| Each entry can get docker-compose to build image| K8S expects all images to already be built -> make sure the image is hosted on hub|
+| Each entry in `services` represents a contqiner | One config file per pbject we want to create -> make one config file to make pods|
+| Each entry defines the networking (ports) | Manual set up is needed -> set a config file for networking|
