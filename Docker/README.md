@@ -75,7 +75,7 @@ the docker compose file (.yml)
 6. Use Declarative approach as possible instead of imerative approach unless neccesary
 7. The `name` and `kind` together are a unique identifier to help K8S to find the existing object/pod and update it instead of creating an entire new one
 8. According to K8S, things like num containers, name, port are not editable. Update by using the image is the only way. So we need to use `deployment`
-9. The reason we sometims mess up with docker inside the pod: clean the cache or debug. You may either use `kubectl` or `docker`. 
+9. The reason we sometims mess up with docker inside the pod: clean the cache or debug. You may either use `kubectl` or `docker`.
 
 ## Usage
 
@@ -86,3 +86,11 @@ the docker compose file (.yml)
     For exmaple:
 
     `kubectl set image deployment/client-deployment client=stephengrider/multi-client:v5`
+
+## Volume
+
+1. In K8s, the definition of "volume" is different than usual. It means an object that allows a container to store data at the pod level.
+
+2. Even having a volume in the same pod can avoid db crash but what if the pod carashes? So, we come up with other types of volume:
+    * persistent volume claim: dynamic options for you to choose but will only used when actually needed -> claim config files
+    * persistent volume: the volume that exists outside the pods, this will last for long time.
