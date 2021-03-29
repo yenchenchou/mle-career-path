@@ -8,7 +8,9 @@ metadata:
 spec:
   type: NodePort
   ports:
+  # port: pod that needs mutli-client pod. A another pod/container could access to this service(pod) through this port
   - port: 3050
+    # the port inside the pod that we want to open
     targetPort: 3000
     nodePort: 31515
     # nodePort is a communication layer between the outside world and the container inside the pods but only for development purposes!

@@ -8,6 +8,7 @@ spec:
     matchLabels: 
       component: web
   template:
+  # the below part is almost same as client-pod.yaml
     metadata:
       labels:
         component: web
@@ -20,4 +21,4 @@ spec:
               memory: "128Mi"
               cpu: "500m"
           ports:
-          - containerPort: 3000
+            - containerPort: 3000
