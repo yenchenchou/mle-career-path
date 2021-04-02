@@ -53,10 +53,36 @@ When you need to find one or more targets from a sorted sequence or a sequence n
     5. Post-processing required. Loop/Recursion ends when you have 2 elements left. Need to assess if the remaining elements meet the condition.
 
 4. Other tricks or self summary
-    * Check if `left <= right`, `left < right`, or `left < right - 1`
+    * Check if `left <= right`, `left < right`, or `left < right - 1`. Here are the observations, they always come in this way:
+
+    ```Python
+    # Type1: end at left > right
+        while left <= right:
+            mid = (right-left)//2 + left
+            ...
+            left = mid + 1
+            right = mid - 1
+            ...
+    # Type2: end at left == right
+        while left < right:
+            mid = (right-left)//2 + left
+            ...
+            left = mid + 1  # prevent endlss loop
+            right = mid
+            ...
+    # Type1: end at left < right (left+1==right)
+        while left < right - 1:
+            mid = (right-left)//2 + left
+            ...
+            left = mid
+            right = mid
+            ...
+    ```
+
     * Compare with the target value or left most, right most, left neighbor, right neighbor
     * Whether skipping the mid is correct way
     * Becareful of index out of bound when point 1 is specified
+    * Notice when the two pointer stop and their last location
 
 5. Question summary
     * square root/pow/product related problems:
@@ -69,11 +95,10 @@ When you need to find one or more targets from a sorted sequence or a sequence n
         * #33. Search in Rotated Sorted Array
         * #153. Find Minimum in Rotated Sorted Array
         * #154. Find Minimum in Rotated Sorted Array II
-    * COmparing left/right index in comparision, neighbor, return left/right index instead:
+    * Comparing left/right index in comparision, neighbor, return left/right index instead:
         * #35. Search Insert Position
         * #162. Find Peak Element
         * #278. First Bad Version
-        * #162. Find Peak Element
     * Unknown size:
         * #702. Search in a Sorted Array of Unknown Size
     * Findclosest number:
