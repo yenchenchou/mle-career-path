@@ -76,5 +76,3 @@
 |               Name               | Level        | Progress         | Feedback    |
 |:-------------------------------- |:-----------------:|:----------------------:|:----------------:|
 [SQL Tutorial: How To Write Better Queries](https://www.datacamp.com/community/tutorials/sql-tutorial-query)|Fundamental | 100% | Better to understand how each query work behind the scene|
-
-
