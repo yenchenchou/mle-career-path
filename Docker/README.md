@@ -45,11 +45,16 @@ the docker compose file (.yml)
 
     A Kubernete cluster is consist of a master node and 1 or more nodes where each node is a virtual machine or physicla computer. Each node contains one or more containers. We control the cluster by controling the cluster.
 
-## Components of Kubernetes
+## Kubernetes Objects
 
 1. **Pod**
 2. **Service**: map the port od diff pods inside the cluster and becomes a bridge for kubeproxy. The reason why `service` is important is that pod may change the ip as it is updated. Using `service` give you a better way to avoid finding the pod's ip everytime.
+    * ClusterIP: expose a set of pods to other objects in the cluster
+    * expose a set of pods outside the world but for devlopment purpose by convention
+    * LoadBalancer: Legacy way of getting network traffic into a cluster
+    * Ingress: Expose a set of service to the outside world
 3. **Deployment**: maintain a set of identical pods to ensure they have the correct config and the right number of pods
+4. **Secret**: Store a piece of information in the clsuter, such as password
 
 | Pods | Deployment |
 | ---------------------------------- | -----------------------------------------------------|
