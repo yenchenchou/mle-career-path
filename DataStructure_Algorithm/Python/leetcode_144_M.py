@@ -2,7 +2,7 @@
 # Pre-order Traverse Binary Tree
 
 
-# Solution 1: Iteration
+# Solution 1: Iteration: tree + stack
 # class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
 #         self.val = val

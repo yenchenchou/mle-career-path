@@ -53,36 +53,10 @@ When you need to find one or more targets from a sorted sequence or a sequence n
     5. Post-processing required. Loop/Recursion ends when you have 2 elements left. Need to assess if the remaining elements meet the condition.
 
 4. Other tricks or self summary
-    * Check if `left <= right`, `left < right`, or `left < right - 1`. Here are the observations, they always come in this way:
-
-    ```Python
-    # Type1: end at left > right
-        while left <= right:
-            mid = (right-left)//2 + left
-            ...
-            left = mid + 1
-            right = mid - 1
-            ...
-    # Type2: end at left == right
-        while left < right:
-            mid = (right-left)//2 + left
-            ...
-            left = mid + 1  # prevent endlss loop
-            right = mid
-            ...
-    # Type1: end at left < right (left+1==right)
-        while left < right - 1:
-            mid = (right-left)//2 + left
-            ...
-            left = mid
-            right = mid
-            ...
-    ```
-
+    * Check if `left <= right`, `left < right`, or `left < right - 1`
     * Compare with the target value or left most, right most, left neighbor, right neighbor
     * Whether skipping the mid is correct way
     * Becareful of index out of bound when point 1 is specified
-    * Notice when the two pointer stop and their last location
 
 5. Question summary
     * square root/pow/product related problems:
@@ -99,6 +73,7 @@ When you need to find one or more targets from a sorted sequence or a sequence n
         * #35. Search Insert Position
         * #162. Find Peak Element
         * #278. First Bad Version
+        * #162. Find Peak Element
     * Unknown size:
         * #702. Search in a Sorted Array of Unknown Size
     * Findclosest number:
@@ -107,6 +82,9 @@ When you need to find one or more targets from a sorted sequence or a sequence n
     * Intersection:
         * #349 Intersection of Two Arrays  
         * #350 Intersection of Two Arrays II
+    * Others:
+        * #287 Find the Duplicate Number
+        * #4 Median of two sorted array
 
 ### **2.4 Common mistake points**
 
@@ -165,10 +143,17 @@ When you need to find one or more targets from a sorted sequence or a sequence n
 ## **Binary Tree**
 
 ### **6.1 Definition**
+binary tree is a tree data structure in which each node has at most two children, which are referred to as the left child and the right child
 
 ### **6.2 How to identify**
+tree data structure in which each node has at most two children
 
-### **6.3 ommon tricks in Binary search**
+### **6.3 common tricks in Binary search**
+1. Question summary
+    * Basics
+        * #144 Binary Tree Preorder Traversal
+        * #94 Binary Tree Inorder Traversal
+
 
 ### **6.4 Common mistake points**
 
