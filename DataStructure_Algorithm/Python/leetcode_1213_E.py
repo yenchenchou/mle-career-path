@@ -3,7 +3,9 @@
 
 # Solution 1: three pointers
 class Solution:
-    def arraysIntersection(self, arr1: List[int], arr2: List[int], arr3: List[int]) -> List[int]:
+    def arraysIntersection(
+        self, arr1: List[int], arr2: List[int], arr3: List[int]
+    ) -> List[int]:
         p1, p2, p3 = 0, 0, 0
         res = []
         while p1 < len(arr1) and p2 < len(arr2) and p3 < len(arr3):

@@ -1,14 +1,16 @@
 # **Coding Path**
 
-# **Algorithms**
-
 ## **1. Sorting**
+
+---
 
 ## **2. Binary Search**
 
+---
+
 ### **2.1 Definition**
 
-Binary Search operates on a contiguous sequence with a specified left and right index. The left, right, mid index helps us to compare the target. If the  index shows the condition deos not align with the target then that half part is eliminated. We do this repeatly then get the final result.
+Binary Search operates on a contiguous sequence with a specified left and right index. The left, right, mid index helps us to compare the target. If the index shows the condition deos not align with the target then that half part is eliminated. We do this repeatly then get the final result.
 
 When solving binary search, there are several things included most of the time:
 
@@ -26,69 +28,75 @@ Principles:
 
 When you need to find one or more targets from a sorted sequence or a sequence need to be sorted
 
-* Pre-processing - Sort if collection is unsorted.
-* Binary Search - Using a loop or recursion to divide search space in half after each comparison.
-* Post-processing - Determine viable candidates in the remaining space.
+- Pre-processing - Sort if collection is unsorted.
+- Binary Search - Using a loop or recursion to divide search space in half after each comparison.
+- Post-processing - Determine viable candidates in the remaining space.
 
 ### **2.3 Common types and tricks in Binary search**
 
 1. Type 1:
-    1. Search Condition can be determined without comparing to the element's neighbors (or use specific elements around it)
-    2. No post-processing required because at each step, you are checking to see if the element has been found. If you reach the end, then you know the element is not found
-    3. Usually will invloved `while left <= right`, `left = mid + 1`, `right = mid - 1`, terminate at `left > right`
+
+   1. Search Condition can be determined without comparing to the element's neighbors (or use specific elements around it)
+   2. No post-processing required because at each step, you are checking to see if the element has been found. If you reach the end, then you know the element is not found
+   3. Usually will invloved `while left <= right`, `left = mid + 1`, `right = mid - 1`, terminate at `left > right`
 
 2. Type 2:
-    1. An advanced way to implement Binary Search.
-    2. Search Condition needs to access element's immediate right neighbor
-    3. Use element's right neighbor to determine if condition is met and decide whether to go left or right
-    4. **Gurantees Search Space is at least 2 in size at each step (because left ,< right)**
-    5. Post-processing required. Loop/Recursion ends when you **have 1 element left**, such as `while left < right`. Need to assess if the remaining element meets the condition.
-    6. There is a chance that we need to examine right neignbor index
+
+   1. An advanced way to implement Binary Search.
+   2. Search Condition needs to access element's immediate right neighbor
+   3. Use element's right neighbor to determine if condition is met and decide whether to go left or right
+   4. **Gurantees Search Space is at least 2 in size at each step (because left ,< right)**
+   5. Post-processing required. Loop/Recursion ends when you **have 1 element left**, such as `while left < right`. Need to assess if the remaining element meets the condition.
+   6. There is a chance that we need to examine right neignbor index
 
 3. Type 3:
-    1. An alternative way to implement Binary Search
-    2. Search Condition needs to access element's immediate left and right neighbors
-    3. Use element's neighbors to determine if condition is met and decide whether to go left or right
-    4. Gurantees Search Space is at least 3 in size at each step
-    5. Post-processing required. Loop/Recursion ends when you have 2 elements left. Need to assess if the remaining elements meet the condition.
+
+   1. An alternative way to implement Binary Search
+   2. Search Condition needs to access element's immediate left and right neighbors
+   3. Use element's neighbors to determine if condition is met and decide whether to go left or right
+   4. Gurantees Search Space is at least 3 in size at each step
+   5. Post-processing required. Loop/Recursion ends when you have 2 elements left. Need to assess if the remaining elements meet the condition.
 
 4. Other tricks or self summary
-    * Check if `left <= right`, `left < right`, or `left < right - 1`
-    * Compare with the target value or left most, right most, left neighbor, right neighbor
-    * Whether skipping the mid is correct way
-    * Becareful of index out of bound when point 1 is specified
+
+   - Check if `left <= right`, `left < right`, or `left < right - 1`
+   - Compare with the target value or left most, right most, left neighbor, right neighbor
+   - Whether skipping the mid is correct way
+   - Becareful of index out of bound when point 1 is specified
 
 5. Question summary
-    * square root/pow/product related problems:
-        * #69 Sqrt
-        * #367 Valid Perfect Square
-        * #50 Pow
-    * First/last occurence:
-        * #34. Find First and Last Position of Element in Sorted Array (two ways of thinking first/last)
-    * Rotated:
-        * #33. Search in Rotated Sorted Array
-        * #153. Find Minimum in Rotated Sorted Array
-        * #154. Find Minimum in Rotated Sorted Array II
-    * Comparing left/right index in comparision, neighbor, return left/right index instead:
-        * #35. Search Insert Position
-        * #162. Find Peak Element
-        * #278. First Bad Version
-        * #162. Find Peak Element
-    * Unknown size:
-        * #702. Search in a Sorted Array of Unknown Size
-    * Findclosest number:
-        * #658. Find K Closest Elements
-        * #270. Closest Binary Search Tree Value
-    * Intersection:
-        * #349 Intersection of Two Arrays  
-        * #350 Intersection of Two Arrays II
-    * Others:
-        * #287 Find the Duplicate Number
-        * #4 Median of two sorted array
+   - square root/pow/product related problems:
+     - #69 Sqrt
+     - #367 Valid Perfect Square
+     - #50 Pow
+   - First/last occurence:
+     - #34. Find First and Last Position of Element in Sorted Array (two ways of thinking first/last)
+   - Rotated:
+     - #33. Search in Rotated Sorted Array
+     - #153. Find Minimum in Rotated Sorted Array
+     - #154. Find Minimum in Rotated Sorted Array II
+   - Comparing left/right index in comparision, neighbor, return left/right index instead:
+     - #35. Search Insert Position
+     - #162. Find Peak Element
+     - #278. First Bad Version
+     - #162. Find Peak Element
+   - Unknown size:
+     - #702. Search in a Sorted Array of Unknown Size
+   - Findclosest number:
+     - #658. Find K Closest Elements
+     - #270. Closest Binary Search Tree Value
+   - Intersection:
+     - #349 Intersection of Two Arrays
+     - #350 Intersection of Two Arrays II
+   - Others:
+     - #287 Find the Duplicate Number
+     - #4 Median of two sorted array
 
 ### **2.4 Common mistake points**
 
 ## **3. LinkedList**
+
+---
 
 ### **3.1 Definition**
 
@@ -105,13 +113,13 @@ When you need to find one or more targets from a sorted sequence or a sequence n
 11. Odd Even Linked List(328 M):
 12. Palindrome Linked List(234): sentinel node concept, fast slow two pointers
 
-|               Question              | Difficulty |                  Concept                  | # Practice |
-|:-----------------------------------:|:----------:|:-----------------------------------------:|:----------:|
-|   Remove Linked List Elements(203)  |    Easy    |                  sentinel                 |      2     |
-|      Merge Two Sorted Lists(21)     |    Easy    |                  sentinel                 |      2     |
-| Design a LinkedList(707 - Singular) |    Easy    |        sentinel, next.next pointer        |      3     |
-|  Design a LinkedList(707 - Double)  |    Easy    | sentinel, next.next pointer, reverse loop |     2*     |
-|       Cycle in LinkedList(141)      |    Easy    |        sentinel, fast slow pointer        |      3     |
+|              Question               | Difficulty |                  Concept                  | # Practice |
+| :---------------------------------: | :--------: | :---------------------------------------: | :--------: |
+|  Remove Linked List Elements(203)   |    Easy    |                 sentinel                  |     2      |
+|     Merge Two Sorted Lists(21)      |    Easy    |                 sentinel                  |     2      |
+| Design a LinkedList(707 - Singular) |    Easy    |        sentinel, next.next pointer        |     3      |
+|  Design a LinkedList(707 - Double)  |    Easy    | sentinel, next.next pointer, reverse loop |     2      |
+|      Cycle in LinkedList(141)       |    Easy    |        sentinel, fast slow pointer        |     3      |
 |                                     |            |                                           |            |
 
 ### **3.2 How to identify**
@@ -122,6 +130,8 @@ When you need to find one or more targets from a sorted sequence or a sequence n
 
 ## **Queue and Stack**
 
+---
+
 ### **4.1 Definition**
 
 ### **4.2 How to identify**
@@ -131,6 +141,8 @@ When you need to find one or more targets from a sorted sequence or a sequence n
 ### **4.4 Common mistake points**
 
 ## **Recursion**
+
+---
 
 ### **5.1 Definition**
 
@@ -152,16 +164,39 @@ tree data structure in which each node has at most two children
 
 ### **6.3 common tricks in Binary search**
 
-1. Question summary
-    * Basics
-        * #144 Binary Tree Preorder Traversal
-        * #94 Binary Tree Inorder Traversal
+1. Notice on the order. pre-order, in-order, and post-order use dfs while level order use bfs
+2. Almost all questions can do on iterative and recursive methods
+3. Knowing when to return value from recursion
+   - When just output the node by traversing, no need to return
+   - When calculation height then we need to return
+4. Tricks:
 
-        *
+   ```Python
+   # for iterative approach on question like max depth, Symmetric Tree
+   #1. put node in stack or Iterative traversal starting point
+   stack = [(root, 1)  # #104. Maximum Depth of Binary Tree
+   stack = [(root.left, root.right)]  # 101. Symmetric Tree
+   stack = [(root, numSum-node.val)]  # #112. Path Sum
+   stack = [root]  #144. Binary Tree Preorder Traversal
+   ```
+
+5. Question summary
+   - Basics
+     - #144. Binary Tree Preorder Traversal
+     - #94. Binary Tree Inorder Traversal
+     - #145. Binary Tree Postorder Traversal: Note that the iterative method between #94 and #145 are very similar
+     - #102. Binary Tree Level Order Traversal
+   - Tree depth related
+     - #104. Maximum Depth of Binary Tree
+     - #112. Path Sum
+   - Symmetric, Rotated Tree
+     - #101. Symmetric Tree
 
 ### **6.4 Common mistake points**
 
 ## **Binary Search Tree**
+
+---
 
 ### **7.1 Definition**
 
