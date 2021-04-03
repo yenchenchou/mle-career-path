@@ -17,7 +17,7 @@ class Solution:
             return len(nums)-1
         else:
             return 0
-        #[2], [1,2], [1,3,2], [1,2,3]
+    #[2], [1,2], [1,3,2], [1,2,3]
     # O(n), O(1)
 
 # Solution 1.2: Linear search and compare the curr and the next index
@@ -30,7 +30,6 @@ class Solution:
                 return i
         return len(nums) - 1
     # O(n), O(1)
-
 # Solution 2: Binary Search Iteration
 class Solution:
     def findPeakElement(self, nums: List[int]) -> int:
@@ -43,5 +42,4 @@ class Solution:
                 left = mid + 1
         return left #[1,2], [1,3,2]
     # O(logn), O(1)
-        
 # Solution3: Recursive Binary Search

@@ -143,21 +143,25 @@ When you need to find one or more targets from a sorted sequence or a sequence n
 ## **Binary Tree**
 
 ### **6.1 Definition**
+
 binary tree is a tree data structure in which each node has at most two children, which are referred to as the left child and the right child
 
 ### **6.2 How to identify**
+
 tree data structure in which each node has at most two children
 
 ### **6.3 common tricks in Binary search**
+
 1. Question summary
     * Basics
         * #144 Binary Tree Preorder Traversal
         * #94 Binary Tree Inorder Traversal
 
+        *
 
 ### **6.4 Common mistake points**
 
-## **Binary Serch Tree**
+## **Binary Search Tree**
 
 ### **7.1 Definition**
 
@@ -174,6 +178,6 @@ A node based binary tree with the following properties:
 
 ### **8.4 Common mistake points**
 
-A data structure in which each node has at most two children, which are referred to as the left child and the right child. 
+A data structure in which each node has at most two children, which are referred to as the left child and the right child.
 
 If the tree is balanced, we call a tree balanced if for all nodes the difference between the heights of left and right subtrees is not greater than one
