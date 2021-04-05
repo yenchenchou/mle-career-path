@@ -3,7 +3,7 @@
 
 # sol1: hashing, O(n)/O(n)
 # sol2: Floyd's Tortoise and Hare, which mean after the two pointer meet each other, we assign one of the pointer back to
-#       the start point, then we let pointer1 and pointer2 walk at same speed, the two pointers will meet at the start of 
+#       the start point, then we let pointer1 and pointer2 walk at same speed, the two pointers will meet at the start of
 #       cycle everytime
 
 

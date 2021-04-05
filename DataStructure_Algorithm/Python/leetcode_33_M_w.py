@@ -1,17 +1,17 @@
 # 33. Search in Rotated Sorted Array
-# thoughts 
-    # 1. split the scenario by mid
-    # 2. compare the position and see what kind of direction should the pointer go
-    #    for exmaple, there are three cases but two outcomes, 
-    #    [target on left > mid], [target on right < mid], [target on right > mid]
+# thoughts
+# 1. split the scenario by mid
+# 2. compare the position and see what kind of direction should the pointer go
+#    for exmaple, there are three cases but two outcomes,
+#    [target on left > mid], [target on right < mid], [target on right > mid]
 # Solution1: binary search + two pass: find index with smallest value then get the target index
 
 # Solution2: binary search + one pass
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
-        left, right = 0, len(nums)-1
+        left, right = 0, len(nums) - 1
         while left <= right:
-            mid = (right-left)//2+ left
+            mid = (right - left) // 2 + left
             if nums[mid] == target:
                 return mid
             elif nums[mid] >= nums[left]:
