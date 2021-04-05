@@ -8,10 +8,12 @@ class Solution:
         return res
 
     def helper(self, root, res):
-        if not root: return []
+        if not root:
+            return []
         self.helper(root.left, res)
         res.append(root.val)
         self.helper(root.right, res)
+
     # O(n), O(n) if very unbalanced tree, avg is O(logn)
 
 
@@ -23,11 +25,14 @@ class Solution:
             while root:
                 stack.append(root)
                 root = root.left
-            if not stack: return res
+            if not stack:
+                return res
             node = stack.pop()
             res.append(node.val)
             root = node.right
-    #O(n), O(n)
+
+    # O(n), O(n)
+
 
 # Solution2.2: Iteration (My try)
 class Solution:
@@ -44,4 +49,5 @@ class Solution:
             else:
                 break
         return res  # [1, None], [1, 2, 3]->213, [1,null,3]->13, [1,2,null,3]->213, [1,null,2,3]->132
-    #O(n), O(n)
+
+    # O(n), O(n)

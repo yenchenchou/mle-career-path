@@ -1,10 +1,12 @@
 # **Coding Path**
 
-# **Algorithms**
-
 ## **1. Sorting**
 
+---
+
 ## **2. Binary Search**
+
+---
 
 ### **2.1 Definition**
 
@@ -90,6 +92,8 @@ When you need to find one or more targets from a sorted sequence or a sequence n
 
 ## **3. LinkedList**
 
+---
+
 ### **3.1 Definition**
 
 1. Design a Singly LinkedList(707): sentinel node concept
@@ -110,7 +114,7 @@ When you need to find one or more targets from a sorted sequence or a sequence n
 |   Remove Linked List Elements(203)  |    Easy    |                  sentinel                 |      2     |
 |      Merge Two Sorted Lists(21)     |    Easy    |                  sentinel                 |      2     |
 | Design a LinkedList(707 - Singular) |    Easy    |        sentinel, next.next pointer        |      3     |
-|  Design a LinkedList(707 - Double)  |    Easy    | sentinel, next.next pointer, reverse loop |     2*     |
+|  Design a LinkedList(707 - Double)  |    Easy    | sentinel, next.next pointer, reverse loop |      2     |
 |       Cycle in LinkedList(141)      |    Easy    |        sentinel, fast slow pointer        |      3     |
 |                                     |            |                                           |            |
 
@@ -122,15 +126,27 @@ When you need to find one or more targets from a sorted sequence or a sequence n
 
 ## **Queue and Stack**
 
+---
+
+### **Recursion**
+
 ### **4.1 Definition**
 
 ### **4.2 How to identify**
 
-### **4.3 ommon tricks in Binary search**
+### **4.3 ommon tricks in Recursion**
+
+1. How to construct the recusion solution:
+    * Base case
+    * What is will the recursive function looked like
+    * what to return to pass the info to the next stack
+    * which traverse order will benefit (pre-order, in-order, post-order)
+2. When can we use:
+    * When you can solve the question using functiona and solve it repeatly
 
 ### **4.4 Common mistake points**
 
-## **Recursion**
+---
 
 ### **5.1 Definition**
 
@@ -140,24 +156,53 @@ When you need to find one or more targets from a sorted sequence or a sequence n
 
 ### **5.4 Common mistake points**
 
+---
+
 ## **Binary Tree**
 
 ### **6.1 Definition**
+
 binary tree is a tree data structure in which each node has at most two children, which are referred to as the left child and the right child
 
 ### **6.2 How to identify**
+
 tree data structure in which each node has at most two children
 
 ### **6.3 common tricks in Binary search**
-1. Question summary
-    * Basics
-        * #144 Binary Tree Preorder Traversal
-        * #94 Binary Tree Inorder Traversal
 
+1. Notice on the order. pre-order, in-order, and post-order use dfs while level order use bfs
+2. Almost all questions can do on iterative and recursive methods
+3. Knowing when to return value from recursion
+    * When just output the node by traversing, no need to return
+    * When calculation height then we need to return
+4. Tricks:
+
+    ```Python
+    # for iterative approach on question like max depth, Symmetric Tree
+    #1. put node in stack or Iterative traversal starting point
+    stack = [(root, 1)  # #104. Maximum Depth of Binary Tree
+    stack = [(root.left, root.right)]  # 101. Symmetric Tree
+    stack = [(root, numSum-node.val)]  # #112. Path Sum
+    stack = [root]  #144. Binary Tree Preorder Traversal
+    ```
+
+5. Question summary
+    * Basics
+        * #144. Binary Tree Preorder Traversal
+        * #94. Binary Tree Inorder Traversal
+        * #145. Binary Tree Postorder Traversal: Note that the iterative method between #94 and #145 are very similar
+        * #102. Binary Tree Level Order Traversal
+    * Tree depth related
+        * #104. Maximum Depth of Binary Tree
+        * #112. Path Sum
+    * Symmetric, Rotated Tree
+        * #101. Symmetric Tree
 
 ### **6.4 Common mistake points**
 
-## **Binary Serch Tree**
+## **Binary Search Tree**
+
+---
 
 ### **7.1 Definition**
 
@@ -174,6 +219,6 @@ A node based binary tree with the following properties:
 
 ### **8.4 Common mistake points**
 
-A data structure in which each node has at most two children, which are referred to as the left child and the right child. 
+A data structure in which each node has at most two children, which are referred to as the left child and the right child.
 
 If the tree is balanced, we call a tree balanced if for all nodes the difference between the heights of left and right subtrees is not greater than one

@@ -20,8 +20,10 @@ class Solution:
                 stack.append(node.left)
             if node.right:
                 stack.append(node.right)
-        return res #[1]:2, [1,2]:2, [4,2,6]:3
+        return res   
+    # [1]:2, [1,2]:2, [4,2,6]:3
     # O(n), O(1)
+
 
 # Solution2: Iteration but less time complexity: use prev to cache the previous node value
 class Solution:
@@ -34,8 +36,10 @@ class Solution:
                 root = root.left
             else:
                 root = root.right
-        return prev #[1], [1,2]:3, [4,2,6,1,3]:1
-    #O(logn), O(1)
+        return prev  # [1], [1,2]:3, [4,2,6,1,3]:1
+
+    # O(logn), O(1)
+
 
 # Solution3: Recursion
 # Definition for a binary tree node.
@@ -48,16 +52,18 @@ class Solution:
     def closestValue(self, root: TreeNode, target: float) -> int:
         prev = float("inf")
         return self.helper(root, target, prev)
-    
+
     def helper(self, root, target, prev):
-        if not root: return prev
-        
-        if abs(prev-target) > abs(root.val-target):
+        if not root:
+            return prev
+
+        if abs(prev - target) > abs(root.val - target):
             prev = root.val
-        
+
         if root.val > target:
             return self.helper(root.left, target, prev)
         else:
             print(prev)
             return self.helper(root.right, target, prev)
-    #O(logn), O(n)-> unbalanced tree
+
+    # O(logn), O(n)-> unbalanced tree
