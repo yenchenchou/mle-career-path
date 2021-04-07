@@ -12,13 +12,14 @@
 class Solution:
     def minDiffInBST(self, root: TreeNode) -> int:
         def dfs(node):
-            if not node: return None
+            if not node:
+                return None
             dfs(node.left)
             self.ans = min(self.ans, node.val - self.prev)
             self.prev = node.val
             dfs(node.right)
+
         self.ans = float("inf")
         self.prev = float("-inf")
         dfs(root)
         return self.ans
-        

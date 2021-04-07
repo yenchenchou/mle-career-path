@@ -2,7 +2,61 @@
 
 ## **1. Sorting**
 
+### **1.2 How to identify**
+
+### **1.3 Common tricks in Binary search**
+
+1. Quick Sort
+2. Merge Sort
+3. Selection Sort
+4. Question summary
+    * Basics:
+        * the naive algorithm
+    * Limited Stacks:
+        * use 3 stacks to simulate selection sort
+        * use 2 stacks to simulate selection sort
+    * Linked List:
+        * Merge sort linked list
+        * Split the numbers and strings
+    * Intervals:
+        * #56. Merge Intervals
+        * #253. Meeting Rooms II
+        * #252. Meeting Rooms I
+
+### **1.4 Common mistake points**
+
+1. Sorting problems is not just from arrays or list, it can be any data structure that is sequential in some way.
+
 ---
+
+1. Quick Sort:
+    * Def: An algorithm that steps through each element in a sequence data structure. Then, compare the adjacent element and swap if it is not in a ascending/descending order.
+    * Property: Each iteration, the largest/smallest element is sorted to the left most/right most side of the sequence.
+    * Complexity:
+        * Time: O(n^2)
+        * Space: O(1)
+2. Selection Sort:
+    * Def: select the smallest element in an unsorted data structure and put it to the leftmost side of the unsorted section.
+    * Property: work with other data structure at the same time
+    * Complexity:
+        * Time: O(n^2)
+        * Space: O(1)
+3. Merge Sort:
+    * Def: Divide a sequential data structure from a certain point(usually mid point) repeatl until all the sub sections have one elements left. Then we pick the smaller one from the sub sections and merge the result repeatly until it is back to a sequential data structure
+    * Property: The most used. Usually with recursion
+    * Complexity:
+        * Time: O(nlogn) <- O(logn+n)
+        * Space: O(n) <- O(n/2+n/4+...1)
+4. Quick Sort:
+    * Def: Rnadomly select a point in an sequential data structure and call it a pivot. Then, put the values that smaller than the pivot to the left and bigger ones to the right.
+    * Property:
+        * Merge sort is a special case of quick sort.
+        * Quick sort is an in-place sorting algorithm whereas Merge sort uses extra space.
+        * The worst case runtime of quick sort is O(n^2) can be avoided by using randomized quicksort as explained in the previous point.
+        * Quick Sort is also a cache friendly sorting algorithm as it has good locality of reference when used for arrays.
+    * Complexity:
+        * Time: O(n^2) but avg O(nlogn) since partitionw into two part then we only need logn layer * n elements
+        * Space: O(n) but avg O(logn) since the heigth of stack
 
 ## **2. Binary Search**
 
@@ -137,7 +191,7 @@ When you need to find one or more targets from a sorted sequence or a sequence n
 ### **4.3 ommon tricks in Recursion**
 
 1. How to construct the recusion solution:
-    * Base case
+    * Base case (KNOWING WHEN TO SATOP!!)
     * What is will the recursive function looked like
     * what to return to pass the info to the next stack
     * which traverse order will benefit (pre-order, in-order, post-order)
