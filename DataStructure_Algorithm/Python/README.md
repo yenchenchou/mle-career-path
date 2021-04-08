@@ -200,6 +200,8 @@ When you need to find one or more targets from a sorted sequence or a sequence n
 
 ### **4.4 Common mistake points**
 
+## **5. Recursion**
+
 ---
 
 ### **5.1 Definition**
@@ -216,7 +218,28 @@ When you need to find one or more targets from a sorted sequence or a sequence n
 
 ### **6.1 Definition**
 
-binary tree is a tree data structure in which each node has at most two children, which are referred to as the left child and the right child
+Binary tree is a tree data structure in which each node has at most two children, which are referred to as the left child and the right child. There are many forms of trees, such as :
+
+#### **6.1.1 Binary Search Tree**
+
+A binary search tree with the following properties:
+
+1. The left subtree of a node should only contains node with keys smaller than the node's key
+2. The right subtree of a node should only contains nide with keys greater than the node's key
+3. The left and right subtree each must also be a binary search tree
+4. Some rare cases the right index doen't need to be len(arr)-1
+
+#### **6.1.2 Complete Binary Tree**
+
+A complete binary is a binary tree in which every level, except for the last, is completely filled, nad all nodes are as far left as possible. There are many topics realted to this, for example, [heap]() is a complete binary tree.
+
+A complete binary tree with the following properties:
+
+1. Left child node index: parent_node_index * 2 + 1
+2. right child mode index: parent_node_index * 2 + 2
+3. parent_node_index: (child_node_index-1) // 2
+
+#### **6.1.3 Full Binary Tree**
 
 ### **6.2 How to identify**
 
@@ -224,55 +247,91 @@ tree data structure in which each node has at most two children
 
 ### **6.3 common tricks in Binary search**
 
-1. Notice on the order. pre-order, in-order, and post-order use dfs while level order use bfs
-2. Almost all questions can do on iterative and recursive methods
-3. Knowing when to return value from recursion
-    * When just output the node by traversing, no need to return
-    * When calculation height then we need to return
-4. Tricks:
+#### Binary Tree
 
-    ```Python
-    # for iterative approach on question like max depth, Symmetric Tree
-    #1. put node in stack or Iterative traversal starting point
-    stack = [(root, 1)  # #104. Maximum Depth of Binary Tree
-    stack = [(root.left, root.right)]  # 101. Symmetric Tree
-    stack = [(root, numSum-node.val)]  # #112. Path Sum
-    stack = [root]  #144. Binary Tree Preorder Traversal
-    ```
+    1. Notice on the order. pre-order, in-order, and post-order use dfs while level order use bfs
 
-5. Question summary
-    * Basics
-        * #144. Binary Tree Preorder Traversal
-        * #94. Binary Tree Inorder Traversal
-        * #145. Binary Tree Postorder Traversal: Note that the iterative method between #94 and #145 are very similar
-        * #102. Binary Tree Level Order Traversal
-    * Tree depth related
-        * #104. Maximum Depth of Binary Tree
-        * #112. Path Sum
-    * Symmetric, Rotated Tree
-        * #101. Symmetric Tree
+    2. Almost all questions can do on iterative and recursive methods
+    3. Knowing when to return value from recursion
+        * When just output the node by traversing, no need to return
+        * When calculation height then we need to return
+    4. Tricks:
+
+        ```Python
+        # for iterative approach on question like max depth, Symmetric Tree
+        #1. put node in stack or Iterative traversal starting point
+        stack = [(root, 1)  # #104. Maximum Depth of Binary Tree
+        stack = [(root.left, root.right)]  # 101. Symmetric Tree
+        stack = [(root, numSum-node.val)]  # #112. Path Sum
+        stack = [root]  #144. Binary Tree Preorder Traversal
+        ```
+
+    5. Question summary
+        * Basics
+            * #144. Binary Tree Preorder Traversal
+            * #94. Binary Tree Inorder Traversal
+            * #145. Binary Tree Postorder Traversal: Note that the iterative method between #94 and #145 are very similar
+            * #102. Binary Tree Level Order Traversal
+        * Tree depth related
+            * #104. Maximum Depth of Binary Tree
+            * #112. Path Sum
+        * Symmetric, Rotated Tree
+            * #101. Symmetric Tree
+
+#### Binary Search Tree
+
+A data structure in which each node has at most two children, which are referred to as the left child and the right child.
+
+If the tree is balanced, we call a tree balanced if for all nodes the difference between the heights of left and right subtrees is not greater than one
 
 ### **6.4 Common mistake points**
 
-## **Binary Search Tree**
+## **Heap**
 
 ---
 
 ### **7.1 Definition**
 
-A node based binary tree with the following properties:
-
-1. The left subtree of a node should only contains node with keys smaller than the node's key
-2. The right subtree of a node should only contains nide with keys greater than the node's key
-3. The left and right subtree each must also be a binary search tree
-4. Some rare cases the right index doen't need to be len(arr)-1
+A priority queue can have any implementation. It is just that using heap is the most efficient
+Resource: <https://docs.python.org/3.7/library/heapq.html>
 
 ### **7.2 How to identify**
 
-### **7.3 ommon tricks in Binary search**
+### **7.3 Common tricks in Heap**
 
 ### **8.4 Common mistake points**
 
-A data structure in which each node has at most two children, which are referred to as the left child and the right child.
+## **Graph**
 
-If the tree is balanced, we call a tree balanced if for all nodes the difference between the heights of left and right subtrees is not greater than one
+---
+
+### **8.1 Definition**
+
+### **8.2 How to identify**
+
+### **8.3 ommon tricks in Binary search**
+
+### **9.4 Common mistake points**
+
+## **Waiting follow up list and Review queue**
+
+---
+
+## Waiting follow up list
+
+* #973. K Closest Points to Origin ->
+* #1086. High Five -> <https://leetcode.com/problems/reorganize-string/discuss/113457/Simple-python-solution-using-PriorityQueue>
+* MergeSort and QuickSort
+* Tree
+* LinkedList
+<https://leetcode.com/problems/k-closest-points-to-origin/discuss/294389/Easy-to-read-Python-min-heap-solution-(-beat-99-python-solutions>-)
+
+<https://leetcode.com/problems/high-five/discuss/?currentPage=1&orderBy=most_votes&query>=
+
+<https://leetcode.com/problems/high-five/discuss/312443/Python-Sort-or-Priority-Queue-solution>
+
+<https://medium.com/@Kadai/%E8%B3%87%E6%96%99%E7%B5%90%E6%A7%8B%E5%A4%A7%E4%BE%BF%E7%95%B6-binary-heap-ec47ca7aebac>
+
+<https://www.youtube.com/watch?v=HqPJF2L5h9U>
+
+<https://www.hackerearth.com/practice/notes/heaps-and-priority-queues/>
