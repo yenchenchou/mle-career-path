@@ -58,33 +58,28 @@ We recommendation you start with `Api_HelmKubernetes` unless your are not famili
 
 * **Api_Base:** A hello world API, this is the basic format**
 * **Api_HelmKubernetes:** A API for keepstock project**
-* **Running Examples: <https://keepstockapi-v8.aad.prodaws.grainger.com/docs#/default/predict_species_predict_post>**
 
 ## **How to run the example**
 
 1. Build an image wfrom your local (We are looking for better solutions since pushing to AWS ERC takes huge amount of time)
 
-    `docker build -t <image_name:version> .`
+    `docker build -t yc-images-repo:v1 .`
 
-2. Login to AWS ECR
+2. Tag the image in this format
 
-    `aws ecr get-login-password --region us-east-2 --profile prod | docker login --username AWS --password-stdin 709741256416.dkr.ecr.us-east-2.amazonaws.com/<your-repo-registered-from-MLOps-team>`
+    `docker tag yc-images-repo:v1 yc-images-repo:v1`
 
-3. Tag the image in this format
+3. Push the image to DockerHub or AWS ECR (You may use the `push2ecr` but remember to edit the content )
 
-    `docker tag <image_name:version> 709741256416.dkr.ecr.us-east-2.amazonaws.com/<your-repo-registered-from-MLOps-team>:<new_image_name_for_ecr>`
+    `docker push yc-images-repo:v1`
 
-4. Push the image to ECR (You may use the `push2ecr` but remember to edit the content )
-
-    `docker push 709741256416.dkr.ecr.us-east-2.amazonaws.com/<your-repo-registered-from-MLOps-team>:<new_image_name_for_ecr>`
-
-5. Run Kubernetes with Helm
+4. Run Kubernetes with Helm
 
     `helm install <the folder to Chart> --generate-name -n <your-or-team-name-space>`  -> **Chart folder should be lowercase**
 
-6. Direct to the URL from the place you set in `ingress.yaml`, if your set your values `app: apiyeah` and `environment: prod` (prod/dev only) in `values.yaml`. Then the URL will be
+5. Direct to the URL from the place you set in `ingress.yaml`, if your set your values `app: apiyeah` and `environment: prod` (prod/dev only) in `values.yaml`. Then the URL will be
 
-**`https://apiyeah.aad.prodaws.grainger.com/`**
+**`https://apiyeah.aad.prodaws..com/`**
 
     6.1: One way to remember the URL is to go to `values.yaml` to see the URL:
 
@@ -102,7 +97,7 @@ We recommendation you start with `Api_HelmKubernetes` unless your are not famili
                 servicePort: {{ .Values.service_port }}
                 path: "/"
                 pathType: Prefix
-        host: {{ .Values.app }}.aad.{{ .Values.environment }}aws.grainger.com  # Here!
+        host: {{ .Values.app }}.aad.{{ .Values.environment }}aws.com  # Here!
     ```
 
     6.2 Another way is to type in terminal:
