@@ -1,0 +1,28 @@
+app: fastapi-v23-1
+namespace: yenchenchou
+image: yc-images-repo
+service_port: 80
+app_port: 6008
+tag: fastapi_v23
+environment: prod
+
+replicas:
+  target: 1
+  max: 2
+  cpuTarget: 70
+
+resources:
+  limits:
+    cpu: 2
+    memory: 4Gi
+  requests:
+    cpu: 1
+    memory: 4Gi
+
+sidecar:
+  limits:
+    cpu: 1
+    memory: 4Gi
+  requests:
+    cpu: 0.5
+    memory: 2Gi

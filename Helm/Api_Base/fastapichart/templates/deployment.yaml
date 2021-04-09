@@ -1,0 +1,94 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.app }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: {{ .Values.app }}
+  annotations: 
+    fluentd.active: "true"
+spec:
+  replicas: {{ .Values.replicas.target }}
+  strategy: 
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 50%
+  selector:
+    matchLabels:
+      app: {{ .Values.app }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.app }}
+      annotations:
+        fluentd.active: "false"
+        sidecar.istio.io/inject: "false"
+    spec:
+      restartPolicy: Always
+      serviceAccountName: default-editor
+      containers:
+      - name: {{ .Values.app }}
+        image: {{ .Values.image }}:{{ .Values.tag }}
+        imagePullPolicy: Always
+        resources:
+          limits:
+            memory: {{ .Values.resources.limits.memory }}
+            cpu: {{ .Values.resources.limits.cpu }}
+          requests:
+            memory: {{ .Values.resources.requests.memory }}
+            cpu: {{ .Values.resources.requests.cpu }}
+        ports:
+          - containerPort: {{ .Values.app_port }}
+        # livenessProbe:
+        #   httpGet:
+        #     path: /ready
+        #     port: {{ .Values.app_port }}
+        #   timeoutSeconds: 1
+        #   failureThreshold: 3
+        #   periodSeconds: 10
+        # readinessProbe:
+        #   httpGet:
+        #     path: /ready
+        #     port: {{ .Values.app_port }}
+        #   initialDelaySeconds: 600
+        #   timeoutSeconds: 5
+        #   failureThreshold: 3
+        #   periodSeconds: 20
+      #   startupProbe:
+      #     httpGet:
+      #       path: /ready
+      #       port: {{ .Values.app_port }}
+      #     failureThreshold: 80
+      #     periodSeconds: 10
+      # - name: statsd-sidecar
+      #   image: {{ .Values.monitoring_image}}
+      #   resources:
+      #     limits:
+      #       memory: {{ .Values.sidecar.limits.memory }}
+      #       cpu: {{ .Values.sidecar.limits.cpu }}
+      #     requests:
+      #       memory: {{ .Values.sidecar.requests.memory }}
+      #       cpu: {{ .Values.sidecar.requests.cpu }}
+      #   ports:
+      #     - containerPort: {{ .Values.monitoring_port }}
+      #       name: statsd-inbound
+      #     - containerPort: 9102
+      #       name: prometheus
+      #   volumeMounts:
+      #   - name: statsd-conf
+      #     mountPath: /statsd/
+      # volumes:
+      # - name: statsd-conf
+      #   configMap:
+      #     name: statsd-conf-typeahead
+
+
+
+
+
+
+
+        
+
+
