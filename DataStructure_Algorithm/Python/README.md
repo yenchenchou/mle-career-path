@@ -89,24 +89,24 @@ When you need to find one or more targets from a sorted sequence or a sequence n
 ### **2.3 Common types and tricks in Binary search**
 
 1. Type 1:
-    1. Search Condition can be determined without comparing to the element's neighbors (or use specific elements around it)
-    2. No post-processing required because at each step, you are checking to see if the element has been found. If you reach the end, then you know the element is not found
-    3. Usually will invloved `while left <= right`, `left = mid + 1`, `right = mid - 1`, terminate at `left > right`
+    * Search Condition can be determined without comparing to the element's neighbors (or use specific elements around it)
+    * No post-processing required because at each step, you are checking to see if the element has been found. If you reach the end, then you know the element is not found
+    * Usually will invloved `while left <= right`, `left = mid + 1`, `right = mid - 1`, terminate at `left > right`
 
 2. Type 2:
-    1. An advanced way to implement Binary Search.
-    2. Search Condition needs to access element's immediate right neighbor
-    3. Use element's right neighbor to determine if condition is met and decide whether to go left or right
-    4. **Gurantees Search Space is at least 2 in size at each step (because left ,< right)**
-    5. Post-processing required. Loop/Recursion ends when you **have 1 element left**, such as `while left < right`. Need to assess if the remaining element meets the condition.
-    6. There is a chance that we need to examine right neignbor index
+    * An advanced way to implement Binary Search.
+    * Search Condition needs to access element's immediate right neighbor
+    * Use element's right neighbor to determine if condition is met and decide whether to go left or right
+    * **Gurantees Search Space is at least 2 in size at each step (because left ,< right)**
+    * Post-processing required. Loop/Recursion ends when you **have 1 element left**, such as `while left < right`. Need to assess if the remaining element meets the condition.
+    * There is a chance that we need to examine right neignbor index
 
 3. Type 3:
-    1. An alternative way to implement Binary Search
-    2. Search Condition needs to access element's immediate left and right neighbors
-    3. Use element's neighbors to determine if condition is met and decide whether to go left or right
-    4. Gurantees Search Space is at least 3 in size at each step
-    5. Post-processing required. Loop/Recursion ends when you have 2 elements left. Need to assess if the remaining elements meet the condition.
+    * An alternative way to implement Binary Search
+    * Search Condition needs to access element's immediate left and right neighbors
+    * Use element's neighbors to determine if condition is met and decide whether to go left or right
+    * Gurantees Search Space is at least 3 in size at each step
+    * Post-processing required. Loop/Recursion ends when you have 2 elements left. Need to assess if the remaining elements meet the condition.
 
 4. Other tricks or self summary
     * Check if `left <= right`, `left < right`, or `left < right - 1`
@@ -150,27 +150,45 @@ When you need to find one or more targets from a sorted sequence or a sequence n
 
 ### **3.1 Definition**
 
-1. Design a Singly LinkedList(707): sentinel node concept
-2. Design a Double LinkedList(707): sentinel node concept
-3. Merge Two Sorted Lists(21): sentinel node concept
-4. Remove Linked List Elements(203 E): sentinel node concept
-5. Cycle in LinkedList(141): sentinel node concept, fast slow two pointers
-6. LinkedList Cycle 2(142): fast slow two pointers
-7. Intersection of Two Linked Lists(160): fast slow two pointers
-8. Remove Nth Node From End of List(19 M): sentinel node concept
-9. Reverse a LinkedList(206 E): sentinel node concept, rescurion
-10. Reverse a string and swap the string in place(344 M): sentinel node concept, rescurion
-11. Odd Even Linked List(328 M):
-12. Palindrome Linked List(234): sentinel node concept, fast slow two pointers
+A sequence data structure, the nodes are connected vis one or more links. Each node contains connections to other nodes in form of pointers. There are singly Linked List and double Linked List in general.
 
-|               Question              | Difficulty |                  Concept                  | # Practice |
-|:-----------------------------------:|:----------:|:-----------------------------------------:|:----------:|
-|   Remove Linked List Elements(203)  |    Easy    |                  sentinel                 |      2     |
-|      Merge Two Sorted Lists(21)     |    Easy    |                  sentinel                 |      2     |
-| Design a LinkedList(707 - Singular) |    Easy    |        sentinel, next.next pointer        |      3     |
-|  Design a LinkedList(707 - Double)  |    Easy    | sentinel, next.next pointer, reverse loop |      2     |
-|       Cycle in LinkedList(141)      |    Easy    |        sentinel, fast slow pointer        |      3     |
-|                                     |            |                                           |            |
+### **3.2 How to identify**
+
+Linked List will be specified during the question
+
+### **3.3 Common types and tricks in Linked List**
+
+1. Type 1 - design linked list:
+    *
+2. Type 2 - cycle:
+    * fast and slow pointer
+3. Type 3 - reverse
+    *
+4. Type 4 - combine with common algorithms
+    * mergesort a linked list
+5. Type 5 -  Floyd's Tortoise and Hare
+6. Question summary
+    * design linked list:
+        * #707 Design a Singly/Double LinkedList
+        * #21: Merge Two Sorted
+        * #203 Remove Linked List Elements
+        * #19 Remove Nth Node From End of List
+        * #328 Odd Even Linked
+    * cycle / fast slow pointer
+        * #141 Cycle in LinkedList
+        * #142 LinkedList Cycle 2
+        * #160 Intersection of Two Linked
+    * reverse
+        * #206 Reverse a LinkedList
+        * #344 Reverse a string and swap the string in place(344 M): sentinel node concept, rescurion
+        * #234 Palindrome Linked List
+    * combine with common algorithms
+
+### **3.4 Common mistake points**
+
+1. When youde-reference a ListNode, make sure it is not a NUll pointer
+2. Never lost conrol of the head pointer
+3. Usually, we have no idea where is the head, we need a dummy node to handle that
 
 ### **3.2 How to identify**
 

@@ -37,3 +37,23 @@
 | KubeFlow    | 20%     | 0                  |                                                                                              |
 
 ## **ML**
+
+## **Case Study**
+
+## **Stats**
+
+## **Database**
+
+## **Distributed System**
+
+## **Cloud**
+
+## **Shell**
+
+## **Web Dev**
+
+## **ML System Design**
+
+## **General System Design**
+
+## **Object Oriented Design**
