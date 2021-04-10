@@ -45,11 +45,16 @@ class Solution2:
                 i += 1
             k += 1
         if i < len(left):
-            nums[k:] = left[i: len(left)]
+            nums[k:] = left[i:]
         if j < len(right):
-            nums[k:] = right[j: len(right)]
+            nums[k:] = right[j:]
         return nums
 
+
+# When doing recusion, always remember the wrecursion tree
+# the divide part has time complexity: O(1+2+4+...+N) -> O(2N). Space complexity O(n/2+n/4+n/8+...+1) -> O(N)
+# the merge part has time complexity: O((n+n+n)*logn) -> O(NlogN). Space complexity -> O(log)
+# Total time: O(n) + O(nlogn) -> O(nlogn), space: O(n) + O(logn) -> O(n)
 
 if __name__ == "__main__":
     sol = Solution1()
