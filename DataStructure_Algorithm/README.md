@@ -298,7 +298,44 @@ tree data structure in which each node has at most two children
 
 ### **7.1 Definition**
 
+A special tree-based data structure in whicn tree is a complete binary tree. Heap is usually the way we build priority queue. It is logically a tree but implemented in an unsorted array with special rule to follow physicially.
+
+Heap has certain properties:
+
+1. Min/Max Heap: the smallest/biggest element at the root. A complete binary tree which the value in the internal mode is smaller/bigger or equal to the children's node.
+2. What is the physicall rule of heap:
+
+    2.1 Zero index based
+
+    ``` Python
+    # For 0-index based
+    left_child_node_index = parent_node_index * 2 + 1
+    right_child_node_index = parent_node_index * 2 + 2
+    parent_node_index = (child_node_index - 1)//2
+    ```
+
+    2.2 One index based: **the index position is not used**
+
+    ``` Python
+    # For 1-index based
+    left_child_node_index = parent_node_index * 2
+    right_child_node_index = parent_node_index * 2 + 1
+    parent_node_index = child_node_index // 2
+    ```
+
+3. Operations on heap (min heap for example since most are min heap)
+
+    3.1 Time complexity:
+
+    * insert/offer O(logn): Since the height is logn in binary tree so the max steps that the insert node need to move is O(logn)
+    * update O(log): it is possible that we need to traverse the node
+    * get O(1): Use the rule in the above
+    * pop/poll O(logn): Same reason as insert node to heap. Same as pop the min value
+    * heapify O(n):
+
 ### **7.2 How to identify**
+
+By knowing that it is a complete binary tree with heap order.
 
 ### **7.3 Common tricks in Heap**
 
@@ -331,6 +368,10 @@ tree data structure in which each node has at most two children
 ### **10.2 How to identify**
 
 ### **10.3 Common tricks in Hash Table**
+
+1. Type 1 - remove, lookup operations that need hash table or set
+    1. Use list to save the result then use "".join instead
+    2. Use hash table or set for look up operations since it spend O(1) time
 
 ### **10.4 Common mistake points**
 
