@@ -202,7 +202,7 @@ Linked List will be specified during the question
 
 ### **4.3 ommon tricks in Recursion**
 
-1. How to construct the recusion solution:
+1. How to construct the recursion solution:
     * Base case (KNOWING WHEN TO SATOP!!)
     * What is will the recursive function looked like
     * what to return to pass the info to the next stack
@@ -232,12 +232,29 @@ Binary tree is a tree data structure in which each node has at most two children
 
 1. **Binary Search Tree**:
 
-    A node based binary tree with the following properties:
+    Def: A node based binary tree with the following properties:
 
     1. The left subtree of a node should only contains node with keys smaller than the node's key
     2. The right subtree of a node should only contains nide with keys greater than the node's key
     3. The left and right subtree each must also be a binary search tree
     4. Some rare cases the right index doen't need to be len(arr)-1
+
+2. **Full Binary Tree**
+
+    Def: A node based biary tree  if every node has 0 or 2 children.
+
+3. **Complete Binary Tree**
+
+    Def: All nodes other than the last level has two children occupied. The nodes in the last layer are as far left as possible. A binary heap is a complete binary tree that satisfies the heap order prperty.
+
+4. **Balanced Binary Tree*
+    A binary tree is balanced if the height of the tree is O(logn) and will have the following prperties:
+
+    1. the difference between the height of the left and the right subtrees is at most 1.
+
+5. **Perfect Binary Tree**
+
+    Def: A binary tree when all the internal nodes have two children and all leaf nodes are at the same level.
 
 ### **6.2 How to identify**
 
