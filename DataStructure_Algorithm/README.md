@@ -190,12 +190,6 @@ Linked List will be specified during the question
 2. Never lost conrol of the head pointer
 3. Usually, we have no idea where is the head, we need a dummy node to handle that
 
-### **3.2 How to identify**
-
-### **3.3 ommon tricks in Binary search**
-
-### **3.4 Common mistake points**
-
 ## **Queue and Stack**
 
 ---
@@ -234,13 +228,22 @@ Linked List will be specified during the question
 
 ### **6.1 Definition**
 
-binary tree is a tree data structure in which each node has at most two children, which are referred to as the left child and the right child
+Binary tree is a tree data structure in which each node has at most two children, which are referred to as the left child and the right child. Also, there are many special subtopics as well:
+
+1. **Binary Search Tree**:
+
+    A node based binary tree with the following properties:
+
+    1. The left subtree of a node should only contains node with keys smaller than the node's key
+    2. The right subtree of a node should only contains nide with keys greater than the node's key
+    3. The left and right subtree each must also be a binary search tree
+    4. Some rare cases the right index doen't need to be len(arr)-1
 
 ### **6.2 How to identify**
 
 tree data structure in which each node has at most two children
 
-### **6.3 common tricks in Binary search**
+### **6.3 Common tricks in Binary search**
 
 1. Notice on the order. pre-order, in-order, and post-order use dfs while level order use bfs
 2. Almost all questions can do on iterative and recursive methods
@@ -272,25 +275,54 @@ tree data structure in which each node has at most two children
 
 ### **6.4 Common mistake points**
 
-## **Binary Search Tree**
-
 ---
+
+## **Heap**
 
 ### **7.1 Definition**
 
-A node based binary tree with the following properties:
-
-1. The left subtree of a node should only contains node with keys smaller than the node's key
-2. The right subtree of a node should only contains nide with keys greater than the node's key
-3. The left and right subtree each must also be a binary search tree
-4. Some rare cases the right index doen't need to be len(arr)-1
-
 ### **7.2 How to identify**
 
-### **7.3 ommon tricks in Binary search**
+### **7.3 Common tricks in Heap**
+
+### **7.4 Common mistake points**
+
+## **DFS / BFS**
+
+### **8.1 Definition**
+
+### **8.2 How to identify**
+
+### **8.3 Common tricks in DFS / BFS**
 
 ### **8.4 Common mistake points**
 
-A data structure in which each node has at most two children, which are referred to as the left child and the right child.
+## **Graph**
 
-If the tree is balanced, we call a tree balanced if for all nodes the difference between the heights of left and right subtrees is not greater than one
+### **9.1 Definition**
+
+### **9.2 How to identify**
+
+### **9.3 Common tricks in Graph**
+
+### **9.4 Common mistake points**
+
+## **Hash Table**
+
+### **10.1 Definition**
+
+### **10.2 How to identify**
+
+### **10.3 Common tricks in Hash Table**
+
+### **10.4 Common mistake points**
+
+## **Dynamic Programming**
+
+### **11.1 Definition**
+
+### **11.2 How to identify**
+
+### **11.3 Common tricks in Dynamic Programming**
+
+### **11.4 Common mistake points**
