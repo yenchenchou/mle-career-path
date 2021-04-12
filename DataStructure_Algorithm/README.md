@@ -331,7 +331,7 @@ Heap has certain properties:
     * update O(log): it is possible that we need to traverse the node
     * get O(1): Use the rule in the above
     * pop/poll O(logn): Same reason as insert node to heap. Same as pop the min value
-    * heapify O(n):
+    * heapify O(n): Need to walk through all elements
 
 ### **7.2 How to identify**
 
@@ -340,6 +340,22 @@ By knowing that it is a complete binary tree with heap order.
 ### **7.3 Common tricks in Heap**
 
 ### **7.4 Common mistake points**
+
+1. `heapq.heappushpop()` vs `heapq.heapreplace() (assume min heap)`
+    * `heapq.heappushpop()` push the element first and pop the smallest, so the smallest is guaranteed but the heap will not maintain fix size.
+    * `heapq.heapreplace()` pop the element first the push the element, you may not save the smallest element but the heap is fix size.
+2. `heapq.heapify()`
+    * It tranform a list into heap but will NOT return the heap
+
+    ```Python
+    # wrong
+    nums = [15,2]
+    nums = heapq.heapify(nums)
+
+    # correct
+    nums = [15,2]
+    heapq.heapify(nums)
+    ```
 
 ## **DFS / BFS**
 

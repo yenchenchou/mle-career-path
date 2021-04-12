@@ -1,8 +1,11 @@
-class Solution:
-    def sort(self, nums):
-        for i in range(len(nums)-1):
-            minIndex = float("inf")
-            for j in range(i+1, len(nums)):
-                if nums[i] > nums[j]:
-                    minIndex = j
-            nums[minIndex], nums[i] = nums[minIndex], nums[i]
+def siftUp(nums, index):
+    parentIndex = (index - 1) // 2
+    if index < 0 or nums[index] > nums[parentIndex]:
+        return
+    nums[index], nums[parentIndex] = nums[parentIndex], nums[index]
+    siftUp(nums, index)
+
+
+arr = [0, 1, 5, 6, 8, -1]
+siftUp(arr, len(arr) - 1)
+print(arr)
