@@ -2,14 +2,17 @@
 
 ## **1. Sorting**
 
+1. Quick Sort
+2. Merge Sort
+3. Selection Sort
+4. bubble osrt
+
 ### **1.2 How to identify**
 
 ### **1.3 Common tricks in Binary search**
 
-1. Quick Sort
-2. Merge Sort
-3. Selection Sort
-4. Question summary
+1. Sort questions are commonly connect with heap or even replaced by heap
+2. Question summary
     * Basics:
         * the naive algorithm
     * Limited Stacks:
