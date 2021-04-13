@@ -161,15 +161,15 @@ Linked List will be specified during the question
 
 ### **3.3 Common types and tricks in Linked List**
 
-1. Type 1 - design linked list:
+1. design linked list:
     *
-2. Type 2 - cycle:
+2. cycle:
     * fast and slow pointer
-3. Type 3 - reverse
+3. reverse
     *
-4. Type 4 - combine with common algorithms
+4. combine with common algorithms
     * mergesort a linked list
-5. Type 5 -  Floyd's Tortoise and Hare
+5. Floyd's Tortoise and Hare
 6. Question summary
     * design linked list:
         * #707 Design a Singly/Double LinkedList
@@ -342,6 +342,17 @@ By knowing that it is a complete binary tree with heap order.
 
 ### **7.3 Common tricks in Heap**
 
+1. Max heap: most heap in programming languafe is min heap. So we use Counter with negative to do the count.
+2. Question summary
+    * Basic:
+        * Use arrya design heap
+    * Top K questions (You may sort to solve these problems):
+        * #703. Kth Largest Element in a Stream
+        * #215. Kth Largest Element in an Array (alike 703)
+        * #347. Top K Frequent Elements
+        * #692. Top K Frequent Words (advanced of #347)
+        * #451. Sort Characters By Frequency (advanced of #347)
+
 ### **7.4 Common mistake points**
 
 1. `heapq.heappushpop()` vs `heapq.heapreplace() (assume min heap)`
@@ -388,7 +399,7 @@ By knowing that it is a complete binary tree with heap order.
 
 ### **10.3 Common tricks in Hash Table**
 
-1. Type 1 - remove, lookup operations that need hash table or set
+1. remove, lookup operations that need hash table or set
     1. Use list to save the result then use "".join instead
     2. Use hash table or set for look up operations since it spend O(1) time
 

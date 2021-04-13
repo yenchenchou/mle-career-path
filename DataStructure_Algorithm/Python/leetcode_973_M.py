@@ -28,4 +28,7 @@ class Solution:
                 heapq.heappushpop(res, (dist, x, y))
             else:
                 heapq.heappush(res, (dist, x, y))
-        return [(x, y) for dist, x, y in res]
+        return [(x, y) for dist, x, y in res]  # O(klogn), O(n)
+
+
+# Solution3: bucket sort
