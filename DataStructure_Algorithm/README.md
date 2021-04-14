@@ -193,11 +193,9 @@ Linked List will be specified during the question
 2. Never lost conrol of the head pointer
 3. Usually, we have no idea where is the head, we need a dummy node to handle that
 
-## **Queue and Stack**
+### **Recursion**
 
 ---
-
-### **Recursion**
 
 ### **4.1 Definition**
 
@@ -215,15 +213,29 @@ Linked List will be specified during the question
 
 ### **4.4 Common mistake points**
 
+## **Queue and Stack**
+
 ---
 
 ### **5.1 Definition**
 
+Queue is a linear structure that follow first-in-first-out policy. Queue some how represent some fairness, which means the one waiting the longest will be the first to be served. It is also a piece in asynchronous computation. On the other hand, Stack follows first-in-last-out.
+
 ### **5.2 How to identify**
 
-### **5.3 ommon tricks in Binary search**
+1. Stack: When you need to continuously look back at the last element of left/right.
+2. Queue: when you want to get things out in the order that you put them in.
+
+### **5.3 ommon tricks in Queue and Stack**
 
 ### **5.4 Common mistake points**
+
+1. Question summary
+    * Tree point by level
+    * Sliding window
+    * The largest rectangle in histogram
+    * reverse polish notation
+    * repeat deduplication of a String
 
 ---
 
