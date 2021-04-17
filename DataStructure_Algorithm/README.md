@@ -94,7 +94,18 @@ When you need to find one or more targets from a sorted sequence or a sequence n
 1. Type 1:
     * Search Condition can be determined without comparing to the element's neighbors (or use specific elements around it)
     * No post-processing required because at each step, you are checking to see if the element has been found. If you reach the end, then you know the element is not found
-    * Usually will invloved `while left <= right`, `left = mid + 1`, `right = mid - 1`, terminate at `left > right`
+    * Format:
+
+    ```Python
+    Initial Condition: left = 0, right = length-1
+    Termination: left > right
+    Searching Left: right = mid-1
+    Searching Right: left = mid+1
+    # final place for the pointers
+    # [1, 2, 3, 4]
+    #        l
+    #     r
+    ```
 
 2. Type 2:
     * An advanced way to implement Binary Search.
@@ -103,6 +114,18 @@ When you need to find one or more targets from a sorted sequence or a sequence n
     * **Gurantees Search Space is at least 2 in size at each step (because left ,< right)**
     * Post-processing required. Loop/Recursion ends when you **have 1 element left**, such as `while left < right`. Need to assess if the remaining element meets the condition.
     * There is a chance that we need to examine right neignbor index
+    * Format:
+
+    ```Python
+    Initial Condition: left = 0, right = length-1
+    Termination: left == right
+    Searching Left: right = mid
+    Searching Right: left = mid+1
+    # final place for the pointers
+    # [1, 2, 3, 4]
+    #     l
+    #     r
+    ```
 
 3. Type 3:
     * An alternative way to implement Binary Search
@@ -110,29 +133,40 @@ When you need to find one or more targets from a sorted sequence or a sequence n
     * Use element's neighbors to determine if condition is met and decide whether to go left or right
     * Gurantees Search Space is at least 3 in size at each step
     * Post-processing required. Loop/Recursion ends when you have 2 elements left. Need to assess if the remaining elements meet the condition.
+    * Format:
+
+    ```Python
+    Initial Condition: left = 0, right = length-1
+    Termination: left <> right
+    Searching Left: right = mid
+    Searching Right: left = mid
+    # final place for the pointers
+    # [1, 2, 3, 4]
+    #     l
+    #        r
+    ```
 
 4. Other tricks or self summary
     * Check if `left <= right`, `left < right`, or `left < right - 1`
-    * Compare with the target value or left most, right most, left neighbor, right neighbor
+    * **Compare with the target value or left most, right most, left neighbor, right neighbor**
     * Whether skipping the mid is correct way
     * Becareful of index out of bound when point 1 is specified
 
 5. Question summary
-    * square root/pow/product related problems:
+    * square root/pow/product related problems, guess number (usually `left <= right`):
         * #69 Sqrt
         * #367 Valid Perfect Square
         * #50 Pow
-    * First/last occurence:
-        * #34. Find First and Last Position of Element in Sorted Array (two ways of thinking first/last)
+        * #374. Guess Number Higher or Lower
     * Rotated:
         * #33. Search in Rotated Sorted Array
-        * #153. Find Minimum in Rotated Sorted Array
+        * #153. Find Minimum in Rotated Sorted Array (distinct: use left < right)
         * #154. Find Minimum in Rotated Sorted Array II
-    * Comparing left/right index in comparision, neighbor, return left/right index instead:
+    * Comparing left/right index in comparision, neighbor, return left/right index instead, First/last occurence (range):
         * #35. Search Insert Position
         * #162. Find Peak Element
         * #278. First Bad Version
-        * #162. Find Peak Element
+        * #34. Find First and Last Position of Element in Sorted Array (two ways of thinking first/last)
     * Unknown size:
         * #702. Search in a Sorted Array of Unknown Size
     * Findclosest number:
