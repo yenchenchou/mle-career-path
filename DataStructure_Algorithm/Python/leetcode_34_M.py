@@ -42,24 +42,26 @@ class Solution:
 # Solution1.2: do two search, one for head one for tail
 class Solution:
     def searchRange(self, nums: List[int], target: int) -> List[int]:
-        left = self.searchLeft(nums, 0, len(nums)-1, target)
-        right = self.searchRight(nums, 0, len(nums)-1, target)
-        return [left, right] if left <= right else [-1, -1]
-    
+        left = self.searchLeft(nums, 0, len(nums) - 1, target)
+        right = self.searchRight(nums, 0, len(nums) - 1, target)
+        return (
+            [left, right] if left <= right else [-1, -1]
+        )  # when no matched value then right < left
+
     def searchLeft(self, nums, left, right, target):
         # [1,1,1,1], [1,1,2,2], [1,1]
         while left <= right:
-            mid = left + (right-left)//2
+            mid = left + (right - left) // 2
             if nums[mid] >= target:
                 right = mid - 1
             else:
                 left = mid + 1
         return left
-    
+
     def searchRight(self, nums, left, right, target):
-        #[1,1]
+        # [1,1]
         while left <= right:
-            mid = left + (right-left)//2
+            mid = left + (right - left) // 2
             if nums[mid] <= target:
                 left = mid + 1
             else:
