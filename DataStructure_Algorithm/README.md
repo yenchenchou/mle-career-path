@@ -270,6 +270,10 @@ Queue is a linear structure that follow first-in-first-out policy. Queue some ho
     * The largest rectangle in histogram
     * reverse polish notation
     * repeat deduplication of a String
+    * Queue:
+        * #346. Moving Average from Data Stream
+    * Stack:
+        * #125. Valid Palindrome
 
 ---
 
