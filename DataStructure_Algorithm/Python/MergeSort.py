@@ -36,14 +36,17 @@ class Solution2:
 
     def merge(self, nums, left, right):
         i, j, k = 0, 0, 0
+        tmp = []
         while i < len(left) and j < len(right):
             if left[i] > right[j]:
-                nums[k] = right[j]
+                # nums[k] = right[j]
+                tmp.append(right[j])
                 j += 1
             else:
-                nums[k] = left[i]
+                # nums[k] = left[i]
+                tmp.append(left[i])
                 i += 1
-            k += 1
+            # k += 1
         if i < len(left):
             nums[k:] = left[i:]
         if j < len(right):
