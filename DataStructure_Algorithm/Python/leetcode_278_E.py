@@ -12,10 +12,10 @@ class Solution:
         # the API is called # def isBadVersion(version):
 
         left, right = 1, n
-        while left <= right:
+        while left < right:
             mid = (right - left) // 2 + left
             if isBadVersion(mid):
-                right = mid - 1
+                right = mid
             else:
                 left = mid + 1  # [g, b, b], [g, g, b]
         return left
@@ -42,3 +42,6 @@ class Solution:
             )  # case [b, b] will show why mid -1 is produce error
         else:
             return self.helper(mid + 1, right)  # [b, b], [b, b, b]
+
+
+# follow up: what if there is no error? examine the ending index
