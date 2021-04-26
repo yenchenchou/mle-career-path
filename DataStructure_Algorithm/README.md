@@ -260,7 +260,9 @@ Queue is a linear structure that follow first-in-first-out policy. Queue some ho
 1. Stack: When you need to continuously look back at the last element of left/right.
 2. Queue: when you want to get things out in the order that you put them in.
 
-### **5.3 ommon tricks in Queue and Stack**
+### **5.3 Common tricks in Queue and Stack**
+
+1. Calculator problem: Notice that the `cur`(the current calculated digit) and the `sign`(the pos/neg flag) will be updated when face none digit.
 
 ### **5.4 Common mistake points**
 
@@ -270,10 +272,14 @@ Queue is a linear structure that follow first-in-first-out policy. Queue some ho
     * The largest rectangle in histogram
     * reverse polish notation
     * repeat deduplication of a String
-    * Queue:
+    * Classic Queue:
         * #346. Moving Average from Data Stream
-    * Stack:
+    * Classic Stack:
         * #125. Valid Palindrome
+    * Handle parentheses, calculator
+        * #224. Basic Calculator
+        * #227. Basic Calculator II
+        * #394. Decode String
 
 ---
 
