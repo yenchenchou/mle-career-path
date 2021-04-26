@@ -39,9 +39,33 @@ class Solution:
                 operand = 0
         return res + sign * operand  # O(n), O(n)
 
+# Solution1.2:
+class Solution:
+    def calculate(self, s: str) -> int:
+        stack = deque()
+        res = 0
+        operand = 0
+        sign = 1
+        for val in s:
+            if val.isdigit():
+                operand = operand*10 + int(val)
+            elif val in set("+-"):
+                res += sign * operand
+                operand = 0
+                sign = 1 if val=="+" else -1
+            elif val == "(":
+                stack.append(res)
+                stack.append(sign)
+                sign, res = 1, 0
+            elif val == ")":
+                res += sign*operand
+                res *= stack.pop()
+                res += stack.pop()
+                operand = 0
+        return res + operand*sign
+
 
 # Solution2: store previous operand and the previous operator
-from collections import deque
 
 
 class Solution:
@@ -62,3 +86,31 @@ class Solution:
                 stack.extend([current, val])
                 current = 0
         return current  # O(n), O(n)
+
+
+# Solution3: recursion
+class Solution:
+    def calculate(self, s):  # 2+(+9-3), [2] 12, i+1
+        def update(op, v):
+            if op == "+": stack.append(v)
+            if op == "-": stack.append(-v)
+            if op == "*": stack.append(stack.pop() * v)           #for BC II and BC III
+            if op == "/": stack.append(int(stack.pop() / v))      #for BC II and BC III
+    
+        it, num, stack, sign = 0, 0, [], "+"
+        
+        while it < len(s):
+            if s[it].isdigit():
+                num = num * 10 + int(s[it])
+            elif s[it] in set("+-*/"):
+                update(sign, num)
+                num, sign = 0, s[it]
+            elif s[it] == "(":                                        # For BC I and BC III
+                num, j = self.calculate(s[it + 1:])
+                it = it + j
+            elif s[it] == ")":                                        # For BC I and BC III
+                update(sign, num)
+                return sum(stack), it + 1
+            it += 1
+        update(sign, num)
+        return sum(stack)
