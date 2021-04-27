@@ -25,6 +25,8 @@
         * #56. Merge Intervals
         * #253. Meeting Rooms II
         * #252. Meeting Rooms I
+    * Greedy, duplicates:
+        * #316. Remove Duplicate Letters
 
 ### **1.4 Common mistake points**
 
@@ -276,6 +278,9 @@ Queue is a linear structure that follow first-in-first-out policy. Queue some ho
         * #346. Moving Average from Data Stream
     * Classic Stack:
         * #125. Valid Palindrome
+        * #1047. Remove All Adjacent Duplicates In String
+        * #155. Min Stack
+        * #716. Max Stack
     * Handle parentheses, calculator
         * #224. Basic Calculator
         * #227. Basic Calculator II
