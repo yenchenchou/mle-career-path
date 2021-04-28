@@ -25,8 +25,6 @@
         * #56. Merge Intervals
         * #253. Meeting Rooms II
         * #252. Meeting Rooms I
-    * Greedy, duplicates:
-        * #316. Remove Duplicate Letters
 
 ### **1.4 Common mistake points**
 
@@ -285,6 +283,10 @@ Queue is a linear structure that follow first-in-first-out policy. Queue some ho
         * #224. Basic Calculator
         * #227. Basic Calculator II
         * #394. Decode String
+    * Greedy, duplicates:
+        * #316. Remove Duplicate Letters
+    * mix with heap, linkedlist:
+        * #716. Max Stack
 
 ---
 
