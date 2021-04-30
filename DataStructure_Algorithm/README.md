@@ -197,8 +197,9 @@ Linked List will be specified during the question
 
 1. design linked list:
     *
-2. cycle:
+2. cycle/two pointers:
     * fast and slow pointer
+    * Always examine if the node is null before you call the next field. When `fast = fast.next.next`, we need to examine `fast`, `fast.next` before to prevent null error.
 3. reverse
     *
 4. combine with common algorithms
@@ -211,10 +212,11 @@ Linked List will be specified during the question
         * #203 Remove Linked List Elements
         * #19 Remove Nth Node From End of List
         * #328 Odd Even Linked
-    * cycle / fast slow pointer
+    * cycle / fast slow pointer / two pointers
         * #141 Cycle in LinkedList
-        * #142 LinkedList Cycle 2
+        * #142 LinkedList Cycle II (**)
         * #160 Intersection of Two Linked
+        * #19. Remove Nth Node From End of List
     * reverse
         * #206 Reverse a LinkedList
         * #344 Reverse a string and swap the string in place(344 M): sentinel node concept, rescurion
