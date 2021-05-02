@@ -196,7 +196,28 @@ Linked List will be specified during the question
 ### **3.3 Common types and tricks in Linked List**
 
 1. design linked list:
-    *
+    * delete node in linkedlist:
+        * unique/duplicates node to delete:
+            * two pointer: one `cur` and one `prev` + let `prev.next` pointer point to `cur.next`
+            * value replacement:
+
+                ```Python
+                node.val = node.next.val
+                node.next = node.next.next
+                ```
+
+    * insert node:
+        * with cycle:
+            * same as inserting on arch cycle but consider:
+
+                ```Python
+                if prevNode.val <= insertVal <= curNode.val:
+                # min / max value is serted
+                elif preNode.val > curNode.val and (insertVal < curNode.val or insertVal > preNode.val)
+                
+                # remember to stop when all nodes are smaller / bigger than the inserted one
+                ```
+
 2. cycle/two pointers:
     * fast and slow pointer
     * Always examine if the node is null before you call the next field. When `fast = fast.next.next`, we need to examine `fast`, `fast.next` before to prevent null error.
@@ -211,7 +232,9 @@ Linked List will be specified during the question
         * #21: Merge Two Sorted
         * #203 Remove Linked List Elements
         * #19 Remove Nth Node From End of List
+        * #237. Delete Node in a Linked List
         * #328 Odd Even Linked
+        * #708. Insert into a Sorted Circular Linked List (insertation)
     * cycle / fast slow pointer / two pointers
         * #141 Cycle in LinkedList
         * #142 LinkedList Cycle II (**)
@@ -222,6 +245,8 @@ Linked List will be specified during the question
         * #344 Reverse a string and swap the string in place(344 M): sentinel node concept, rescurion
         * #234 Palindrome Linked List
     * combine with common algorithms
+        * stack:
+            * #430. Flatten a Multilevel Doubly Linked List
 
 ### **3.4 Common mistake points**
 
