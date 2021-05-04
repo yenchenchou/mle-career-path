@@ -9,6 +9,7 @@
 #         self.left = left
 #         self.right = right
 
+
 class Solution:
     def preorderTraversal(self, root: TreeNode) -> List[int]:
         if not root:
@@ -22,6 +23,7 @@ class Solution:
             if node.left:
                 stack.append(node.left)
         return res  # [None], [1], [1,2,None,3]nod
+
     # O(n), O(n)
 
 
@@ -37,6 +39,7 @@ class Solution:
             stack.append(node.right)
             stack.append(node.left)
         return res  # [None], [1], [1,2,None,3]
+
     # O(n), O(n)
 
 
@@ -52,10 +55,25 @@ class Solution:
         res = []
         self.dfs(root, res)
         return res
-    
+
     def dfs(self, root, res):
         if root:
             res.append(root.val)
             self.dfs(root.left, res)
             self.dfs(root.right, res)
-    #O(n), O(n)
+
+    # O(n), O(n)
+
+
+class Solution:
+    def preorderTraversal(self, root: TreeNode) -> List[int]:
+        def helper(res, root):
+            if not root:
+                return None
+            res.append(root.val)
+            helper(res, root.left)
+            helper(res, root.right)
+
+            return res
+
+        return helper([], root)

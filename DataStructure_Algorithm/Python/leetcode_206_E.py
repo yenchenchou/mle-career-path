@@ -9,10 +9,11 @@ class ListNode:
 class Solution:
     def reverseList(self, head: ListNode) -> ListNode:
         prev = None
+        cur = head
         while head:
-            cur = head
-            head = head.next
+            tmp = head.next
             cur.next = prev
+            cur = tmp
             prev = cur
         return prev
         # None, [None, 1], [None, 1, 2], [None, 1, 2, 3]
