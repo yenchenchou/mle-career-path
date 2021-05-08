@@ -351,25 +351,28 @@ Binary tree is a tree data structure in which each node has at most two children
 
 ### **6.2 How to identify**
 
-tree data structure in which each node has at most two children
+Tree data structure in which each node has at most two children
 
 ### **6.3 Common tricks in Binary search**
 
 1. Notice on the order. pre-order, in-order, and post-order use dfs while level order use bfs
 2. Almost all questions can do on iterative and recursive methods
-3. Knowing when to return value from recursion
+3. Knowing when to return value from recursion, what to expect when you return the value from the recursive function
     * When just output the node by traversing, no need to return
     * When calculation height then we need to return
 4. Tricks:
+    * When using iterative approach, how do we keep track of the level and value
 
     ```Python
-    # for iterative approach on question like max depth, Symmetric Tree
+    # for iterative approach on question like max depth, SymmetrFic Tree
     #1. put node in stack or Iterative traversal starting point
     stack = [(root, 1)  # #104. Maximum Depth of Binary Tree
     stack = [(root.left, root.right)]  # 101. Symmetric Tree
     stack = [(root, numSum-node.val)]  # #112. Path Sum
     stack = [root]  #144. Binary Tree Preorder Traversal
     ```
+
+    * Thick how to reduce the space while need to track the level -> depth problem, hybrid problems
 
 5. Question summary
     * Basics
@@ -380,8 +383,14 @@ tree data structure in which each node has at most two children
     * Tree depth related
         * #104. Maximum Depth of Binary Tree
         * #112. Path Sum
+        * #250. Count Univalue Subtrees
     * Symmetric, Rotated Tree
         * #101. Symmetric Tree
+    * Tree construction: observe the relationship btw two data structure
+        * #105. Construct Binary Tree from Preorder and Inorder Traversal
+        * #106. Construct Binary Tree from Inorder and Postorder Traversal
+    * Hybrid: (diff ways to keep track of layer)
+        * Tree+LinkedList+Queue: #116. Populating Next Right Pointers in Each Node
 
 ### **6.4 Common mistake points**
 
