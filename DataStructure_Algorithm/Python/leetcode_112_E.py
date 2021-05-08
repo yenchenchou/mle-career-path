@@ -40,3 +40,19 @@ class Solution:
             if node.right:
                 stack.append((node.right, curSum - node.right.val))
         return False
+
+
+class Solution:
+    def hasPathSum(self, root: TreeNode, targetSum: int) -> bool:
+        if not root:
+            return False
+        stack = [(root, targetSum - root.val)]  # remember to minus the root val
+        while stack:
+            node, targetSum = stack.pop()
+            if node.left:
+                stack.append((node.left, targetSum - node.left.val))
+            if node.right:
+                stack.append((node.right, targetSum - node.right.val))
+            if not node.left and not node.right and targetSum == 0:
+                return True
+        return False

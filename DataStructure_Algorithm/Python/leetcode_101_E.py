@@ -13,9 +13,9 @@ class Solution:
             l, r = stack.pop()
             if not l and not r:
                 continue
-            if not l or not r:
+            elif not l or not r:
                 return False
-            if l.val == r.val:
+            elif l.val == r.val:
                 stack.append((l.left, r.right))
                 stack.append((l.right, r.left))
             else:
