@@ -391,6 +391,10 @@ Tree data structure in which each node has at most two children
         * #106. Construct Binary Tree from Inorder and Postorder Traversal
     * Hybrid: (diff ways to keep track of layer)
         * Tree+LinkedList+Queue: #116. Populating Next Right Pointers in Each Node
+        * #117. Populating Next Right Pointers in Each Node II
+    * Lowest common ancestor:
+        * #235. Lowest Common Ancestor of a Binary Search Tree (we could apply sol from #236)
+        * #236. Lowest Common Ancestor of a Binary Tree
 
 ### **6.4 Common mistake points**
 
