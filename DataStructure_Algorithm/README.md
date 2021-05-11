@@ -412,25 +412,34 @@ Tree data structure in which each node has at most two children
         return dfs(root.left) or/and dfs(root.right)
     ```
 
-7. Question summary
+7. When comparing value with child/parent/neighbors
+    * Think of creating a new helper function and use `max/min` to compare
+    * the helper function may cointains more than the node, such as the value
+
+8. Question summary
     * Basics
         * #144. Binary Tree Preorder Traversal
         * #94. Binary Tree Inorder Traversal
         * #145. Binary Tree Postorder Traversal: Note that the iterative method between #94 and #145 are very similar
         * #102. Binary Tree Level Order Traversal
         * #572. Subtree of Another Tree
+        * #236. Lowest Common Ancestor of a Binary Tree
     * Tree depth related
         * #104. Maximum Depth of Binary Tree
         * #112. Path Sum
         * #250. Count Univalue Subtrees
+    * Comparing value with child/parent/neighbors
         * #543. Diameter of Binary Tree
+        * #98. Validate Binary Search Tree
     * Symmetric, Rotated Tree
         * #101. Symmetric Tree
+        * #226. Invert Binary Tree
     * Tree construction: observe the relationship btw two data structure
         * #105. Construct Binary Tree from Preorder and Inorder Traversal
         * #106. Construct Binary Tree from Inorder and Postorder Traversal
     * Hybrid: (diff ways to keep track of layer)
         * Tree+LinkedList+Queue: #116. Populating Next Right Pointers in Each Node
+        * #117. Populating Next Right Pointers in Each Node II
 
 ### **6.4 Common mistake points**
 
