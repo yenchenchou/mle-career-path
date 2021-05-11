@@ -360,7 +360,7 @@ Tree data structure in which each node has at most two children
 3. Knowing when to return value from recursion, what to expect when you return the value from the recursive function
     * When just output the node by traversing, no need to return
     * When calculation height then we need to return
-4. Tricks:
+4. Level Order Traversal Tricks:
     * When using iterative approach, how do we keep track of the level and value
 
     ```Python
@@ -373,17 +373,57 @@ Tree data structure in which each node has at most two children
     ```
 
     * Thick how to reduce the space while need to track the level -> depth problem, hybrid problems
+5. Tips to decide when write to the process code
 
-5. Question summary
+    ```Python
+    def dfs(root):
+        # Write the steps here if you want to do something top to down
+        dfs(root.left)
+        dfs(root.right)
+        # Write the steps here if you wanr too something down to top -> path, counting
+    ```
+
+6. When to something for the recursion tree
+    * When expecting something to return at root.left / root.right
+
+    ```Python
+    def dfs(root):
+        if not root: return <val>  # the data type align with the lower return 
+        left = dfs(root.left)  # You are hoping to return from root.left
+        right = dfs(root.right)  # You are hoping to return from root.right
+        return left/right  # The return here decide what to return to left/right
+    ```
+
+    * Example1: When just returning True/False
+
+    ```Python
+    # Instead of this
+    def dfs(root):
+        if not root: return <val> 
+        left = dfs(root.left)
+        right = dfs(root.right)
+        return left or/and right
+    ```
+
+    ```Python
+    # Do this
+    def dfs(root):
+        if not root: return <val> 
+        return dfs(root.left) or/and dfs(root.right)
+    ```
+
+7. Question summary
     * Basics
         * #144. Binary Tree Preorder Traversal
         * #94. Binary Tree Inorder Traversal
         * #145. Binary Tree Postorder Traversal: Note that the iterative method between #94 and #145 are very similar
         * #102. Binary Tree Level Order Traversal
+        * #572. Subtree of Another Tree
     * Tree depth related
         * #104. Maximum Depth of Binary Tree
         * #112. Path Sum
         * #250. Count Univalue Subtrees
+        * #543. Diameter of Binary Tree
     * Symmetric, Rotated Tree
         * #101. Symmetric Tree
     * Tree construction: observe the relationship btw two data structure
@@ -391,10 +431,6 @@ Tree data structure in which each node has at most two children
         * #106. Construct Binary Tree from Inorder and Postorder Traversal
     * Hybrid: (diff ways to keep track of layer)
         * Tree+LinkedList+Queue: #116. Populating Next Right Pointers in Each Node
-        * #117. Populating Next Right Pointers in Each Node II
-    * Lowest common ancestor:
-        * #235. Lowest Common Ancestor of a Binary Search Tree (we could apply sol from #236)
-        * #236. Lowest Common Ancestor of a Binary Tree
 
 ### **6.4 Common mistake points**
 
