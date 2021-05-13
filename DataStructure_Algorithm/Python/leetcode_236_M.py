@@ -21,7 +21,7 @@ class Solution:
             return root
         if root.val == p.val or root.val == q.val:
             return root
-        left = self.lowestCommonAncestor(root.left, p, q)
+        left = self.lowestCommonAncestor(root.left, p, q)  # once we get the value, it is going to store here
         right = self.lowestCommonAncestor(root.right, p, q)
         if left and right:
             return root
