@@ -431,6 +431,7 @@ Tree data structure in which each node has at most two children
     * Comparing value with child/parent/neighbors
         * #543. Diameter of Binary Tree
         * #98. Validate Binary Search Tree
+        * #1448. Count Good Nodes in Binary Tree
     * Symmetric, Rotated Tree
         * #101. Symmetric Tree
         * #226. Invert Binary Tree
