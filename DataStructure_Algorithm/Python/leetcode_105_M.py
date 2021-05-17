@@ -17,10 +17,9 @@ class Solution:
         preorderIter = iter(preorder)
         mapper = {}
         for key, val in enumerate(inorder):
-            mapper[val] = key  # {2:0, 1:1, 3:2}
+            mapper[val] = key
 
         def helper(low, high):
-            # preorder: [1,2,3], inorder: [2,1,3]
             if low > high:
                 return None
             root_val = next(preorderIter)  # 1, 2, 3
@@ -28,6 +27,6 @@ class Solution:
             rootIndex = mapper[root_val]  # 1, 0, 2
             root.left = helper(low, rootIndex - 1)  # 1.left = 2
             root.right = helper(rootIndex + 1, high)  # 1.right = 3
-            return root  # 1,2,3
+            return root 
 
         return helper(0, len(inorder) - 1)

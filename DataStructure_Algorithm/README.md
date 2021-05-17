@@ -424,6 +424,7 @@ Tree data structure in which each node has at most two children
         * #102. Binary Tree Level Order Traversal
         * #572. Subtree of Another Tree
         * #236. Lowest Common Ancestor of a Binary Tree
+        * #103. Binary Tree Zigzag Level Order Traversal
     * Tree depth related
         * #104. Maximum Depth of Binary Tree
         * #112. Path Sum
