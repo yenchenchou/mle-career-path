@@ -414,7 +414,7 @@ Tree data structure in which each node has at most two children
 
 7. When comparing value with child/parent/neighbors
     * Think of creating a new helper function and use `max/min` to compare
-    * the helper function may cointains more than the node, such as the value
+    * the helper function may cointains more than the node, such as the value `helper(root, root.val)`
 
 8. Question summary
     * Basics
@@ -525,11 +525,85 @@ By knowing that it is a complete binary tree with heap order.
 
 ### **8.1 Definition**
 
-### **8.2 How to identify**
+1. DFS: You start at the root node or starting position and explore as far as possible. Usually invlove with the followings, see [Python example](https://www.educative.io/edpresso/how-to-implement-depth-first-search-in-python):
+    * recusion (not required) / Iteration + stack
+    * mark current node as visited
+    * go through all adjacent node if not visited
+
+    ```bash
+    # Iterative appraoch
+    procedure bfs(G, root) is
+        let S be stack
+        label root as discovered
+        S.append(root)
+        while Q is not empty:
+            v := Q.dequeue()
+            if v is the goal then
+                return v
+            for all edges from v to w in G.adjacentEdges(v) do
+                if w is not discovered
+                Q.enqueue(w)
+    ```
+
+2. BFS: You start at the root node or starting position and explore the neighbors, see [Python example](https://www.educative.io/edpresso/how-to-implement-a-breadth-first-search-in-python)
+    * Iteration
+    * use quueue
+    * mark current node as visited
+
+    ```bash
+    # Iterative
+    procedure DFS_iterative(G, v) is
+        let S be a stack
+        S.push(iterator of G.adjacentEdges(v))
+        while S is not empty do
+            if S.peek().hasNext() then
+                w = S.peek().next()
+                if w is not labeled as discovered then
+                    label w as discovered
+                    S.push(iterator of G.adjacentEdges(w))
+            else
+                S.pop()
+
+    # Recursive
+    procedure DFS(G, v) is
+        label v as discovered
+        for all directed edges from v to w that are in G.adjacentEdges(v) do
+            if vertex w is not labeled as discovered then
+                recursively call DFS(G, w)
+    ```
+
+### **8.2 Properies and Applications**
+
+1 DFS:
+
+* Produce minumum spanning tree
+* Detect cycle
+* Path finding
+* Topological Sorting
+* [Others](https://www.geeksforgeeks.org/applications-of-depth-first-search/)
+
+2 BFS:
 
 ### **8.3 Common tricks in DFS / BFS**
 
+1. DFS
+    * Use stacks
+    * Use hashmap/set
+    * Use recursion
+2. BFS
+    * Use queue
+    * use hashmap/set
+
 ### **8.4 Common mistake points**
+
+1. It is not neccesary to create a set/hashmap to store seen flag everytime, instead just replace the original value
+
+2. Question Summary:
+    * basics:
+        * #200. Number of Islands
+        * #695. Max Area of Island
+        * #1727. Largest Submatrix With Rearrangements
+        * #463. Island Perimeter
 
 ## **Graph**
 
