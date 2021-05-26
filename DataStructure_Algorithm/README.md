@@ -599,11 +599,14 @@ By knowing that it is a complete binary tree with heap order.
 1. It is not neccesary to create a set/hashmap to store seen flag everytime, instead just replace the original value
 
 2. Question Summary:
-    * basics:
+    * basics (simpla dfs/bfs, or island related problems):
         * #200. Number of Islands
         * #695. Max Area of Island
         * #1727. Largest Submatrix With Rearrangements
         * #463. Island Perimeter
+        * #547. Number of Provinces
+    * Combinations:
+        * #17. Letter Combinations of a Phone Number
 
 ## **Graph**
 
