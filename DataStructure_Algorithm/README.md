@@ -531,26 +531,6 @@ By knowing that it is a complete binary tree with heap order.
     * go through all adjacent node if not visited
 
     ```bash
-    # Iterative appraoch
-    procedure bfs(G, root) is
-        let S be stack
-        label root as discovered
-        S.append(root)
-        while Q is not empty:
-            v := Q.dequeue()
-            if v is the goal then
-                return v
-            for all edges from v to w in G.adjacentEdges(v) do
-                if w is not discovered
-                Q.enqueue(w)
-    ```
-
-2. BFS: You start at the root node or starting position and explore the neighbors, see [Python example](https://www.educative.io/edpresso/how-to-implement-a-breadth-first-search-in-python)
-    * Iteration
-    * use quueue
-    * mark current node as visited
-
-    ```bash
     # Iterative
     procedure DFS_iterative(G, v) is
         let S be a stack
@@ -570,6 +550,27 @@ By knowing that it is a complete binary tree with heap order.
         for all directed edges from v to w that are in G.adjacentEdges(v) do
             if vertex w is not labeled as discovered then
                 recursively call DFS(G, w)
+    ```
+
+2. BFS: You start at the root node or starting position and explore the neighbors, see [Python example](https://www.educative.io/edpresso/how-to-implement-a-breadth-first-search-in-python)
+    * Iteration
+    * use quueue
+    * mark current node as visited
+
+   ```bash
+    # Iterative appraoch
+    procedure bfs(G, root) is
+        let S be queue
+        label root as discovered
+        Q.enqueue(root)
+        while Q is not empty:
+            v := Q.dequeue()
+            if v is the goal then
+                return v
+            for all edges from v to w in G.adjacentEdges(v) do
+                if w is not discovered
+                    label w as discovered
+                    Q.enqueue(w)
     ```
 
 ### **8.2 Properies and Applications**
@@ -593,6 +594,11 @@ By knowing that it is a complete binary tree with heap order.
 2. BFS
     * Use queue
     * use hashmap/set
+3. Backtracking: happens in recursion a lot
+    * A general algorithm that finds all solutions to some problems, which incrementally build candidates and abandon candidates when it does not lead to a valid solution. The backtrack meaning is due to when you find the certain point that does not lead to a solution, and you "backtrack" to its parent for other opportunities.
+    * A better than bruce force if one remember to handle seen situations.
+    * In tree problems, it is also known as pruning.
+    * Example: N-Queen
 
 ### **8.4 Common mistake points**
 
@@ -612,9 +618,28 @@ By knowing that it is a complete binary tree with heap order.
 
 ### **9.1 Definition**
 
+An abstract notation that used to represent the connection between objects. A grpah consist of vertices `V` and edges `E`. Often grpah is noted as `G(V, E)`. Every edge in E connects two vertices V. A graph could be directed and undirected grpah.
+
+```Python
+# Undirected
+G = (V, E)
+V = (a, b, c)
+E = {(a, b), (b, c), (a, c)}
+
+# Directed
+G = (V, E)
+V = (a, b, c)
+E = {(a, b), (b, c), (c, b), (a, c)}
+```
+
 ### **9.2 How to identify**
 
+When you see objects has vertices(nodes) and pointers(edges)
+
 ### **9.3 Common tricks in Graph**
+
+1. Use adjacency matrix to record whether there are edges between vertices. But waste space and hard to add new vertex
+2. Use hashtable is better on flexibility, space, and speed
 
 ### **9.4 Common mistake points**
 
@@ -631,6 +656,8 @@ By knowing that it is a complete binary tree with heap order.
     2. Use hash table or set for look up operations since it spend O(1) time
 
 ### **10.4 Common mistake points**
+
+1. Need to avoid duplication so may use a set/hashtable to address the problem
 
 ## **Dynamic Programming**
 
