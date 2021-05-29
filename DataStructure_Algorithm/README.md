@@ -599,13 +599,31 @@ By knowing that it is a complete binary tree with heap order.
     * A better than bruce force if one remember to handle seen situations.
     * In tree problems, it is also known as pruning.
     * Example: N-Queen
+    * Template
+
+    ```Python
+    def backtrack(candidate):
+        if find_solution(candidate):
+            output(candidate)
+            return
+        
+        # iterate all possible candidates.
+        for next_candidate in list_of_candidates:
+            if is_valid(next_candidate):
+                # try this partial candidate solution
+                place(next_candidate)
+                # given the candidate, explore further.
+                backtrack(next_candidate)
+                # backtrack
+                remove(next_candidate)
+    ```
 
 ### **8.4 Common mistake points**
 
 1. It is not neccesary to create a set/hashmap to store seen flag everytime, instead just replace the original value
 
 2. Question Summary:
-    * basics (simpla dfs/bfs, or island related problems):
+    * Basics (simpla dfs/bfs, or island related problems):
         * #200. Number of Islands
         * #695. Max Area of Island
         * #1727. Largest Submatrix With Rearrangements
@@ -613,6 +631,8 @@ By knowing that it is a complete binary tree with heap order.
         * #547. Number of Provinces
     * Combinations:
         * #17. Letter Combinations of a Phone Number
+    * Backtrack:
+        * #51. N-Queens
 
 ## **Graph**
 
