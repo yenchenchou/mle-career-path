@@ -24,3 +24,10 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# cache
+.vscode
+__pycache__
+.python-version
+.idea
+.idea/*
