@@ -18,10 +18,11 @@ class Solution:
                     end += 1
                 return [start, end]
             elif nums[mid] < target:
+
                 left = mid + 1
             else:
                 right = mid - 1
-        return [-1, -1]
+return [-1, -1]
 #  O(n), O(1)
 
 
