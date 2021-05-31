@@ -2,7 +2,8 @@
 
 #### `Aggregation functions`
 
-1. `COUNT` does not include `NULL`. **Aggregate functions like COUNT and SUM always ignore NULLs**
+1. `COUNT(*) includes all null/non-null` values but slow. `COUNT(column)` does not include `NULL`. `COUNT(DISTINCT column)` only count the unique non-null values in the column. No **Aggregate functions like COUNT and SUM always ignore NULLs**
+
 2. All functions ignore NULLs
 3. Applications & Questions
     - Counting all rows
@@ -46,6 +47,7 @@
 #### `JOIN`
 
 1. When making joins, if you have duplicates on either one table, the duplicate result is going to carry over to your joined result if matched.
+2. [SQL Joins Using WHERE or ON](https://mode.com/sql-tutorial/sql-joins-where-vs-on/). Usually you will use `WHERE` after the tables are joined. Also, only when you are using inner will the result between these two the same. This problem will be easily found when you have joining keys with different name. Details in link.
 
 #### `UNION`
 
