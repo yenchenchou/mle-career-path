@@ -48,12 +48,18 @@
 
 1. When making joins, if you have duplicates on either one table, the duplicate result is going to carry over to your joined result if matched.
 2. [SQL Joins Using WHERE or ON](https://mode.com/sql-tutorial/sql-joins-where-vs-on/). Usually you will use `WHERE` after the tables are joined. Also, only when you are using inner will the result between these two the same. This problem will be easily found when you have joining keys with different name. Details in link.
+3. Join on multiple keys
+4. Self joins
+5. Questions:
+    - self join
+        - when idetify columns where you need to compare some columns that need to be compare, for example identify companies that received an investment from Great Britain following an investment from Japan.
 
-#### `UNION`
+#### `UNION` / `UNION ALL`
 
 1. UNION only appends distinct values. Which means not only union only keeps one distinct value after you combine the
 table but also each of you table will remain only distinct value
 2. `OUTER JOIN` == `LEFT JOIN` union `LEFT JOIN`
+3. `UNION` only keep distinct values. `UNION ALL` will keep all. You'll likely use UNION ALL far more often than UNION. In this particular case, there are no duplicate rows, so UNION ALL will produce the same results.
 
 #### `WHERE`
 
@@ -104,7 +110,7 @@ table but also each of you table will remain only distinct value
 
     ```
 
-4.`CASE` helps to handle NULLs while you still want to use aggregation.
+4. `CASE` helps to handle NULLs while you still want to use aggregation.
 
 #### `SUBSTRING`(str FROM pos FOR len)
 
