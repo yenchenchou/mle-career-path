@@ -633,6 +633,7 @@ By knowing that it is a complete binary tree with heap order.
         * #17. Letter Combinations of a Phone Number
     * Backtrack:
         * #51. N-Queens
+        * #207. Course Schedule
 
 ## **Graph**
 
@@ -660,6 +661,21 @@ When you see objects has vertices(nodes) and pointers(edges)
 
 1. Use adjacency matrix to record whether there are edges between vertices. But waste space and hard to add new vertex
 2. Use hashtable is better on flexibility, space, and speed
+3. Other common algorithms
+    * Topological sort/ordering
+        * Def: Topological ordering is a directed graph where the directed edge AB, the A will always comes before B
+        * Application:
+            * Finding cycle: use the def to find
+        * Implementation:
+            * Kahn's Algorithm
+                * Def: repeat to process of removing node without dependencies (and their outgoing edges)
+                * How:
+                    1. Calculate the dependencies(incoming edge) and start with the node with 0 dependencies,
+                    2. Then add to queue
+                    3. Process then remove from, update the dependencies array and add the new nodes with no dependencies
+                    4. use an index to count the nodes that put into sorting process
+                    5. check if # of nodes == index, if not then there is at least a cycle since some of the nodes are not processed
+    * Uinion find
 
 ### **9.4 Common mistake points**
 
