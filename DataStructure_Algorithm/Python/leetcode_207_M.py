@@ -46,8 +46,6 @@ from collections import defaultdict
 
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
-        if not prerequisites:
-            return True
         graph = defaultdict(list)
         visited = [0 for _ in range(numCourses)]
         for curr, prev in prerequisites:
