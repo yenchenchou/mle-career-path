@@ -68,3 +68,6 @@ class Solution:
                 return True
         visited[i] = 1
         return False
+
+
+# Solution2: Recursion
