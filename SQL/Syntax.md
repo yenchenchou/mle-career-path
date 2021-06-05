@@ -112,6 +112,12 @@ table but also each of you table will remain only distinct value
 
 4. `CASE` helps to handle NULLs while you still want to use aggregation.
 
+#### `EXISTS`
+
+1. Def: A boolean operator that tests for existence of rows in a subquery.
+2. The column name in the subquery is not important, the important things are the columns and conditions you want to check in the subquery
+3. [see detail](https://www.postgresqltutorial.com/postgresql-exists/)
+
 #### `SUBSTRING`(str FROM pos FOR len)
 
 1. The forms without a len argument return a substring from string str starting at position pos. The forms with a len argument return a substring len characters long from string str, starting at position pos. The forms that use FROM are standard SQL syntax. It is also possible to use a negative value for pos. In this case, the beginning of the substring is pos characters from the end of the string, rather than the beginning. A negative value may be used for pos in any of the forms of this function. A value of 0 for pos returns an empty string.
