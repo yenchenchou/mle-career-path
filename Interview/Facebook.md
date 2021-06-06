@@ -30,6 +30,19 @@
 
 ## Data Engineer / Software Engineer, Data
 
+### Process
+
+1. Phone interview: python & SQL concept
+2. Phone interview with coding: 5 Python + 5 SQL but no need to complete all. 4 for each is enough. It's about time and conre case handling.
+3. onsite
+    - Python
+    - SQL
+    - Project / Work
+    - ETL
+    - Data modeling
+
+### Questions
+
 - Python
     1. Replace None value with previous value present in a list.
     (3/9/2021, 3/23/2021, 9/11/2021, 8/11/2020)
@@ -85,6 +98,29 @@
         Use dict
         ```
 
+    5. Balance the array: Given an array with n elements provide a dictionary of all teh needed elements to balance the array as keys of that dictionary and number of repeated occurraences of each of those elements that are required to balance the given array as values. Balance array would be an array containing all elements that appear equal number of times
+
+    ```Python
+    ls = [4, 5, 11, 5, 6, 11, 11]
+    def findBalance(ls):
+        if not ls: return ls
+        dic = {}
+        for val in ls:
+            if val not in dic:
+                dic[val] = 1
+            else:
+                dic[val] += 1
+        # Then get max freq
+        maxFreq = sorted(dic.items(), key=lambda x: -x[1])[0][1]
+        res = dict()
+        for key, val in dic.items():
+            if val < maxFreq:
+                res[key] = maxFreq - val
+        return res
+    ```
+
+    6. sliding window
+
 - Database
     1. Design ETL (12/21/2020)
     2. Data modeling (12/21/2020, 11/15/2020)
@@ -93,6 +129,12 @@
     1. Percentage (3/23/2021)
     2. Find top 5 sales products having promotions (3/9/2020)
     3. What %age of sales happened on first and last day of the promotion (3/9/2020, 8/7/2020)
+    4. Percentage of promotion
+    5. average， percentage，increate rate are IMPORTANT!
+
+    ```SQL
+    select avg(case when promotion then 1 else 0 end) as percentage
+    ```
 
 - Resource
   - [The Facebook Data Engineer Interview](https://towardsdatascience.com/the-facebook-data-engineer-interview-345235afaac0)
