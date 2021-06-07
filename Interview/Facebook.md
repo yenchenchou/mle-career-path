@@ -7,7 +7,7 @@
 - [Ace your data science interview](https://www.interviewquery.com/)
 - [Customized for your next interview](https://www.interviewquery.com/pricing)
 
-## Tips SUmmary from Above
+## Tips Summary from Above
 
 1. Strategies for the live SQL interview
     - Repeat the problem statement
@@ -41,14 +41,14 @@
     - ETL
     - Data modeling
 
-### Questions
+### Phone Screen Questions
 
 - Python
     1. Replace None value with previous value present in a list.
-    (3/9/2021, 3/23/2021, 9/11/2021, 8/11/2020)
+    (3/9/2021, 3/23/2021, 9/11/2021, 8/11/2020, 4/17/2021)
 
         ```Python
-        ls = [2, 3, None, 9]
+        ls = [2, 3, None, 9], [None, 3, None, 9], [None, None, None, 9], [5,None,None, 1], [None]
         def func(ls):
             if not ls: return []
             cache = None
@@ -69,7 +69,7 @@
         print(a)
         ```
 
-    2. Given a dictionary, print the key for nth highest value present in the dict.
+    2. Given a dictionary, print the key for nth highest value present in the dict.(4/17/2021)
 
         ```Python
         # Facebook
@@ -84,7 +84,7 @@
         # Please refer to 347. Top K Frequent Elements
         ```
 
-    3. Given two sentences, you have to print the words those are not present in either of the sentences. Use set, [see set operations](https://realpython.com/python-sets/). (3/23/2021, 9/11/2020, 8/11/2020)
+    3. Given two sentences, you have to print the words those are not present in either of the sentences. Use set, [see set operations](https://realpython.com/python-sets/). (3/23/2021, 9/11/2020, 8/11/2020, 4/17/2021)
 
         ```Python
         # use set
@@ -92,10 +92,22 @@
             return set(a.split(" ")) ^ set(b.split(" "))
         ```
 
-    4. find s in missisipi -> Count Chars (8/11/2020)
+    4. find s in missisipi -> Count Chars (8/11/2020, 4/17/2021)
 
         ```Python
-        Use dict
+        from collections import Counter
+        def find_occur(input_val, word):
+        #     cnt = Counter(input_val)
+        #     print(cnt[word])
+            dic = {}
+            for char in input_val:
+                if char not in dic:
+                    dic[char] = 1
+                else:
+                    dic[char] += 1
+            return dic[word]
+
+        find_occur('missisipi', 's')
         ```
 
     5. Balance the array: Given an array with n elements provide a dictionary of all teh needed elements to balance the array as keys of that dictionary and number of repeated occurraences of each of those elements that are required to balance the given array as values. Balance array would be an array containing all elements that appear equal number of times
@@ -121,23 +133,77 @@
 
     6. sliding window
 
+    7. category里面有units sold和完全没有units sold的ratio
+
 - Database
     1. Design ETL (12/21/2020)
     2. Data modeling (12/21/2020, 11/15/2020)
 
 - SQL
-    1. Percentage (3/23/2021)
-    2. Find top 5 sales products having promotions (3/9/2020)
-    3. What %age of sales happened on first and last day of the promotion (3/9/2020, 8/7/2020)
-    4. Percentage of promotion
-    5. average， percentage，increate rate are IMPORTANT!
 
-    ```SQL
-    select avg(case when promotion then 1 else 0 end) as percentage
     ```
+    # The promotion datatset
+
+    <!-- sales [product_id, customer_id, promotion_id, store_sales, transaction_date] -->
+    <!-- products [product_id, product_class_id, product_name, is_low_fat_flg,  is_recyclable_flg] -->
+    <!-- promotions [promotion_id, promotion_name, promotion_name, media_type, start_date, end_date] -->
+    ```
+
+    1. Percentage (3/23/2021) -> The promotion datatset
+    2. Find top 5 sales products having promotions (3/9/2020) -> The promotion datatset
+
+        ```SQL
+        select product_id, sum(store_sales) as total_sales
+        from sales
+        where promotion_id not null
+        group by product_id
+        # having promotion_id not null
+        limit 5
+        ```
+
+    3. What % of sales/transactions happened on first and last day of the promotion (3/9/2020, 8/7/2020, 4/17/2021) -> The promotion datatset
+
+        ```SQL
+        with promotion_sales as (
+            select s.product_id, s.store_sales, p.start_date, p.end_date
+            from sales s
+            join promotions p on s.product_id = p.product_id
+            where s.promotion_id is not null
+        )
+        
+        select 
+            cast(sum(case when 
+                    start_date=(select min(start_date) from promotion_sales) or 
+                    start_date=(select min(start_date) from promotion_sales) then store_sales else 0 end
+            ) / sum(select sum(sales) from promotion_sales) as float) as ratio
+        from promotion_sales
+        ```
+
+    4. Percentage of promotion -> The promotion datatset
+    5. average， percentage，increate rate are IMPORTANT!
+    6. What percent of all products in the grocery chain's catalog are both low fat and recyclable? (4/17/2021) -> The promotion datatset
+
+        ```SQL
+        select avg(case when is_low_fat_fl = 1 and is_recyclable_flg = 1 then 1 else 0)*100 as percentage
+
+        select avg(case when promotion then 1 else 0 end)*100 as percentage
+        ```
+
+    7. The ratio between unpromoted sales and promoted sales
+
+        ```SQL
+        ```
 
 - Resource
   - [The Facebook Data Engineer Interview](https://towardsdatascience.com/the-facebook-data-engineer-interview-345235afaac0)
+
+### Onsite/VO Questions
+
+product sense：一开始还挺担心的，毕竟这种open ended的问题也不知道是不是对。准备的时候看了很多PM interview的mock视频，也看了几个medium的post之类的，大致了解了回答的框架，然后在准备的时候就根据这个框架来答题。因为并不是真的PM面试，所以可以主要集中在考虑相关的metrics上面
+ETL：sql的难度没有很大，主要都是基础的join和计算，感觉如果过了phone screen对于sql来说问题不大
+data modeling：用star schema可以解，面试官可以会引导你想出需要的metrics和dimension之类的
+coding：之前也有担心过python coding，但是其实难度和phone screen差不多，也都是list和dictionary的一些基本loop之类的。地里可以在以前的面筋里面找到原题，如果没有信心的话可以找出来自己写写看，应该八九不离十
+BQ：其实也不知道BQ回答得到底如何，但是基本也都是常规的BQ问题，可以在准备的时候想想用什么例子之类的
 
 ## Data Scientist
 

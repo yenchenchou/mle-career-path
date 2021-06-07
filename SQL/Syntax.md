@@ -121,6 +121,7 @@ table but also each of you table will remain only distinct value
     ```
 
 4. `CASE` helps to handle NULLs while you still want to use aggregation.
+5. The data types of all the result expressions must be convertible to a single output type
 
 #### `EXISTS`
 
@@ -163,7 +164,7 @@ Date time operations are tedious but essential. Usually, you will involve with t
             - type one: `make_date`, `make_timestamp`, `make_time`, `make_timestamptz` -> `2013-07-15 08:15:23.5+01 (make_timestamptz)`/`2013-07-15 08:15:23.5 (make_timestamp)`
             - type two:
                 - `cast('2020-02-01 15:10:10' as timestamp)`
-                - `date '2020-02-01'` == `cast('2020-02-01' as date)` == `'2020-02-01'::date`. Apply for `TIME`, `DATE`, `TOMESTAMP`, ,`TOMESTAMPTZ`..etc. [see more](https://www.postgresql.org/docs/9.5/functions-datetime.html)
+                - `date '2020-02-01'` == `cast('2020-02-01' as date)` == `'2020-02-01'::date`. Apply for `TIME`, `DATE`, `TOMESTAMP`, ,`TOMESTAMPTZ`..etc. [see more](https://www.postgresql.org/docs/9.5/functions-datetime.html) and [data type formatting](https://www.postgresql.org/docs/8.4/functions-formatting.html)
 
 2. Given date/datetime/timestamp, get the week, number of weeks..etc
     - Examples:
@@ -196,23 +197,62 @@ Subquery can be used in different ways, using subquery behid `FROM` is most comm
 
 #### `Window function`
 
-A window function performs a calculation across a set of table rows that are somehow related to the current row.
+1. **A window function performs a calculation across a set of table rows that are somehow related to the current row**.
 This is comparable to the type of calculation that can be done with an aggregate function. But unlike regular
-aggregate functions, use of a window function does not cause rows to become grouped into a single output row — the
-rows retain their separate identities. Behind the scenes, the window function is able to access more than just the
-current row of the query result. Adding `OVER` designates it as a window function Common combination: `SUM, AVG, COUNT, ROW_NUMER, RANK, DENSERANK, NTILE, LAG, LEAD`
+aggregate functions, use of a **window function does not cause rows to become grouped into a single output row — the
+rows retain their separate identities(it works on the rows of the window frame rather than whole partition)**. Behind the scenes, the window function is able to access more than just the
+current row of the query result. Adding `OVER` designates it as a window function Common combination: `SUM, AVG, COUNT, ROW_NUMER, RANK, DENSERANK, NTILE, LAG, LEAD`. [See more](https://mode.com/sql-tutorial/sql-window-functions/#the-usual-suspects-sum-count-and-avg)
+    - SUM, AVG, COUNT: if the rows from `order by` hold the same value, then they will get the same value
+    - ROW_NUMER
+    - RANK: also affected by `order by`, ties are assigned if same ranked but will skip the next rank.
+    - DESNE_RANK: also affected by `order by`, ties are assigned if same ranked but **will not** skip the next rank.
+    - NTILE(integer)
+    - LEAD(colum, integer), LAG(column, integer): will cause NULL if no previous/end of the row. You may take window function aprt as subquery and use the outer query to filter out the NULLs.
+
+    ```SQL
+    SELECT *
+    FROM (
+        SELECT start_terminal,
+            duration_seconds,
+            duration_seconds -LAG(duration_seconds, 1) OVER
+                (PARTITION BY start_terminal ORDER BY duration_seconds)
+                AS difference
+        FROM tutorial.dc_bikeshare_q1_2012
+        WHERE start_time < '2012-01-08'
+        ORDER BY start_terminal, duration_seconds
+        ) sub
+    WHERE sub.difference IS NOT NULL
+    ```
+
+    ```SQL
+    SELECT depname, empno, salary, enroll_date
+    FROM
+    (SELECT depname, empno, salary, enroll_date,
+            rank() OVER (PARTITION BY depname ORDER BY salary DESC, empno) AS pos
+        FROM empsalary
+    ) AS ss
+    WHERE pos < 3;
+    ```
 
    1. [mode](https://mode.com/sql-tutorial/sql-window-functions/#ntile)
    2. [official website](https://www.postgresql.org/docs/9.1/tutorial-window.html)
 
 #### `WITH`
 
-Allows giving your sub-query block a name. You can do the following things
-1.
+WITH provides a way to write auxiliary statements for use in a larger query. These statements, which are often referred to as Common Table Expressions or CTEs, can be thought of as defining temporary tables that exist just for one query.
 
 #### Column naming
 
 1. If you insist to name your column such as `new column`, then use double qoute "new column"
+
+## Tips for optimizing the databse
+
+1. Higer Level
+
+    - table size: use filters
+    - Use limit to test query logic
+
+    -
 
 ## Resource
 
