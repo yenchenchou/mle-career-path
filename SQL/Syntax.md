@@ -66,8 +66,7 @@
 
 #### `UNION` / `UNION ALL`
 
-1. UNION only appends distinct values. Which means not only union only keeps one distinct value after you combine the
-table but also each of you table will remain only distinct value
+1. UNION only appends distinct values. Which means union will remove duplicates
 2. `OUTER JOIN` == `LEFT JOIN` union `LEFT JOIN`
 3. `UNION` only keep distinct values. `UNION ALL` will keep all. You'll likely use UNION ALL far more often than UNION. In this particular case, there are no duplicate rows, so UNION ALL will produce the same results.
 

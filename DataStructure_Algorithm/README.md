@@ -290,6 +290,8 @@ Queue is a linear structure that follow first-in-first-out policy. Queue some ho
 ### **5.3 Common tricks in Queue and Stack**
 
 1. Calculator problem: Notice that the `cur`(the current calculated digit) and the `sign`(the pos/neg flag) will be updated when face none digit.
+2. #739. Daily Temperat
+3. Removing duplicates, parentheses string can use stack to reduce time complexity
 
 ### **5.4 Common mistake points**
 
@@ -306,6 +308,7 @@ Queue is a linear structure that follow first-in-first-out policy. Queue some ho
         * #1047. Remove All Adjacent Duplicates In String
         * #155. Min Stack
         * #716. Max Stack
+        * #739. Daily Temperatures
     * Handle parentheses, calculator
         * #224. Basic Calculator
         * #227. Basic Calculator II
@@ -314,6 +317,9 @@ Queue is a linear structure that follow first-in-first-out policy. Queue some ho
         * #316. Remove Duplicate Letters
     * mix with heap, linkedlist:
         * #716. Max Stack
+    * stack/queue with dfs/bfs
+        * #286. Walls and Gates
+        * #622. Design Circular Queue
 
 ---
 
@@ -455,7 +461,7 @@ A special tree-based data structure in whicn tree is a complete binary tree. Hea
 
 Heap has certain properties:
 
-1. Min/Max Heap: the smallest/biggest element at the root. A complete binary tree which the value in the internal mode is smaller/bigger or equal to the children's node.
+1. Min/Max Heap: the smallest/biggest element at the root. A complete binary tree which the value in the node is smaller/bigger or equal to the children's node.
 2. What is the physicall rule of heap:
 
     2.1 Zero index based
@@ -480,11 +486,22 @@ Heap has certain properties:
 
     3.1 Time complexity:
 
-    * insert/offer O(logn): Since the height is logn in binary tree so the max steps that the insert node need to move is O(logn)
-    * update O(log): it is possible that we need to traverse the node
+    * insert/offer O(logn): Since the height is logn in binary tree so the max steps that the insert node need to move is O(logn).
+    * update O(logn): it is possible that we need to traverse the node
     * get O(1): Use the rule in the above
     * pop/poll O(logn): Same reason as insert node to heap. Same as pop the min value
-    * heapify O(n): Need to walk through all elements
+    * heapify O(n): Need to walk through all element
+
+    3.2 How doe operation work
+    * insert/offer O(logn):  We first put the new node at the leaf node and keep swapping the value of the node if needed.
+    * pop/poll O(logn): remove the node and let the right most leaf go the place where it is deleted. Then do swap.
+
+4. How heap sort works:
+    * First create a max/min heap using array. By deleting a node each time and append the node in the released space. We will get a sorted heap. If max heap will get a ascending sorted array, whicle min heap will give us descending sorted array.
+    * O(nlogn) for creating max/min heap + O(logn) for pop max/min and rearrange the reamaining nodes. -> **But can we use heapify and what is the difference between the manuall created heap and heapify.**
+
+5. How heapify works:
+    * instead like creating heap manually from top to down and need swapping more times. We take from bottom(right most leaf) top approach which has less time to swap. So the time complexity is O(n)
 
 ### **7.2 How to identify**
 

@@ -2,6 +2,9 @@
 
 ## **Data Engineer**
 
+1. [Interview Queries](https://www.interviewquery.com/questions/post-successv)
+2. [stratascratch](https://platform.stratascratch.com/coding?questionType=1%2C2%2C3&company=5&curated_filter=&is_correct_solution=&is_bookmarked=&is_freemium=&in_depth_solution=&difficulty=&python=&filters=&page=1&page_size=25)
+
 ## **Data Scientist**
 
 1. Preparation before Data Scientist Interviews
