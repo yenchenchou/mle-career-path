@@ -194,6 +194,57 @@
         ```SQL
         ```
 
+    8. [Acceptance Rate By Date](https://platform.stratascratch.com/coding-question?id=10285&python=), why not case when? Because the you may wait for the 'accepted' on diffent days. So self join will be the solution.
+
+        ```SQL
+        select
+            a.date,
+            count(b.user_id_receiver) / count(a.user_id_sender)::decimal as percentage_acceptance
+        from (
+            select user_id_sender, user_id_receiver, date
+            from fb_friend_requests
+            where action = 'sent') a
+        left join
+            (select user_id_sender, user_id_receiver, date
+            from fb_friend_requests
+            where action = 'accepted') b
+            on a.user_id_sender = b.user_id_sender and a.user_id_receiver = b.user_id_receiver
+        group by 1
+        ```
+
+    9. [Popularity of Hack](https://platform.stratascratch.com/coding-question?id=10061&python=)
+
+        ```SQL
+        -- location, avg_popularity
+        select
+            a.location,
+            avg(b.popularity) as avg_popularity
+        from facebook_employees a
+        join facebook_hack_survey b
+            on a.id = b.employee_id
+        group by 1
+        ```
+
+    10. [Search Ranking](https://www.interviewquery.com/questions/search-ranking):  Write a query to get the percentage of search queries where all of the ratings for the query results are less than a rating of 3. Please round your answer to two decimal points.
+
+        ```SQL
+        WITH low_rating AS (
+            SELECT query
+            FROM search_results
+            -- solution 2
+            -- where rating < 3
+            GROUP BY 1
+            HAVING SUM(CASE WHEN rating < 3 THEN 1 ELSE 0 END) = COUNT(*)
+            -- solution 3
+            -- having max(rating) < 3
+        ) 
+
+        SELECT ROUND(COUNT(DISTINCT lr.query)/COUNT(DISTINCT sr.query),2) AS percentage_less_than_3
+        FROM search_results AS sr 
+        LEFT JOIN low_rating AS lr 
+            ON sr.query = lr.query
+        ```
+
 - Resource
   - [The Facebook Data Engineer Interview](https://towardsdatascience.com/the-facebook-data-engineer-interview-345235afaac0)
 

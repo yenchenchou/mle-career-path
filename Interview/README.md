@@ -29,52 +29,18 @@
 
 ## Behavioral Questions
 
-1. Self intro
-2. Tell me about a time when you solve the difficulty.
-    - telemarketing
-    - issue: data collections quality
-        - accuracy
-        - completeness - feedback for each call, no phone recording
-        - consistency - the standard of defining whether it is a bad/neutral result is unclear.
-        - timeless
-        - validity
-        - uniqueness
-
-3. Tell me a challenge that you solve
-    - Data Scientist
-        - telemarketing - redpass
-        - Issue:
-            - convertion rate drop in a week
-        - Problem finding:
-            - Look at metrics related to internal factors
-                - wrong about the experiment
-                - ml process
-                    - predicted accuracy/recall didn't changed
-            - Look at the metrics related to external factors
-                - Contacts Per Hour dropped
-                - Sales Per Hour dropped
-                - Average Wrap Time (AWT) increased
-                - Return on Investment per call dropped
-                -> so we start to ask what has changed after we deliver the api
-                    -> complex interface
-        - Solution:
-            - Remove the new features and advice on the UI
-            - advice on the UI, use graph and replace table and text
-        - Result:
-            - regain the 5% dropped rate
-
-4. Can you describe your most difficult customer and how you were able to handle their needs? Or tell a experience that you persuade others
-    - Data Scientist
-        - telemarketing - recommended items
-        - Issue:
-            the customer stragegy team insist to put 100+ columns of info to the telemarketers but it was proved that telemarketers' performance were affected at the same time.
-        - Solution:
-            - Prioritize the importance of the 100+ columns
-            - use graphs instead table
-                - recommended items into barplots and only show top/lowest numbers per graph according business scenario
-                    - Showing Items that simaliar customers bought but they didn't
-                - only shows items they view many times but didn't buy
-
-        - Result:
-            - Saved 60% time for preparation
-            - enhanced dials per hour from 7 to 9
+- Tell me about a time when you had to leave a task unfinished.
+- Give me two examples of when you did more than what was required in any job experience.
+- Tell me about a time when you took a calculated risk.
+- Tell me about your proudest professional achievement.
+- Tell me about a time when you had to leave a task unfinished.
+- Tell me about a time when you had to work with incomplete data or information.
+- Tell me about a time when you influenced a change by only asking questions.
+- Tell me about a time when you invented something.
+- Tell me about a time when you solved a problem through just superior knowledge or observation.
+- Give me two examples of when you did more than what was required in any job experience.
+- Tell me about a time you had to deal with ambiguity.
+- Tell me about a time you had to handle a crisis.
+- Tell me about a time when you had to make a quick decision that was going to have a significant impact on the business.
+- Tell me about a time when you had a group conflict, and how did you overcome this conflict?
+- Tell me about a situation where you directly impacted customer satisfaction.

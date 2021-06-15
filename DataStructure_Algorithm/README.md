@@ -23,7 +23,7 @@
         * Split the numbers and strings
     * Intervals:
         * #56. Merge Intervals
-        * #253. Meeting Rooms II
+        * #253. Meeting Rooms II (also a priority queue problem)
         * #252. Meeting Rooms I
 
 ### **1.4 Common mistake points**
@@ -306,6 +306,7 @@ Queue is a linear structure that follow first-in-first-out policy. Queue some ho
     * Classic Stack:
         * #125. Valid Palindrome (stack as cache)
         * #1047. Remove All Adjacent Duplicates In String (stack as cache)
+        * #1209. Remove All Adjacent Duplicates in String II (stack as count)
         * #155. Min Stack
         * #716. Max Stack
         * #739. Daily Temperatures (stack as cache)
@@ -512,13 +513,16 @@ By knowing that it is a complete binary tree with heap order.
 1. Max heap: most heap in programming languafe is min heap. So we use Counter with negative to do the count.
 2. Question summary
     * Basic:
-        * Use arrya design heap
+        * Use array design heap
     * Top K questions (You may sort to solve these problems):
+        * #973. K Closest Points to Origin
         * #703. Kth Largest Element in a Stream
         * #215. Kth Largest Element in an Array (alike 703)
         * #347. Top K Frequent Elements
         * #692. Top K Frequent Words (advanced of #347)
         * #451. Sort Characters By Frequency (advanced of #347)
+    * Interval arrays:
+        * #253. Meeting Rooms II (priority queue)
 
 ### **7.4 Common mistake points**
 
