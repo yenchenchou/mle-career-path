@@ -1,5 +1,7 @@
 # Syntax and Tips Reminder
 
+## 1. Syntax Introduction
+
 #### `Aggregation functions`
 
 1. `COUNT(*) includes all null/non-null` values but slow. `COUNT(column)` does not include `NULL`. `COUNT(DISTINCT column)` only count the unique non-null values in the column. No **Aggregate functions like COUNT and SUM always ignore NULLs**
@@ -244,7 +246,17 @@ WITH provides a way to write auxiliary statements for use in a larger query. The
 
 1. If you insist to name your column such as `new column`, then use double qoute "new column"
 
-## Tips for optimizing the databse
+## SQL clause use case scenario and tips
+
+### When to use JOIN
+
+1. self join: table references data in itself.
+
+    - An `Employee` table that have `SupervisorID` column that points to the employee that is the boss of the current employee.
+
+    -
+
+## 3. Tips for optimizing the databse
 
 1. Higer Level
 
@@ -253,6 +265,6 @@ WITH provides a way to write auxiliary statements for use in a larger query. The
 
     -
 
-## Resource
+## 4. Resource
 
 1. [Mode Analytics](https://mode.com/sql-tutorial/)
