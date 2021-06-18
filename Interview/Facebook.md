@@ -150,51 +150,72 @@
     ```
 
     1. Percentage (3/23/2021) -> The promotion datatset
-    2. Find top 5 sales products having promotions (3/9/2020) -> The promotion datatset
+    2. Find top 5 sales products having valid promotions (3/9/2020) -> The promotion datatset
 
         ```SQL
-        select product_id, sum(store_sales) as total_sales
-        from sales
-        where promotion_id not null
-        group by product_id
-        # having promotion_id not null
+        with valid_sales as (
+        select b.product_name, sum(a.store_sales) sales
+        from sales a
+            left join products b on a.product_id = b.product_id
+            left join promotions c on a.promotion_id = c.promotion_id
+        where a.transaction_date between c.start_date and c.end_date
+        group by 1
+        order by 2 desc
+        )
+
+        select product_name
+        from valid_sales
         limit 5
         ```
 
-    3. What % of sales/transactions happened on first and last day of the promotion (3/9/2020, 8/7/2020, 4/17/2021) -> The promotion datatset
+    3. From the sales that had a valid promotion, what % of transactions/sales occur on either the very first day or the very last day of a promotion campaign. (3/9/2020, 8/7/2020, 4/17/2021) -> The promotion datatset
 
         ```SQL
-        with promotion_sales as (
-            select s.product_id, s.store_sales, p.start_date, p.end_date
-            from sales s
-            join promotions p on s.product_id = p.product_id
-            where s.promotion_id is not null
-        )
-        
+        -- % transactions
         select 
-            cast(sum(case when 
-                    start_date=(select min(start_date) from promotion_sales) or 
-                    start_date=(select min(start_date) from promotion_sales) then store_sales else 0 end
-            ) / sum(select sum(sales) from promotion_sales) as float) as ratio
-        from promotion_sales
+        -- round(avg(case when s.transaction_date in (p.start_date, p.end_date) then 1 else 0 end)*100, 2) percentage
+        round(avg(case when s.transaction_date = p.start_date or s.transaction_date = p.end_date then 1 else 0 end)*100, 2) percentage
+        from sales s
+        left join promotions p
+        on s.promotion_id = p.promotion_id
+        where s.transaction_date between p.start_date and p.end_date
+
+        -- % sales
+
+        select 
+        -- round(sum(case when s.transaction_date in (p.start_date, p.end_date) then s.store_sales else 0 end)::decimal / sum(s.store_sales) * 100, 2) percentage
+        round(sum(case when s.transaction_date = p.start_date or s.transaction_date = p.end_date then s.store_sales else 0 end)::decimal / sum(s.store_sales) * 100, 2) percentage
+        from sales s
+        left join promotions p
+        on s.promotion_id = p.promotion_id
+        where s.transaction_date between p.start_date and p.end_date
         ```
 
-    4. Percentage of promotion -> The promotion datatset
-    5. average， percentage，increate rate are IMPORTANT!
-    6. What percent of all products in the grocery chain's catalog are both low fat and recyclable? (4/17/2021) -> The promotion datatset
+    4. Percentage of valid promotion in sales -> The promotion datatset (**average， percentage，increate rate are IMPORTANT!**)
 
         ```SQL
-        select avg(case when is_low_fat_fl = 1 and is_recyclable_flg = 1 then 1 else 0)*100 as percentage
-
-        select avg(case when promotion then 1 else 0 end)*100 as percentage
+        select 
+        round(avg(case when s.transaction_date between p.start_date and p.end_date then 1 else 0 end)*100, 2) percentage
+        from sales s
+        left join promotions p
+        on s.promotion_id = p.promotion_id
         ```
 
-    7. The ratio between unpromoted sales and promoted sales
+    5. What percent of all products in the grocery chain's catalog are both low fat and recyclable? (4/17/2021) -> The promotion datatset
+
+        ```SQL
+        
+        select
+            round(avg(case when is_low_fat_flg = 1 and is_recyclable_flg = 1 then 1 else 0 end)*100, 2) percentage 
+        from products
+        ```
+
+    6. The ratio between unpromoted sales and promoted sales
 
         ```SQL
         ```
 
-    8. [Acceptance Rate By Date](https://platform.stratascratch.com/coding-question?id=10285&python=), why not case when? Because the you may wait for the 'accepted' on diffent days. So self join will be the solution.
+    7. [Acceptance Rate By Date](https://platform.stratascratch.com/coding-question?id=10285&python=), why not case when? Because the you may wait for the 'accepted' on diffent days. So self join will be the solution.
 
         ```SQL
         select
@@ -212,7 +233,7 @@
         group by 1
         ```
 
-    9. [Popularity of Hack](https://platform.stratascratch.com/coding-question?id=10061&python=)
+    8. [Popularity of Hack](https://platform.stratascratch.com/coding-question?id=10061&python=)
 
         ```SQL
         -- location, avg_popularity
@@ -225,7 +246,7 @@
         group by 1
         ```
 
-    10. [Search Ranking](https://www.interviewquery.com/questions/search-ranking):  Write a query to get the percentage of search queries where all of the ratings for the query results are less than a rating of 3. Please round your answer to two decimal points.
+    9. [Search Ranking](https://www.interviewquery.com/questions/search-ranking):  Write a query to get the percentage of search queries where all of the ratings for the query results are less than a rating of 3. Please round your answer to two decimal points.
 
         ```SQL
         WITH low_rating AS (

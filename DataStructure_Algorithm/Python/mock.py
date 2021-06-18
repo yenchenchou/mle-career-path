@@ -1,50 +1,50 @@
-"""
-Given an array, rotate the array to the right by k steps, where k is non-negative.
+# Input: nums = [1,12,3,0,0]
+                            i
+                        j
+# Output: [1,3,12,0,0]
+[1, 3, 12, 0, 0]
 
-Example 1:
-
-Input: nums = [1,2,3,4,5,6], k = 2
-[7, 6, 5, 4, 3, 2, 1]
-[5, 6, 7, 4, 3, 2, 1]
-[5, 6, 7, 1, 2, 3, 4]
-
-Output: [5,6,7,1,2,3,4]
-Explanation:
-rotate 1 steps to the right: [7,1,2,3,4,5,6]
-rotate 2 steps to the right: [6,7,1,2,3,4,5]
-rotate 3 steps to the right: [5,6,7,1,2,3,4]
-
-Example 2:
-
-Input: nums = [-1,-100,3,99], k = 2
-Output: [3,99,-1,-100]
-Explanation: 
-rotate 1 steps to the right: [99,-1,-100,3]
-rotate 2 steps to the right: [3,99,-1,-100]
-
-Constraints:
-    1 <= nums.length <= 105
-    0 <= k <= 100000
-"""
-
+# Input: nums = [0]
+# Output: [0]
 
 class Solution:
-    def rotate(self, nums: List[int], k: int) -> None:
+    def moveZeroes(self, nums: List[int]) -> None:
         """
         Do not return anything, modify nums in-place instead.
         """
-        # k = k % len(nums)
-        # for i in range(k):
-        #     tmp = nums[-1]
-        #     for j in range(0, len(nums)-1):
-        #         nums[len(nums) - 1 -j] = nums[len(nums) - 2 - j]
-        #     nums[0] = tmp
-        k = k % len(nums)
-        self.helper(nums, 0, len(nums)-1)
-        self.helper(nums, 0, k-1)
-        self.helper(nums, k, len(nums)-1)
+        j = 0
+        for i in range(len(nums)):
+            if num[i] != 0:
+                nums[j], nums[i] = nums[i], nums[j]
+                j += 1
 
-    def helper(self, nums, start, end):
-        while start < end:
-            nums[start], nums[end] = nums[end], nums[start]
-            start, end = start + 1, end - 1
+
+# Input: prices = [7,1,5,3,6,4]
+# Output: 5
+
+# Input: prices = [7,6,4,3,1]
+# Output: 0
+
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        max_diff = 0
+        for i in range(len(prices)-1):
+            for j in range(1, len(prices)):
+                diff = prices[j] - prices[i]
+                if max_diff < diff:
+                    max_diff = diff
+        return max_diff
+
+    
+
+# Input: nums = [-2,1,-3,4,-1,2,1,-5,4]
+[-2, 1, -2, 4,  ]
+# Output: 6
+# Explanation: [4,-1,2,1] has the largest sum = 6.
+
+# Input: nums = [5,4,-1,7,8]
+                [5,(9, 4), (8, -1), (15, 7), (23, 8)],
+# Output: 23
+
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:

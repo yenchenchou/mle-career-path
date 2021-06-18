@@ -127,8 +127,17 @@
 #### `EXISTS`
 
 1. Def: A boolean operator that tests for existence of rows in a subquery.
-2. The column name in the subquery is not important, the important things are the columns and conditions you want to check in the subquery
-3. [see detail](https://www.postgresqltutorial.com/postgresql-exists/)
+2. The column name in the subquery is not important, the important things are the columns and conditions you want to check in the subquery. So we often use `select * from where exists (select 1 from ...)`
+3. The EXISTS statement functions similarly to the IN statement except that it can be used to find rows where one or more columns from the query can be found in another data set, usually a subquery. Hard coding isn't an option with EXISTS.
+4. Both IN and EXISTS will ignore duplicate values in a subquery.
+5. [see detail](https://www.mssqltips.com/sqlservertip/6659/sql-exists-vs-in-vs-join-performance-comparison/)
+
+#### `IN`
+
+1. The `IN` statement can be used to find rows in a query where one column can be matched to a value in a list of values. The only downside is that they can only compare a single column from the subquery to a single column from the main query.
+2. **The list of values can be hard coded as a comma-separated list** or can come from a subquery as it does in this example.
+3. Both IN and EXISTS will ignore duplicate values in a subquery.
+4.[see detail](https://www.postgresqltutorial.com/postgresql-exists/)
 
 #### `SUBSTRING`(str FROM pos FOR len)
 
@@ -245,16 +254,6 @@ WITH provides a way to write auxiliary statements for use in a larger query. The
 #### Column naming
 
 1. If you insist to name your column such as `new column`, then use double qoute "new column"
-
-## SQL clause use case scenario and tips
-
-### When to use JOIN
-
-1. self join: table references data in itself.
-
-    - An `Employee` table that have `SupervisorID` column that points to the employee that is the boss of the current employee.
-
-    -
 
 ## 3. Tips for optimizing the databse
 

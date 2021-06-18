@@ -1,91 +1,54 @@
 /*
-Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
+Given an array of intervals where intervals[i] = [starti, endi], merge all overlapping intervals, 
+and return an array of the non-overlapping intervals that cover all the intervals in the input.
 
-Implement the MinStack class:
 
-MinStack() initializes the stack object.
-void push(val) pushes the element val onto the stack.
-void pop() removes the element on the top of the stack.
-int top() gets the top element of the stack.
-int getMin() retrieves the minimum element in the stack.
+Input: intervals = [[1,3],[2,6],[8,10],[15,18]]
+Output: [[1,6],[8,10],[15,18]]
+Explanation: Since intervals [1,3] and [2,6] overlaps, merge them into [1,6].
 
-Input
-["MinStack","push","push","push","getMin","pop","top","getMin"]
-[[],[-2],[0],[-3],[],[],[],[]]
 
-[-2, 0]
-# -3
-# pop() -3
-# 0
-# -2
+Input: intervals = [[1,4], [4,5], [0, 1]]
+Output: [[1,5]]
+Explanation: Intervals [1,4] and [4,5] are considered overlapping.
 
-Output
-[null,null,null,null,-3,null,0,-2]
-
-Explanation
-MinStack minStack = new MinStack();
-minStack.push(-2);
-minStack.push(0);
-minStack.push(-3);
-minStack.getMin(); // return -3
-minStack.pop();
-minStack.top();    // return 0
-minStack.getMin(); // return -2
 */
 
-
 /**
- * initialize your data structure here.
+ * @param {number[][]} intervals
+ * @return {number[][]}
  */
- var MinStack = function() {
-    this.stack = [];
-    this.minStack = [];
-};
-
-/** 
- * @param {number} val
- * @return {void}
- */
-MinStack.prototype.push = function(val) {
-
-    this.stack.push(val);
-
-    if(this.minStack.length === 0 || this.minStack[this.minStack.length - 1 ] > val){
-        this.minStack.push(val);
-    }
-};
-
-/**
- * @return {void}
- */
-MinStack.prototype.pop = function() {
-    const num = this.stack.pop();
+ var merge = function(intervals) {
     
-    if(this.minStack[this.minStack.length - 1 ]  === num){
-        this.minStack.pop();
+    let sortedIntervals = intervals.sort((a,b) => a[0] - b[0]);
+    let ans = [];
+
+    for(let i = 0; i < sortedIntervals.length; i++){
+        
+        if(i === 0){
+            ans.push(sortedIntervals[i]);
+            continue;
+        }
+
+        const first = ans[ans.length - 1];
+        const second = sortedIntervals[i];
+        const secondIntervalStart = second[0];
+        const secondIntervalEnd = second[1];
+        const firstIntervalStart = first[0];
+        const firstIntervalEnd = first[1];
+
+        if(secondIntervalStart <= firstIntervalEnd){
+            // ans.push([firstIntervalStart, secondIntervalEnd])
+            first[0] = firstIntervalStart;
+            first[1] = Math.max(firstIntervalEnd, secondIntervalEnd);
+        }
+        else{
+            // ans.push(first);
+            // ans.push(second);
+            // [1,4], [2,3]
+            ans.push(second);
+        }
     }
+
+    return ans;
 };
-
-/**
- * @return {number}
- */
-MinStack.prototype.top = function() {
-
-    return this.stack[this.stack.length - 1];
-};
-
-/**
- * @return {number}
- */
-MinStack.prototype.getMin = function() {
-    return this.minStack.length > 0 ? this.minStack[this.minStack.length - 1] : null;
-};
-
-/** 
- * Your MinStack object will be instantiated and called as such:
- * var obj = new MinStack()
- * obj.push(val)
- * obj.pop()
- * var param_3 = obj.top()
- * var param_4 = obj.getMin()
- */
