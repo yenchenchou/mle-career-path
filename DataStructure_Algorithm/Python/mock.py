@@ -1,50 +1,66 @@
-# Input: nums = [1,12,3,0,0]
-                            i
-                        j
-# Output: [1,3,12,0,0]
-[1, 3, 12, 0, 0]
+"""
+Give a binary string s, return the number of non-empty substrings that have the same number of 0's and 1's, and all the 0's and all the 1's in these substrings are grouped consecutively.
 
-# Input: nums = [0]
-# Output: [0]
+Substrings that occur multiple times are counted the number of times they occur.
 
-class Solution:
-    def moveZeroes(self, nums: List[int]) -> None:
-        """
-        Do not return anything, modify nums in-place instead.
-        """
-        j = 0
-        for i in range(len(nums)):
-            if num[i] != 0:
-                nums[j], nums[i] = nums[i], nums[j]
-                j += 1
+Example 1:
 
+Input: s = "00110011"
+Output: 6
+Explanation: There are 6 substrings that have equal number of consecutive 1's and 0's: "0011", "01", "1100", "10", "0011", and "01".
+Notice that some of these substrings repeat and are counted the number of times they occur.
+Also, "00110011" is not a valid substring because all the 0's (and 1's) are not grouped together.
 
-# Input: prices = [7,1,5,3,6,4]
-# Output: 5
+Example 2:
 
-# Input: prices = [7,6,4,3,1]
-# Output: 0
+Input: s = "10101"
+Output: 4
+Explanation: There are 4 substrings: "10", "01", "10", "01" that have equal number of consecutive 1's and 0's.
+
+Constraints:
+    1 <= s.length <= 105
+    s[i] is either '0' or '1'.
+"""
 
 class Solution:
-    def maxProfit(self, prices: List[int]) -> int:
-        max_diff = 0
-        for i in range(len(prices)-1):
-            for j in range(1, len(prices)):
-                diff = prices[j] - prices[i]
-                if max_diff < diff:
-                    max_diff = diff
-        return max_diff
+    def countBinarySubstrings(self, s: str) -> int:
+        chunk, con = [], 1
+        res = 0
+        for i in range(1, len(s)):
+            if s[i] == s[i-1]:
+                con += 1
+            else:
+                chunk.append(con)
+                con = 1
+        chunk.append(con)
+        for i in range(1, len(chunk)):
+            res += min(chunk[i], chunk[i-1])
+        return res
 
-    
+"""
+Given an integer n, return a string array answer (1-indexed) where:
 
-# Input: nums = [-2,1,-3,4,-1,2,1,-5,4]
-[-2, 1, -2, 4,  ]
-# Output: 6
-# Explanation: [4,-1,2,1] has the largest sum = 6.
+    answer[i] == "FizzBuzz" if i is divisible by 3 and 5.
+    answer[i] == "Fizz" if i is divisible by 3.
+    answer[i] == "Buzz" if i is divisible by 5.
+    answer[i] == i if non of the above conditions are true.
 
-# Input: nums = [5,4,-1,7,8]
-                [5,(9, 4), (8, -1), (15, 7), (23, 8)],
-# Output: 23
+Example 1:
+
+Input: n = 3
+Output: ["1","2","Fizz"]
+
+Example 2:
+
+Input: n = 5
+Output: ["1","2","Fizz","4","Buzz"]
+
+Example 3:
+
+Input: n = 15
+Output: ["1","2","Fizz","4","Buzz","Fizz","7","8","Fizz","Buzz","11","Fizz","13","14","FizzB"]
+"""
 
 class Solution:
-    def maxSubArray(self, nums: List[int]) -> int:
+    def fizzBuzz(self, n: int) -> List[str]:
+        pass
