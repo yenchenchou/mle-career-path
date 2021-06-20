@@ -118,7 +118,7 @@
 
         ```SQL
         -- use exists
-        select name
+        select c.name
         from customer c
         where exists (
             select 1

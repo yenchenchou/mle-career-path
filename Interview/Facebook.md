@@ -45,7 +45,7 @@
 
 - Python
     1. Replace None value with previous value present in a list.
-    (3/9/2021, 3/23/2021, 9/11/2021, 8/11/2020, 4/17/2021)
+    (3/9/2021, 3/23/2021, 8/11/2020, 4/17/2021, 8/27/2020)
 
         ```Python
         ls = [2, 3, None, 9], [None, 3, None, 9], [None, None, None, 9], [5,None,None, 1], [None]
@@ -89,10 +89,11 @@
         ```Python
         # use set
         def diff_words(a, b):
+            # return set(a.split()).symmetric_difference(set(b.split()))
             return set(a.split(" ")) ^ set(b.split(" "))
         ```
 
-    4. find s in missisipi -> Count Chars (8/11/2020, 4/17/2021)
+    4. find s in missisipi -> Count Chars (8/11/2020, 4/17/2021, 8/27/2020)
 
         ```Python
         from collections import Counter
@@ -108,9 +109,17 @@
             return dic[word]
 
         find_occur('missisipi', 's')
+
+
+        def find_occur(a='missisipi', b='s'):
+            cnt = 0
+            for val in a:
+                if val == b:
+                    cnt += 1
+            print(cnt)
         ```
 
-    5. Balance the array: Given an array with n elements provide a dictionary of all teh needed elements to balance the array as keys of that dictionary and number of repeated occurraences of each of those elements that are required to balance the given array as values. Balance array would be an array containing all elements that appear equal number of times
+    5. Balance the array: Given an array with n elements provide a dictionary of all teh needed elements to balance the array as keys of that dictionary and number of repeated occurraences of each of those elements that are required to balance the given array as values. Balance array would be an array containing all elements that appear equal number of times (8/27/2020)
 
     ```Python
     ls = [4, 5, 11, 5, 6, 11, 11]
@@ -123,7 +132,8 @@
             else:
                 dic[val] += 1
         # Then get max freq
-        maxFreq = sorted(dic.items(), key=lambda x: -x[1])[0][1]
+        # maxFreq = sorted(dic.items(), key=lambda x: -x[1])[0][1]
+        maxFreq = sorted(dic.items(), key=lambda x: x[1], reverse=True)[0][1]
         res = dict()
         for key, val in dic.items():
             if val < maxFreq:
@@ -134,6 +144,40 @@
     6. sliding window
 
     7. category里面有units sold和完全没有units sold的ratio
+
+    8. Complete a function that returns the smallest key(sorted in ascending order alphabetically) of the given input dictionary containing nth hgihest value dictionary: {'a': 1, 'b': 2, 'c': 100, 'd': 30}, n : 2 (2nd highest value) -> output: 'd'
+
+        ```Python
+        def top_kth(dic, n):
+            if len(dic) < n or n == 0: return None
+            ls = sorted(dic.items(), key=lambda x: (-x[1], x[0]))
+            while len(ls) > n:
+                ls.pop()
+                
+            print(ls[-1][0])
+
+        top_kth(dic, n)
+        ```
+
+    9. Average length in a string (3/23/2020)
+
+        ```python
+        ls = [['avc','abcd','a','bbcc'], [], [None]]
+
+        def func(t):
+            if not t or len(t) == 0: return 0
+            total = 0
+            for s in t:
+                if not s:
+                    total += 0
+                else:
+                    total += len(s)
+
+            return total / len(t) if total > 0 else 0
+
+        for t in ls:
+            print(func(t))
+        ```
 
 - Database
     1. Design ETL (12/21/2020)
@@ -149,7 +193,7 @@
     <!-- promotions [promotion_id, promotion_name, promotion_name, media_type, start_date, end_date] -->
     ```
 
-    1. Percentage (3/23/2021) -> The promotion datatset
+    1. top 5 media type (top 5 media type，这题是要看你的debug，最后要filter掉原来的multi media的channel，面试官会提示) (4/17/2021) -> The promotion datatset
     2. Find top 5 sales products having valid promotions (3/9/2020) -> The promotion datatset
 
         ```SQL
@@ -213,6 +257,15 @@
     6. The ratio between unpromoted sales and promoted sales
 
         ```SQL
+        select 
+        -- s.store_sales,
+        -- s.transaction_date,
+        -- p.start_date,
+        -- p.end_date
+        round(sum(case when s.transaction_date not between p.start_date and p.end_date then s.store_sales else 0 end)::decimal / sum(case when s.transaction_date between p.start_date and p.end_date then s.store_sales else 0 end)::decimal*100, 2) ratio
+        from sales s
+        left join promotions p
+        on s.promotion_id = p.promotion_id
         ```
 
     7. [Acceptance Rate By Date](https://platform.stratascratch.com/coding-question?id=10285&python=), why not case when? Because the you may wait for the 'accepted' on diffent days. So self join will be the solution.
@@ -266,6 +319,9 @@
             ON sr.query = lr.query
         ```
 
+    10. 有promotion的units和没有promotion的units 的ratio, 这里要用left join
+    11. category里面有units sold和完全没有units sold的ratio
+
 - Resource
   - [The Facebook Data Engineer Interview](https://towardsdatascience.com/the-facebook-data-engineer-interview-345235afaac0)
 
@@ -276,6 +332,13 @@ ETL：sql的难度没有很大，主要都是基础的join和计算，感觉如�
 data modeling：用star schema可以解，面试官可以会引导你想出需要的metrics和dimension之类的
 coding：之前也有担心过python coding，但是其实难度和phone screen差不多，也都是list和dictionary的一些基本loop之类的。地里可以在以前的面筋里面找到原题，如果没有信心的话可以找出来自己写写看，应该八九不离十
 BQ：其实也不知道BQ回答得到底如何，但是基本也都是常规的BQ问题，可以在准备的时候想想用什么例子之类的
+
+SQL：sales promotion product 的表。
+low fat和recyable的比例，记得换成float并且乘100
+top 5 media type，这题是要看你的debug，最后要filter掉原来的multi media的channel，面试官会提示
+sale在promotion第一天或者最后一天的比例，case when可以解
+有promotion的units和没有promotion的units 的ratio，这里要用left join
+做得太快还被加了一道SQL，最后没完全写出来就去做python了但是大致思路是对的，category里面有units sold和完全没有units sold的ratio
 
 ## Data Scientist
 
