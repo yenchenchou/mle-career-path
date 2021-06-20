@@ -53,6 +53,7 @@
 1. self join: table references data in itself.
 
     - An `Employee` table that have `SupervisorID` column that points to the employee that is the boss of the current employee.
+    - An social network table that has `user1` and `user2` and you want to know total number of users.
     - identify companies that received an investment from Great Britain following an investment from Japan.
 
         ```SQL
@@ -83,9 +84,18 @@
         order by 2     
         ```
 
+### When to use case when
+
+1. Getting percentage from a column that numerator has stricter condition and the denominator with the looser condition. Usually questions involve **ration/percentage** For exmaple:
+    - From the sales that had a valid promotion, what % of transactions/sales occur on either the very first day or the very last day of a promotion campaign.
+    - Percentage of valid promotion in sales
+    - You're given a table that contains search results. If the 'position' column represents the position of the search results, write a query to calculate the percentage of search results that were in the top 3 position.
+    - Write a query to calculate the percentage of search results, out of all the results, that were positioned in the top 3 and clicked by the user.
+    - What percent of all products in the grocery chain's catalog are both low fat and recyclable?
+
 ### When to use aggregation
 
-1. Without `group by`:
+1. Without `group by`: When only one output column, without addtional info from the aggregation.
     - get the max salary at 2020:
 
         ```SQL
@@ -94,7 +104,7 @@
         where year = 2020;
         ```
 
-    - What if you want the employee name with max salary at 2020: use subquery
+    - What if you want the employee name with max salary at 2020: use subquery, but usually you will just use group by
 
         ```SQL
         select name, salary 
@@ -161,6 +171,10 @@
         from user_views
         group by 1, 2
         ```
+
+### When to use Union or Union All
+
+1. When having table with two columns that having the same meaning. Usaully envolve with people. For example, companies like facebook will ask Most Active Users On Messenger with table name `user1`, a message sender and `user2`, a message receiver. To know the total communicate count, you need union all.
 
 ## Qestions by scenario
 

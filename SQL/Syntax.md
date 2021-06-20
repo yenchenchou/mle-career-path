@@ -177,8 +177,9 @@ Date time operations are tedious but essential. Usually, you will involve with t
                 - `date '2020-02-01'` == `cast('2020-02-01' as date)` == `'2020-02-01'::date`. Apply for `TIME`, `DATE`, `TOMESTAMP`, ,`TOMESTAMPTZ`..etc. [see more](https://www.postgresql.org/docs/9.5/functions-datetime.html) and [data type formatting](https://www.postgresql.org/docs/8.4/functions-formatting.html)
 
 2. Given date/datetime/timestamp, get the week, number of weeks..etc
+    - `EXTRACT(field FROM source)` or `DATE_PART(field FROM source)`
     - Examples:
-        - EXTRACT(field FROM source)
+        - `EXTRACT(field FROM source)` or `DATE_PART(field FROM source)`. The `field` includes: `year`, `month`, `day`, `hour`, `minute`, `second`, `isodow`,`week` ...etc.
         - `SELECT EXTRACT(YEAR/QUARTER/MONTH/DAY FROM TIMESTAMP '2016-12-31 13:30:15');`
         - `SELECT EXTRACT(DAY FROM INTERVAL '6 years 5 months 4 days 3 hours 2 minutes 1 second' )`;
         - `YEAR, MONTH, DAY, HOUR, MINUTE, SECOND, YEAR TO MONTH, DAY TO HOUR, DAY TO MINUTE, DAY TO SECOND, HOUR TO MINUTE, HOUR TO SECOND, MINUTE TO SECOND`
@@ -194,7 +195,9 @@ Date time operations are tedious but essential. Usually, you will involve with t
         - `timestamp` - `timestamp` -> interval '1 day 15:00:00' (days as unit)
         - [see more](https://www.postgresql.org/docs/9.5/functions-datetime.html)
 
-4. `timestamp` vs timestamptz`: the difference between them is timestamptz includes time zone and support automatic time zone change according to your database server location.`timestamptz` use UTC by default. [See detail](https://www.postgresqltutorial.com/postgresql-timestamp/)
+4. `timestamp` vs `timestamptz`: the difference between them is timestamptz includes time zone and support automatic time zone change according to your database server location.`timestamptz` use UTC by default. [See detail](https://www.postgresqltutorial.com/postgresql-timestamp/)
+
+5. Get date/time/hour/minute/second from interval
 
 #### Subquery
 
