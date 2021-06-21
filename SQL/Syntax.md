@@ -168,13 +168,18 @@ Date time operations are tedious but essential. Usually, you will involve with t
 
 1. Convert different string to date/datetime/timestamp
     - common date/time functions, [see more](https://www.postgresql.org/docs/9.5/functions-datetime.html)
-    - examples
+        - Custom convert: need to declare a proper format
+            - `TO_DATE(string, format)`
+            - `TO_TIME`
+            - `TO_DATETIME`
+            - `TO_TIMESTAMP`
+            - `TO_TIMESTAMPTZ`
+        - Lazy convert, does not cover all but faster. No need to decalre the format. Recognize the following format 'YYYY-MM-DD', 'YYYY/MM/DD', and 'MM/DD/YYYY'
+            - DATE 'YYYY-MM-DD' == 'YYYY-MM-DD'::DATE == cast(YYYY-MM-DD as DATE)
+                - Apply for `TIME`, `DATE`, `TOMESTAMP`, ,`TOMESTAMPTZ`..etc. [see more](https://www.postgresql.org/docs/9.5/functions-datetime.html) and [data type formatting](https://www.postgresql.org/docs/8.4/functions-formatting.html)
+        - Another one
+            - `make_date`, `make_timestamp`, `make_time`, `make_timestamptz` -> `2013-07-15 08:15:23.5+01 (make_timestamptz)`/`2013-07-15 08:15:23.5 (make_timestamp)`
         - current time: `current_time`, `current_date`, `current_timestamp` == `now()`, `localtime`, `localtimestamp`
-        -convert
-            - type one: `make_date`, `make_timestamp`, `make_time`, `make_timestamptz` -> `2013-07-15 08:15:23.5+01 (make_timestamptz)`/`2013-07-15 08:15:23.5 (make_timestamp)`
-            - type two:
-                - `cast('2020-02-01 15:10:10' as timestamp)`
-                - `date '2020-02-01'` == `cast('2020-02-01' as date)` == `'2020-02-01'::date`. Apply for `TIME`, `DATE`, `TOMESTAMP`, ,`TOMESTAMPTZ`..etc. [see more](https://www.postgresql.org/docs/9.5/functions-datetime.html) and [data type formatting](https://www.postgresql.org/docs/8.4/functions-formatting.html)
 
 2. Given date/datetime/timestamp, get the week, number of weeks..etc
     - `EXTRACT(field FROM source)` or `DATE_PART(field FROM source)`
@@ -208,7 +213,7 @@ Subquery can be used in different ways, using subquery behid `FROM` is most comm
 3. Joining subqueries
 4. Subqueries and Uninion
 
-#### `Window function`
+#### `Window function (Common table expression (CTE))`
 
 1. **A window function performs a calculation across a set of table rows that are somehow related to the current row**.
 This is comparable to the type of calculation that can be done with an aggregate function. But unlike regular
@@ -249,6 +254,40 @@ current row of the query result. Adding `OVER` designates it as a window functio
 
    1. [mode](https://mode.com/sql-tutorial/sql-window-functions/#ntile)
    2. [official website](https://www.postgresql.org/docs/9.1/tutorial-window.html)
+
+#### Value expression
+
+Value expressions are used in a variety of contexts, such as in the target list of the SELECT command, as new column values in INSERT or UPDATE, or in search conditions in a number of commands. The result of a value expression is sometimes called a scalar, to distinguish it from the result of a table expression.
+
+1. Use case with CTE, such as moving average. We could write that clause like this: `ROWS BETWEEN 30 PRECEDING AND 1 PRECEDING`. Similarly, we can exclude the current row, but do 30 rows following like this: `ROWS BETWEEN 1 FOLLOWING AND 30 FOLLOWING`.
+
+    ```SQL
+    -- monthly moving average (30 days)
+    select 
+        avg(column) over(order by column rows between 29 preceding and current row)
+    from tableX
+    ```
+
+2. cummulated moving average:
+
+    ```SQL
+    SELECT ad.date,  
+       AVG(ad.downloads)
+            OVER(ORDER BY ad.date ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS avg_downloads_ytd
+
+    FROM app_downloads_by_date ad  
+    ```
+
+3. Comparison
+
+    ```SQL
+    SELECT
+    first_funding_at,
+    funding_total_usd,
+    sum(funding_total_usd) over(order by to_date(first_funding_at, 'MM/DD/YY') rows between 3 preceding and current row),
+    sum(funding_total_usd) over(order by to_date(first_funding_at, 'MM/DD/YY') rows between unbounded preceding and current row),
+    from tutorial.crunchbase_companies;
+    ```
 
 #### `WITH`
 
