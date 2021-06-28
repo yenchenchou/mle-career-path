@@ -88,6 +88,27 @@
     - Cons
         - Collision errors require full overhaul of hash function
 
+## Python zip
+
+O(1) to convert to zip. the `zip(* iterable)` where `*` is a unpack method. zip with omit the values
+
+- You can call zip() with no arguments as well.
+
+    ```Python
+    zipped = zip() -> []
+    ```
+
+- Python’s zip() function can take just one argument as well. The result will be an iterator that yields a series of 1-item tuples:
+
+    ```python
+    a = [1, 2, 3]
+    zipped = zip(a)
+    list(zipped)
+    # [(1,), (2,), (3,)]
+    ```
+
+- Passing Arguments of Unequal Length: In these cases, the number of elements that zip() puts out will be equal to the length of the shortest iterable. [see more](https://realpython.com/python-zip-function/#passing-no-arguments)
+
 ## Common questions
 
 1. [Top 100 Python Interview Questions You Must Prepare In 2021](https://www.edureka.co/blog/interview-questions/python-interview-questions/#WhatisthedifferencebetweenlistandtuplesinPython?)

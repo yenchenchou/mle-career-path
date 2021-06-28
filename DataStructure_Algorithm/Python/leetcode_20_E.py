@@ -35,3 +35,18 @@ class Solution:
             else:
                 stack.pop()
         return not stack
+
+# Solution3: my try
+class Solution:
+    def isValid(self, s: str) -> bool:
+        mapper = {"[": "]", "(": ")", "{": "}"}
+        stack = []
+        for val in s:
+            if val in mapper:
+                stack.append(val)
+            else:
+                if not stack or mapper[stack[-1]] != val:
+                    return False
+                else:
+                    stack.pop()
+        return not stack

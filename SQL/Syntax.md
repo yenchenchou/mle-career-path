@@ -31,6 +31,20 @@
     ```
 
 4. `COUNT(DISTINCT var)`: this is helpful when duplicates matters, such as count unique month. There will be 12 months at maximum.
+5. `aggregation` can't be used in `where` clause. (This restriction exists because the WHERE clause determines which rows will be included in the aggregate calculation; so obviously it has to be evaluated before aggregate functions are computed.) However, as is often the case the query can be restated to accomplish the desired result, here by using a subquery)
+6. We can filter these grouped rows using `HAVING`
+7. Summary of aggregation functions
+    - Just get aggregation, such as `max`, `sum`...etc
+    - Work with group by
+    - Use in having
+
+        ```SQL
+        SELECT city, max(temp_lo)
+        FROM weather
+        WHERE city like 'P%'
+        GROUP BY city
+        HAVING min(temp_lo) < 0;
+        ```
 
 #### Comparison Operators
 
@@ -61,7 +75,7 @@
 1. When making joins, if you have duplicates on either one table, the duplicate result is going to carry over to your joined result if matched.
 2. [SQL Joins Using WHERE or ON](https://mode.com/sql-tutorial/sql-joins-where-vs-on/). Usually you will use `WHERE` after the tables are joined. Also, only when you are using inner will the result between these two the same. This problem will be easily found when you have joining keys with different name. Details in link.
 3. Join on multiple keys
-4. Self joins
+4. Self joins: comparing on the same column
 5. Questions:
     - self join
         - when idetify columns where you need to compare some columns that need to be compare, for example identify companies that received an investment from Great Britain following an investment from Japan.
@@ -184,25 +198,31 @@ Date time operations are tedious but essential. Usually, you will involve with t
 
 1. Convert different string to date/datetime/timestamp
     - common date/time functions, [see more](https://www.postgresql.org/docs/9.5/functions-datetime.html)
-    - examples
+        - Custom convert: need to declare a proper format
+            - `TO_DATE(string, format)`
+            - `TO_TIME`
+            - `TO_DATETIME`
+            - `TO_TIMESTAMP`
+            - `TO_TIMESTAMPTZ`
+        - Lazy convert, does not cover all but faster. No need to decalre the format. Recognize the following format 'YYYY-MM-DD', 'YYYY/MM/DD', and 'MM/DD/YYYY'
+            - DATE 'YYYY-MM-DD' == 'YYYY-MM-DD'::DATE == cast(YYYY-MM-DD as DATE)
+                - Apply for `TIME`, `DATE`, `TOMESTAMP`, ,`TOMESTAMPTZ`..etc. [see more](https://www.postgresql.org/docs/9.5/functions-datetime.html) and [data type formatting](https://www.postgresql.org/docs/8.4/functions-formatting.html)
+        - Another one
+            - `make_date`, `make_timestamp`, `make_time`, `make_timestamptz` -> `2013-07-15 08:15:23.5+01 (make_timestamptz)`/`2013-07-15 08:15:23.5 (make_timestamp)`
         - current time: `current_time`, `current_date`, `current_timestamp` == `now()`, `localtime`, `localtimestamp`
-        -convert
-            - type one: `make_date`, `make_timestamp`, `make_time`, `make_timestamptz` -> `2013-07-15 08:15:23.5+01 (make_timestamptz)`/`2013-07-15 08:15:23.5 (make_timestamp)`
-            - type two:
-                - `cast('2020-02-01 15:10:10' as timestamp)`
-                - `date '2020-02-01'` == `cast('2020-02-01' as date)` == `'2020-02-01'::date`. Apply for `TIME`, `DATE`, `TOMESTAMP`, ,`TOMESTAMPTZ`..etc. [see more](https://www.postgresql.org/docs/9.5/functions-datetime.html) and [data type formatting](https://www.postgresql.org/docs/8.4/functions-formatting.html)
 
 2. Given date/datetime/timestamp, get the week, number of weeks..etc
+    - `EXTRACT(field FROM source)` or `DATE_PART(field FROM source)`
     - Examples:
-        - EXTRACT(field FROM source)
+        - `EXTRACT(field FROM source)` or `DATE_PART(field FROM source)`. The `field` includes: `year`, `month`, `day`, `hour`, `minute`, `second`, `isodow`,`week` ...etc.
         - `SELECT EXTRACT(YEAR/QUARTER/MONTH/DAY FROM TIMESTAMP '2016-12-31 13:30:15');`
         - `SELECT EXTRACT(DAY FROM INTERVAL '6 years 5 months 4 days 3 hours 2 minutes 1 second' )`;
         - `YEAR, MONTH, DAY, HOUR, MINUTE, SECOND, YEAR TO MONTH, DAY TO HOUR, DAY TO MINUTE, DAY TO SECOND, HOUR TO MINUTE, HOUR TO SECOND, MINUTE TO SECOND`
         - [see more](https://www.postgresqltutorial.com/postgresql-extract/)
 
-3. Given date/datetime/timestamp, calculate the interval
+3. Given date/datetime/timestamp, calculate the interval, or **Given time/timestamp/date add/minus with time interval**
     - Examples:
-        - `date '2001-09-28' + integer '7'` -> date '2001-10-05'
+        - `date '2001-09-28' + integer '7'` =  date '2001-09-28' + 7 = date '2001-09-28' + integer '7 days'`. (note that Mysql doesn't not support date '2001-09-28' + 7)
         - `date '2001-09-28' + interval '1 hour'` -> timestamp '2001-09-28 01:00:00'
         - `timestamp '2001-09-28 01:00' + interval '23 hours'` -> timestamp '2001-09-29 00:00:00'
         - `21 * interval '1 day'` -> interval '21 days'
@@ -210,7 +230,9 @@ Date time operations are tedious but essential. Usually, you will involve with t
         - `timestamp` - `timestamp` -> interval '1 day 15:00:00' (days as unit)
         - [see more](https://www.postgresql.org/docs/9.5/functions-datetime.html)
 
-4. `timestamp` vs timestamptz`: the difference between them is timestamptz includes time zone and support automatic time zone change according to your database server location.`timestamptz` use UTC by default. [See detail](https://www.postgresqltutorial.com/postgresql-timestamp/)
+4. `timestamp` vs `timestamptz`: the difference between them is timestamptz includes time zone and support automatic time zone change according to your database server location.`timestamptz` use UTC by default. [See detail](https://www.postgresqltutorial.com/postgresql-timestamp/)
+
+5. Get date/time/hour/minute/second from interval
 
 #### Subquery
 
@@ -221,7 +243,7 @@ Subquery can be used in different ways, using subquery behid `FROM` is most comm
 3. Joining subqueries
 4. Subqueries and Uninion
 
-#### `Window function`
+#### `Window function (Common table expression (CTE))`
 
 1. **A window function performs a calculation across a set of table rows that are somehow related to the current row**.
 This is comparable to the type of calculation that can be done with an aggregate function. But unlike regular
@@ -263,6 +285,40 @@ current row of the query result. Adding `OVER` designates it as a window functio
    1. [mode](https://mode.com/sql-tutorial/sql-window-functions/#ntile)
    2. [official website](https://www.postgresql.org/docs/9.1/tutorial-window.html)
 
+#### Value expression
+
+Value expressions are used in a variety of contexts, such as in the target list of the SELECT command, as new column values in INSERT or UPDATE, or in search conditions in a number of commands. The result of a value expression is sometimes called a scalar, to distinguish it from the result of a table expression.
+
+1. Use case with CTE, such as moving average. We could write that clause like this: `ROWS BETWEEN 30 PRECEDING AND 1 PRECEDING`. Similarly, we can exclude the current row, but do 30 rows following like this: `ROWS BETWEEN 1 FOLLOWING AND 30 FOLLOWING`.
+
+    ```SQL
+    -- monthly moving average (30 days)
+    select 
+        avg(column) over(order by column rows between 29 preceding and current row)
+    from tableX
+    ```
+
+2. cummulated moving average:
+
+    ```SQL
+    SELECT ad.date,  
+       AVG(ad.downloads)
+            OVER(ORDER BY ad.date ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS avg_downloads_ytd
+
+    FROM app_downloads_by_date ad  
+    ```
+
+3. Comparison
+
+    ```SQL
+    SELECT
+    first_funding_at,
+    funding_total_usd,
+    sum(funding_total_usd) over(order by to_date(first_funding_at, 'MM/DD/YY') rows between 3 preceding and current row),
+    sum(funding_total_usd) over(order by to_date(first_funding_at, 'MM/DD/YY') rows between unbounded preceding and current row),
+    from tutorial.crunchbase_companies;
+    ```
+
 #### `WITH`
 
 WITH provides a way to write auxiliary statements for use in a larger query. These statements, which are often referred to as Common Table Expressions or CTEs, can be thought of as defining temporary tables that exist just for one query.
@@ -280,6 +336,10 @@ WITH provides a way to write auxiliary statements for use in a larger query. The
 
     -
 
-## 4. Resource
+## 4. Notes between different db
+
+1. Boolean: mysql has not boolean type, instead it uses tint int where 1=true and 0=false. so it is acceptable to use `aggregation + boolean`. While Postgres has boolean, which means you need to do `avg(case when)` to reach the above same result
+
+## 5. Resource
 
 1. [Mode Analytics](https://mode.com/sql-tutorial/)
