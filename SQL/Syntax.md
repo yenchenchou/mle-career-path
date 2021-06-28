@@ -161,6 +161,22 @@ There are many string related functions for data cleaning
 - `POSITION` and `STRPOS`
 - `CONCAT` / `||`
 - `COALESCE`: The COALESCE function returns the first of its arguments that is not null. Null is returned only if all arguments are null. It is often used to substitute a default value for null values when data is retrieved for display, for example:
+  - Example 1
+
+    ```SQL
+    SELECT
+        COALESCE (NULL, 2 , 1); -> return 2
+    ```
+
+  - Example2
+
+    ```SQL
+    SELECT
+        product,
+        (price - COALESCE(discount,0)) AS net_price
+    FROM
+        items;
+    ```
 
 #### `Date/Time Functions`
 
@@ -212,12 +228,12 @@ This is comparable to the type of calculation that can be done with an aggregate
 aggregate functions, use of a **window function does not cause rows to become grouped into a single output row — the
 rows retain their separate identities(it works on the rows of the window frame rather than whole partition)**. Behind the scenes, the window function is able to access more than just the
 current row of the query result. Adding `OVER` designates it as a window function Common combination: `SUM, AVG, COUNT, ROW_NUMER, RANK, DENSERANK, NTILE, LAG, LEAD`. [See more](https://mode.com/sql-tutorial/sql-window-functions/#the-usual-suspects-sum-count-and-avg)
-    - SUM, AVG, COUNT: if the rows from `order by` hold the same value, then they will get the same value
-    - ROW_NUMER
-    - RANK: also affected by `order by`, ties are assigned if same ranked but will skip the next rank.
-    - DESNE_RANK: also affected by `order by`, ties are assigned if same ranked but **will not** skip the next rank.
-    - NTILE(integer)
-    - LEAD(colum, integer), LAG(column, integer): will cause NULL if no previous/end of the row. You may take window function aprt as subquery and use the outer query to filter out the NULLs.
+    - `SUM(column)`, `AVG(column)`, `COUNT(column)`: if the rows from `order by` hold the same value, then they will get the same value
+    - `ROW_NUMER()`
+    - `RANK()`: also affected by `order by`, ties are assigned if same ranked but will skip the next rank.
+    - `DESNE_RANK()`: also affected by `order by`, ties are assigned if same ranked but **will not** skip the next rank.
+    - `NTILE(integer)`
+    - `LEAD(colum, integer)`, `LAG(column, integer)`: will cause NULL if no previous/end of the row. You may take window function aprt as subquery and use the outer query to filter out the NULLs.
 
     ```SQL
     SELECT *
