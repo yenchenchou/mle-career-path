@@ -4,6 +4,8 @@
 
 ---
 
+### [Kubernetes Architecture](https://doc.clickup.com/p/h/81y26-21/b5244c4b291d9ea)
+
 ### Kubernetes Components
 
 ![k8simage](https://d33wubrfki0l68.cloudfront.net/2475489eaf20163ec0f54ddc1d92aa8d4c87c96b/e7c81/images/docs/components-of-kubernetes.svg)
@@ -27,6 +29,32 @@ def: persistent entities in the Kubernetes system. Kubernetes uses these entitie
 
 - Kubernetes supports multiple virtual clusters backed by the same physical cluster. These virtual clusters are called namespaces.
 - Most Kubernetes resources (e.g. pods, services, replication controllers, and others) are in some namespaces. However namespace resources are not themselves in a namespace. And low-level resources, such as nodes and persistentVolumes, are not in any namespace.
+
+#### Labels and Selectors
+
+Labels are key/value paiar that identify attributes of objects that are meaningful and relevant to users. Unlike names and UIDs, labels do not provide uniqueness. Via a label selector, the client/user can identify a set of objects. Labels is a **identifying** metadata that will actually point to objects.
+
+#### [Annotations](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/)
+
+You can use Kubernetes annotations to attach arbitrary non-identifying metadata to objects. Labels can be used to select objects and to find collections of objects that satisfy certain conditions. In contrast, annotations are not used to identify and select objects.
+
+Here are some examples of information that could be recorded in annotations:
+
+- Fields managed by a declarative configuration layer. Attaching these fields as annotations distinguishes them from default values set by clients or servers, and from auto-generated fields and fields set by auto-sizing or auto-scaling systems.
+
+- Build, release, or image information like timestamps, release IDs, git branch, PR numbers, image hashes, and registry address.
+
+- Pointers to logging, monitoring, analytics, or audit repositories.
+
+- Client library or tool information that can be used for debugging purposes: for example, name, version, and build information.
+
+- User or tool/system provenance information, such as URLs of related objects from other ecosystem components.
+
+- Lightweight rollout tool metadata: for example, config or checkpoints.
+
+- Phone or pager numbers of persons responsible, or directory entries that specify where that information can be found, such as a team web site.
+
+- Directives from the end-user to the implementations to modify behavior or engage non-standard features.
 
 ## Cluster Architecture
 
