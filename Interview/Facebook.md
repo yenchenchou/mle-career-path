@@ -60,13 +60,19 @@
             print(ls)
 
         # Avanced, fill the None by previous value, if not, use the later value
-        start = next(ele for ele in a if ele is not None)
-        for ind, ele in enumerate(a):
-            if ele is None:
-                a[ind] = start
+        if not string or len(string) == 1: return string
+        for val in string:
+            if val:
+                start = val
+                break
+
+        for ind, ele in enumerate(string):
+            if not ele:
+                string[ind] = start
             else:
                 start = ele
-        print(a)
+            
+        return string
         ```
 
     2. Given a dictionary, print the key for nth highest value present in the dict.(4/17/2021)
@@ -77,8 +83,17 @@
         n = 2
 
         def solver(dic, n):
-            vals = sorted(dic.items(), key=lambda x: x[1], reverse=True)
-            return vals[n-1][0]
+            
+            dic = sorted(dic.items(), key=lambda x: (-x[1], x[0]))
+            if len(dic) == 1: return [dic[0][0]]
+            res = [dic[0][0]]
+            maxNum = dic[0][1]
+            for key, val in dic[1:]:
+                if val == maxNum:
+                    res.append(val)
+            return res
+            # vals = sorted(dic.items(), key=lambda x: x[1], reverse=True)
+            #return vals[n-1][0]
 
         # Advanced
         # Please refer to 347. Top K Frequent Elements
@@ -89,8 +104,18 @@
         ```Python
         # use set
         def diff_words(a, b):
-            # return set(a.split()).symmetric_difference(set(b.split()))
-            return set(a.split(" ")) ^ set(b.split(" "))
+
+            if not a and not b:
+                return []
+            elif not a or not b:
+                return a.split() if a else b.split()
+            else:
+                return list(set(a.split(" ")) ^ set(b.split(" ")))
+                # return list(set(a.split(" ")).symmetric_difference(set(b.split(" "))))
+        # symmetric_difference
+        print(diff_words("HOW ARE you", "How are you"))
+        print(diff_words("HOW ARE you", ""))
+        print(diff_words("", ""))
         ```
 
     4. find s in missisipi -> Count Chars (8/11/2020, 4/17/2021, 8/27/2020)
@@ -100,6 +125,7 @@
         def find_occur(input_val, word):
         #     cnt = Counter(input_val)
         #     print(cnt[word])
+            if not input_val: return 0
             dic = {}
             for char in input_val:
                 if char not in dic:
@@ -112,6 +138,7 @@
 
 
         def find_occur(a='missisipi', b='s'):
+            if not a: return 0
             cnt = 0
             for val in a:
                 if val == b:
@@ -121,45 +148,45 @@
 
     5. Balance the array: Given an array with n elements provide a dictionary of all teh needed elements to balance the array as keys of that dictionary and number of repeated occurraences of each of those elements that are required to balance the given array as values. Balance array would be an array containing all elements that appear equal number of times (8/27/2020)
 
-    ```Python
-    ls = [4, 5, 11, 5, 6, 11, 11]
-    def findBalance(ls):
-        if not ls: return ls
-        dic = {}
-        for val in ls:
-            if val not in dic:
-                dic[val] = 1
-            else:
-                dic[val] += 1
-        # Then get max freq
-        # maxFreq = sorted(dic.items(), key=lambda x: -x[1])[0][1]
-        maxFreq = sorted(dic.items(), key=lambda x: x[1], reverse=True)[0][1]
-        res = dict()
-        for key, val in dic.items():
-            if val < maxFreq:
-                res[key] = maxFreq - val
-        return res
-    ```
-
-    6. sliding window
-
-    7. category里面有units sold和完全没有units sold的ratio
-
-    8. Complete a function that returns the smallest key(sorted in ascending order alphabetically) of the given input dictionary containing nth hgihest value dictionary: {'a': 1, 'b': 2, 'c': 100, 'd': 30}, n : 2 (2nd highest value) -> output: 'd'
-
         ```Python
-        def top_kth(dic, n):
-            if len(dic) < n or n == 0: return None
-            ls = sorted(dic.items(), key=lambda x: (-x[1], x[0]))
-            while len(ls) > n:
-                ls.pop()
-                
-            print(ls[-1][0])
+        from collections import Counter
+        ls = [4, 5, 11, 5, 6, 11, 11]
+        def findBalance(ls):
+            if not ls: return ls
 
-        top_kth(dic, n)
+            dic = {}
+            for val in ls:
+                if val not in dic:
+                    dic[val] = 1
+                else:
+                    dic[val] += 1
+            # Then get max freq
+            # maxFreq = sorted(dic.items(), key=lambda x: -x[1])[0][1]
+            maxFreq = sorted(dic.items(), key=lambda x: x[1], reverse=True)[0][1]
+            res = dict()
+            for key, val in dic.items():
+                if val < maxFreq:
+                    res[key] = maxFreq - val
+            return res
         ```
 
-    9. Average length in a string (3/23/2020)
+    6. Complete a function that returns the smallest key(sorted in ascending order alphabetically) of the given input dictionary containing nth highest value dictionary: {'a': 1, 'b': 2, 'c': 100, 'd': 30}, n : 2 (2nd highest value) -> output: 'd'
+
+        ```Python
+        class Solution:
+            def minK(self, dic, n):
+                if not dic or len(dic) < n: return None
+                dic = sorted(dic.items(), key=lambda x: (-x[1], x[0]))
+                return dic[n-1][0]
+
+        sol = Solution()
+        print(sol.minK({'a': 1, 'b': 2, 'c': 100, 'd': 30}, 2))
+        print(sol.minK({'a': 1, 'b': 2, 'c': 2, 'd': 30}, 2))
+        print(sol.minK({'a': 1}, 2))
+        print(sol.minK({'a': 1, "b":4}, 3))
+        ```
+
+    7. Average length in a string (3/23/2020)
 
         ```python
         ls = [['avc','abcd','a','bbcc'], [], [None]]
@@ -179,18 +206,90 @@
             print(func(t))
         ```
 
+    8. Find string with most frequent (04/11/2020)
+
+        ```Python
+        from collections import Counter
+        class Solution:
+            def mostFreq(self, string):
+                
+                
+                # By alphabical order
+                if not string: return ""
+                dic = {}
+                for val in string:
+                    if val not in dic:
+                        dic[val] = 1
+                    else:
+                        dic[val] += 1
+                dic = sorted(dic.items(), key=lambda x: (-x[1], x[0]))
+                return dic[0][0]
+            
+                # Any 
+                return Counter(string).most_common(1)[0][0] if string else None
+                
+                # print if most counts are equal
+                if not string: return []
+                dic = {}
+                for val in string:
+                    if val not in dic:
+                        dic[val] = 1
+                    else:
+                        dic[val] += 1
+                    
+                dic = sorted(dic.items(), key=lambda x: (-x[1], x[0]))
+                maxNum = dic[0][1]
+                res = [dic[0][0]]
+                for key, val in dic[1:]:
+                    if val == maxNum:
+                        res.append(key)
+                return res
+            
+        sol = Solution()
+        print(sol.mostFreq("iiiiiiintel"))
+        print(sol.mostFreq("i"))
+        print(sol.mostFreq("ii"))
+        print(sol.mostFreq(""))
+        print(sol.mostFreq("ssddaa"))
+        ```
+
+    9. Return Boolean of IP the first component of the IP address contains 255 (04/11/2020)
+
+        ```Python
+        # Return Boolean of IP the first component of the IP address contains 255
+        class Solution:
+            def validIP(self, string):
+                # Sol1
+                return string.startswith("225") if string else False
+
+                # Sol2
+                return string.split(".")[0] == "225" if string else False
+
+                
+                
+        sol = Solution()
+        print(sol.validIP("225.23.12.41"))
+        print(sol.validIP("25.23.12.41"))
+        print(sol.validIP("222.23.123.41"))
+        print(sol.validIP(""))
+        ```
+
+    10. sliding window
+        - 219 Contains Duplicate II
+        - 643 Maximum Average Subarray I
+
 - Database
     1. Design ETL (12/21/2020)
     2. Data modeling (12/21/2020, 11/15/2020)
 
 - SQL
 
-    ```
+    ```sql
     # The promotion datatset
 
-    <!-- sales [product_id, customer_id, promotion_id, store_sales, transaction_date] -->
-    <!-- products [product_id, product_class_id, product_name, is_low_fat_flg,  is_recyclable_flg] -->
-    <!-- promotions [promotion_id, promotion_name, promotion_name, media_type, start_date, end_date] -->
+    -- sales [product_id, customer_id, promotion_id, store_sales, transaction_date]
+    -- products [product_id, product_class_id, product_name, is_low_fat_flg,  is_recyclable_flg]
+    -- promotions [promotion_id, promotion_name, promotion_name, media_type, start_date, end_date]
     ```
 
     1. top 5 media type (top 5 media type，这题是要看你的debug，最后要filter掉原来的multi media的channel，面试官会提示) (4/17/2021) -> The promotion datatset
@@ -319,8 +418,15 @@
             ON sr.query = lr.query
         ```
 
-    10. 有promotion的units和没有promotion的units 的ratio, 这里要用left join
-    11. category里面有units sold和完全没有units sold的ratio
+    10. the (sales ratio, transaction ratio, and product)ratio between promotion units and non promotion (left join)
+
+        ```sql
+
+        ```
+
+    11. Get the ratio of solf units and non-sold units from every product categories.
+    12. Top 5 (transaction/sales) single-channel media type (用like) -> (promotion table)
+    13. Calculate average message amount by each country on each day from the users.
 
 - Resource
   - [The Facebook Data Engineer Interview](https://towardsdatascience.com/the-facebook-data-engineer-interview-345235afaac0)
@@ -339,6 +445,9 @@ top 5 media type，这题是要看你的debug，最后要filter掉原来的multi
 sale在promotion第一天或者最后一天的比例，case when可以解
 有promotion的units和没有promotion的units 的ratio，这里要用left join
 做得太快还被加了一道SQL，最后没完全写出来就去做python了但是大致思路是对的，category里面有units sold和完全没有units sold的ratio
+
+sql : 三张表 people ( pid, companyid, pname..), company(cid, loc_id, cname...) , location(loc_id, lname..)
+找出company最多的location， 该location对应的company里的people， 返回 people name， company name
 
 ## Data Scientist
 

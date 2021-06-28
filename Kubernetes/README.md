@@ -1,8 +1,38 @@
 # Kubernetes Note
 
+## Overview
+
+---
+
+### Kubernetes Components
+
+![k8simage](https://d33wubrfki0l68.cloudfront.net/2475489eaf20163ec0f54ddc1d92aa8d4c87c96b/e7c81/images/docs/components-of-kubernetes.svg)
+
+### Kubernetes Objects
+
+def: persistent entities in the Kubernetes system. Kubernetes uses these entities to represent the state of your cluster. Usually we use `.yaml` to contorl the objects, which including:
+
+- What containerized applications are running (and on which nodes)
+- The resources available to those applications
+- The policies around how those applications behave, such as restart policies, upgrades, and fault-tolerance
+
+#### Reauire Fields in each objects / taml files
+
+- `apiVersion` - Which version of the Kubernetes API you're using to create this object
+- `kind` - What kind of object you want to create
+- `metadata` - Data that helps uniquely identify the object, including a name string, UID, and optional namespace
+- `spec` - What state you desire for the object
+
+#### namespace
+
+- Kubernetes supports multiple virtual clusters backed by the same physical cluster. These virtual clusters are called namespaces.
+- Most Kubernetes resources (e.g. pods, services, replication controllers, and others) are in some namespaces. However namespace resources are not themselves in a namespace. And low-level resources, such as nodes and persistentVolumes, are not in any namespace.
+
+## Cluster Architecture
+
 ## Workload Resource
 
-### Deployment
+### [Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
 
 ```Yaml
 apiVersion: apps/v1
@@ -10,6 +40,7 @@ kind: Deployment
 metadata:
   # A Deployment named nginx-deployment
   name: nginx-deployment
+  # select a label called app: ngnix that is defined in the pod template
   labels:
     app: nginx
 spec:
@@ -22,6 +53,7 @@ spec:
     metadata:
       labels:
         app: nginx
+    # The Pod template's specification
     spec:
       containers:
       - name: nginx

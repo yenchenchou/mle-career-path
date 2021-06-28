@@ -1,54 +1,31 @@
 /*
-Given an array of intervals where intervals[i] = [starti, endi], merge all overlapping intervals, 
-and return an array of the non-overlapping intervals that cover all the intervals in the input.
+Given an array of points where points[i] = [xi, yi] represents a point on the X-Y plane and an integer k, 
+return the k closest points to the origin (0, 0).
 
+The distance between two points on the X-Y plane is the Euclidean distance (i.e., √(x1 - x2)2 + (y1 - y2)2).
 
-Input: intervals = [[1,3],[2,6],[8,10],[15,18]]
-Output: [[1,6],[8,10],[15,18]]
-Explanation: Since intervals [1,3] and [2,6] overlaps, merge them into [1,6].
+You may return the answer in any order. The answer is guaranteed to be unique (except for the order that it is in).
 
-
-Input: intervals = [[1,4], [4,5], [0, 1]]
-Output: [[1,5]]
-Explanation: Intervals [1,4] and [4,5] are considered overlapping.
 
 */
 
 /**
- * @param {number[][]} intervals
+ * @param {number[][]} points
+ * @param {number} k
  * @return {number[][]}
  */
- var merge = function(intervals) {
+ var kClosest = function(points, k) {
     
-    let sortedIntervals = intervals.sort((a,b) => a[0] - b[0]);
     let ans = [];
 
-    for(let i = 0; i < sortedIntervals.length; i++){
-        
-        if(i === 0){
-            ans.push(sortedIntervals[i]);
-            continue;
-        }
+    for(let i = 0; points.length; i++){
+        const distance = Math.pow(points[i][0], 2) + Math.pow(points[i][1], 2);
 
-        const first = ans[ans.length - 1];
-        const second = sortedIntervals[i];
-        const secondIntervalStart = second[0];
-        const secondIntervalEnd = second[1];
-        const firstIntervalStart = first[0];
-        const firstIntervalEnd = first[1];
-
-        if(secondIntervalStart <= firstIntervalEnd){
-            // ans.push([firstIntervalStart, secondIntervalEnd])
-            first[0] = firstIntervalStart;
-            first[1] = Math.max(firstIntervalEnd, secondIntervalEnd);
-        }
-        else{
-            // ans.push(first);
-            // ans.push(second);
-            // [1,4], [2,3]
-            ans.push(second);
-        }
+        ans.push(Math.pow(distance, 0.5));
     }
 
-    return ans;
+    ans.sort((a, b) => b - a );
+
+    return ans.slice(0, k);
 };
+

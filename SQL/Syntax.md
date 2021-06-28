@@ -31,6 +31,20 @@
     ```
 
 4. `COUNT(DISTINCT var)`: this is helpful when duplicates matters, such as count unique month. There will be 12 months at maximum.
+5. `aggregation` can't be used in `where` clause. (This restriction exists because the WHERE clause determines which rows will be included in the aggregate calculation; so obviously it has to be evaluated before aggregate functions are computed.) However, as is often the case the query can be restated to accomplish the desired result, here by using a subquery)
+6. We can filter these grouped rows using `HAVING`
+7. Summary of aggregation functions
+    - Just get aggregation, such as `max`, `sum`...etc
+    - Work with group by
+    - Use in having
+
+        ```SQL
+        SELECT city, max(temp_lo)
+        FROM weather
+        WHERE city like 'P%'
+        GROUP BY city
+        HAVING min(temp_lo) < 0;
+        ```
 
 #### Comparison Operators
 
@@ -61,7 +75,7 @@
 1. When making joins, if you have duplicates on either one table, the duplicate result is going to carry over to your joined result if matched.
 2. [SQL Joins Using WHERE or ON](https://mode.com/sql-tutorial/sql-joins-where-vs-on/). Usually you will use `WHERE` after the tables are joined. Also, only when you are using inner will the result between these two the same. This problem will be easily found when you have joining keys with different name. Details in link.
 3. Join on multiple keys
-4. Self joins
+4. Self joins: comparing on the same column
 5. Questions:
     - self join
         - when idetify columns where you need to compare some columns that need to be compare, for example identify companies that received an investment from Great Britain following an investment from Japan.
@@ -190,9 +204,9 @@ Date time operations are tedious but essential. Usually, you will involve with t
         - `YEAR, MONTH, DAY, HOUR, MINUTE, SECOND, YEAR TO MONTH, DAY TO HOUR, DAY TO MINUTE, DAY TO SECOND, HOUR TO MINUTE, HOUR TO SECOND, MINUTE TO SECOND`
         - [see more](https://www.postgresqltutorial.com/postgresql-extract/)
 
-3. Given date/datetime/timestamp, calculate the interval
+3. Given date/datetime/timestamp, calculate the interval, or **Given time/timestamp/date add/minus with time interval**
     - Examples:
-        - `date '2001-09-28' + integer '7'` -> date '2001-10-05'
+        - `date '2001-09-28' + integer '7'` =  date '2001-09-28' + 7 = date '2001-09-28' + integer '7 days'`. (note that Mysql doesn't not support date '2001-09-28' + 7)
         - `date '2001-09-28' + interval '1 hour'` -> timestamp '2001-09-28 01:00:00'
         - `timestamp '2001-09-28 01:00' + interval '23 hours'` -> timestamp '2001-09-29 00:00:00'
         - `21 * interval '1 day'` -> interval '21 days'
@@ -306,6 +320,10 @@ WITH provides a way to write auxiliary statements for use in a larger query. The
 
     -
 
-## 4. Resource
+## 4. Notes between different db
+
+1. Boolean: mysql has not boolean type, instead it uses tint int where 1=true and 0=false. so it is acceptable to use `aggregation + boolean`. While Postgres has boolean, which means you need to do `avg(case when)` to reach the above same result
+
+## 5. Resource
 
 1. [Mode Analytics](https://mode.com/sql-tutorial/)
