@@ -48,16 +48,24 @@
     (3/9/2021, 3/23/2021, 8/11/2020, 4/17/2021, 8/27/2020)
 
         ```Python
-        ls = [2, 3, None, 9], [None, 3, None, 9], [None, None, None, 9], [5,None,None, 1], [None]
-        def func(ls):
-            if not ls: return []
-            cache = None
-            for i in range(len(ls)):
-                if ls[i]:
-                    cache = ls[i]
-                else:
-                    ls[i] = cache
-            print(ls)
+        class Solution:
+            def fillNa(self, string):
+                if not string: return string
+                cache = None
+                for i, val in enumerate(string):
+                    if val:
+                        cache = val
+                    if not val:
+                        string[i] = cache
+                return string
+
+        sol = Solution()
+        print(sol.fillNa([2, 3, None, 9]))
+        print(sol.fillNa([None, 3, None, 9]))
+        print(sol.fillNa([None, None, None, 9]))
+        print(sol.fillNa([5,None,None, 1]))
+        print(sol.fillNa([None]))
+        print(sol.fillNa([]))
 
         # Avanced, fill the None by previous value, if not, use the later value
         if not string or len(string) == 1: return string
@@ -150,24 +158,32 @@
 
         ```Python
         from collections import Counter
-        ls = [4, 5, 11, 5, 6, 11, 11]
-        def findBalance(ls):
-            if not ls: return ls
+        class Solution:
+            def findBalance(self, ls):
+                if not ls: return dict()
+                        
+                dic = {}
+                for val in ls:
+                    if val and val not in dic:
+                        dic[val] = 1
+                    elif val and val in dic:
+                        dic[val] += 1
+                
+                if dic:
+                    cnt = sorted(dic.items(), key=lambda x: x[1])[-1][1]
+                
+                for key, val in dic.items():
+                    dic[key] = cnt - val
+                    
+                return dic
 
-            dic = {}
-            for val in ls:
-                if val not in dic:
-                    dic[val] = 1
-                else:
-                    dic[val] += 1
-            # Then get max freq
-            # maxFreq = sorted(dic.items(), key=lambda x: -x[1])[0][1]
-            maxFreq = sorted(dic.items(), key=lambda x: x[1], reverse=True)[0][1]
-            res = dict()
-            for key, val in dic.items():
-                if val < maxFreq:
-                    res[key] = maxFreq - val
-            return res
+        sol = Solution()
+        print(sol.findBalance([4, 5, 11, 5, 6, 11, 11]))
+        print(sol.findBalance([4, 11, 11]))
+        print(sol.findBalance([11, 11]))
+        print(sol.findBalance([None, 11]))
+        print(sol.findBalance([None]))
+        print(sol.findBalance([]))
         ```
 
     6. Complete a function that returns the smallest key(sorted in ascending order alphabetically) of the given input dictionary containing nth highest value dictionary: {'a': 1, 'b': 2, 'c': 100, 'd': 30}, n : 2 (2nd highest value) -> output: 'd'
@@ -189,21 +205,24 @@
     7. Average length in a string (3/23/2020)
 
         ```python
-        ls = [['avc','abcd','a','bbcc'], [], [None]]
+        # Average length in a string
+        class Solution:
+            def func(self, t):
+                if not t: return t
+                length = 0
+                for ele in t:
+                    if ele:
+                        for val in ele:
+                            length += 1
+                        
+                return length/len(t)
 
-        def func(t):
-            if not t or len(t) == 0: return 0
-            total = 0
-            for s in t:
-                if not s:
-                    total += 0
-                else:
-                    total += len(s)
-
-            return total / len(t) if total > 0 else 0
-
-        for t in ls:
-            print(func(t))
+        sol = Solution()
+        print(sol.func(['avc','abcd','a','bbcc']))
+        print(sol.func([None, 'd', 'bc']))
+        print(sol.func(['', 'd', 'bc']))
+        print(sol.func([None]))
+        print(sol.func([]))
         ```
 
     8. Find string with most frequent (04/11/2020)
@@ -247,10 +266,38 @@
             
         sol = Solution()
         print(sol.mostFreq("iiiiiiintel"))
+        print(sol.mostFreq("iiinnntel"))
         print(sol.mostFreq("i"))
         print(sol.mostFreq("ii"))
         print(sol.mostFreq(""))
         print(sol.mostFreq("ssddaa"))
+
+
+        from collections import Counter
+        class Solution:
+            def mostFreq(self, string):
+                if not string: return string
+                cnt = Counter(string)
+                maxVal = None
+                res = []
+                for key, val in cnt.items():
+                    if not maxVal: 
+                        maxVal = val
+                        res.append(key)
+                        continue
+                    if maxVal == val :
+                        res.append(key)
+                return res
+            
+            
+        sol = Solution()
+        print(sol.mostFreq("iiiiiiintel"))
+        print(sol.mostFreq("iiinnntel"))
+        print(sol.mostFreq("i"))
+        print(sol.mostFreq("ii"))
+        print(sol.mostFreq(""))
+        print(sol.mostFreq("ssdd"))
+        print(sol.mostFreq(None))
         ```
 
     9. Return Boolean of IP the first component of the IP address contains 255 (04/11/2020)
