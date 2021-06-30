@@ -347,6 +347,8 @@
 
 ### Social Network
 
+#### Example 1
+
 ```SQL
 highschooler ('id', 'name', 'grade')
 friend ('id1', 'id2')
@@ -358,3 +360,5 @@ likes ('id1', 'id2')
     ```SQL
     
     ```
+
+#### Example 2
