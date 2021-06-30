@@ -339,7 +339,7 @@
     -- promotions [promotion_id, promotion_name, promotion_name, media_type, start_date, end_date]
     ```
 
-    1. top 5 media type (top 5 media type，这题是要看你的debug，最后要filter掉原来的multi media的channel，面试官会提示) (4/17/2021) -> The promotion datatset
+    1. Top 5 (transaction/sales) single-channel media type (top 5 media type，这题是要看你的debug，最后要filter掉原来的multi media的channel，面试官会提示) (4/17/2021) -> The promotion datatset
     2. Find top 5 sales products having valid promotions (3/9/2020) -> The promotion datatset
 
         ```SQL
@@ -472,7 +472,6 @@
         ```
 
     11. Get the ratio of solf units and non-sold units from every product categories.
-    12. Top 5 (transaction/sales) single-channel media type (用like) -> (promotion table)
     13. Calculate average message amount by each country on each day from the users.
 
 - Resource

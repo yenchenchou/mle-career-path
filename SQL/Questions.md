@@ -149,7 +149,7 @@
 
 ### When to use EXIST/IN/JOIN
 
-1. EXIST: When you just want the columns from one table but need filters/conditions from other tables. You can still use join but not efficient
+1. EXISTS: When you just want the columns from one table but need filters/conditions from other tables. You can still use join but not efficient
     - Find customers who have at least one payment whose amount is greater than 11 [see details](https://www.postgresqltutorial.com/postgresql-exists/)
 
         ```SQL
@@ -263,8 +263,8 @@
 
 ### When to use window functions
 
-1. Top Three Salaries in each of the groups:
-  top three salary/sales/friends means many units can have the same value. Usually `dense_rank()`
+1. Top k Salaries in each of the groups:
+  top k salary/sales/friends means many units can have the same value. Usually `dense_rank()`. **Do not use other values like limit**
 
     ```sql
         -- 185. Department Top Three Salaries: dense rank
