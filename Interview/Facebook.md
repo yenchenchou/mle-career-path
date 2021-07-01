@@ -339,7 +339,13 @@
     -- promotions [promotion_id, promotion_name, promotion_name, media_type, start_date, end_date]
     ```
 
-    1. Top 5 (transaction/sales) single-channel media type (top 5 media type，这题是要看你的debug，最后要filter掉原来的multi media的channel，面试官会提示) (4/17/2021) -> The promotion datatset
+    1. Top 5 (transaction/sales) single-channel media type (top 5 media type，这题是要看你的debug，最后要filter掉原来的multi media的channel，面试官会提示, use like '%single channel%') (4/17/2021) -> The promotion datatset
+
+        ```sql
+        select 
+
+        ```
+
     2. Find top 5 sales products having valid promotions (3/9/2020) -> The promotion datatset
 
         ```SQL
@@ -400,18 +406,31 @@
         from products
         ```
 
-    6. The ratio between unpromoted sales and promoted sales
+    6. The sales ratio between unpromoted sales and promoted sales
 
         ```SQL
         select 
-        -- s.store_sales,
-        -- s.transaction_date,
-        -- p.start_date,
-        -- p.end_date
         round(sum(case when s.transaction_date not between p.start_date and p.end_date then s.store_sales else 0 end)::decimal / sum(case when s.transaction_date between p.start_date and p.end_date then s.store_sales else 0 end)::decimal*100, 2) ratio
         from sales s
         left join promotions p
         on s.promotion_id = p.promotion_id
+
+        -- exmaple 2
+        with a as (
+        select sum(store_sales) as revenue
+        from sales a
+            left join promotions b
+            on a.promotion_id = b.promotion_id
+        where a.transaction_date not between b.start_date and b.end_date
+        ), b as (
+        select sum(store_sales) as revenue
+        from sales a
+            left join promotions b
+            on a.promotion_id = b.promotion_id
+        where a.transaction_date between b.start_date and b.end_date
+        )
+        select 
+        round((select revenue from a)::decimal / (select revenue from b)*100, 1) as per
         ```
 
     7. [Acceptance Rate By Date](https://platform.stratascratch.com/coding-question?id=10285&python=), why not case when? Because the you may wait for the 'accepted' on diffent days. So self join will be the solution.
@@ -472,7 +491,27 @@
         ```
 
     11. Get the ratio of solf units and non-sold units from every product categories.
-    13. Calculate average message amount by each country on each day from the users.
+
+        ```sql
+        ```
+
+    12. Calculate average message amount by each country on each day from the users.
+
+    13 [post success](https://www.interviewquery.com/questions/post-success)
+
+        ```sql
+        SELECT 
+            DATE(c1.created_at) AS dt,
+            avg(case when c2.user_id is not null then 1 else 0 end) AS post_success_rate
+        FROM events AS c1
+        LEFT JOIN events AS c2
+            ON c1.user_id = c2.user_id
+                AND c2.action = 'post_submit'
+                AND DATE(c1.created_at) = DATE(c2.created_at)
+        WHERE c1.action = 'post_enter'
+            and c1.created_at between '2020-01-01' and '2020-01-31'
+        GROUP BY 1
+        ```
 
 - Resource
   - [The Facebook Data Engineer Interview](https://towardsdatascience.com/the-facebook-data-engineer-interview-345235afaac0)
