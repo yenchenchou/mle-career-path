@@ -1,4 +1,10 @@
-# Easy Forget Shell Syntax
+# File System
+
+## Basics
+
+### Directory & Description
+
+##
 
 ## 1. Environment
 
