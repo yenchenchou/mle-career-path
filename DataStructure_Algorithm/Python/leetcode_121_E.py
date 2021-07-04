@@ -1,18 +1,18 @@
-#121. Best Time to Buy and Sell Stock
+# 121. Best Time to Buy and Sell Stock
+from tying import List
+
 
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        # find the current min 
-        # then calculated the diff, if the diff is bigger then record the 
-        # [1, 2]
-        # [1, 7]
-        if not prices: return 0
-        minVal = float("inf")
-        maxDiff = 0
-        for p in prices:
-            if p < minVal:
-                minVal = p
-            else:
-                if p - minVal > maxDiff:
-                    maxDiff = p - minVal
-        return maxDiff  #O(n), O(1)
+        # [7,1,5,3,6,4] -> don't have to be smallest value to max
+        # [2,5,1,3,6,7] -> such as this does not apply
+        # just need to find relative small and large value with higest profit
+        if not prices:
+            return 0
+        profit, minVal = 0, float("inf")
+        for val in prices:
+            if val < minVal:  # valley
+                minVal = val
+            elif val - minVal > profit:
+                profit = val - minVal
+        return profit  # O(n), O(1)

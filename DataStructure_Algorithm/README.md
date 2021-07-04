@@ -9,7 +9,7 @@
 
 ### **1.2 How to identify**
 
-### **1.3 Common tricks in Binary search**
+### **1.3 Common tricks in Sorting**
 
 1. Sort questions are commonly connect with heap or even replaced by heap
 2. Question summary
@@ -195,6 +195,23 @@ Linked List will be specified during the question
 
 ### **3.3 Common types and tricks in Linked List**
 
+1. When youde-reference a ListNode, make sure it is not a NUll pointer
+2. Never lost conrol of the head pointer
+3. Usually, we have no idea where is the head, we need a dummy node to handle that
+4. Adding string digits problems
+    * Becareful of carry number after the digit computing on the list/linkedlist is complete
+
+    ```python
+    "2" + "9" -> "1" + "1"
+    ```
+
+    * Other similar questions:
+        * #67. Add Binary
+        * #445. Add Two Numbers II
+        * #43. Multiply Strings
+
+### **3.4 Common mistake points**
+
 1. design linked list:
     * delete node in linkedlist:
         * unique/duplicates node to delete:
@@ -247,12 +264,9 @@ Linked List will be specified during the question
     * combine with common algorithms
         * stack:
             * #430. Flatten a Multilevel Doubly Linked List
-
-### **3.4 Common mistake points**
-
-1. When youde-reference a ListNode, make sure it is not a NUll pointer
-2. Never lost conrol of the head pointer
-3. Usually, we have no idea where is the head, we need a dummy node to handle that
+    * Adding digits/number
+        * #2. Add Two Numbers
+        * #445. Add Two Numbers II
 
 ### **Recursion**
 
@@ -726,3 +740,74 @@ When you see objects has vertices(nodes) and pointers(edges)
 ### **11.3 Common tricks in Dynamic Programming**
 
 ### **11.4 Common mistake points**
+
+1. Question Summary:
+    * Value compare
+        * #121. Best Time to Buy and Sell Stock
+        * #53. Maximum Subarray
+
+## **Array**
+
+### **12.1 Definition**
+
+An array is a collection of items stored at contiguous memory locations.
+
+### **12.2 How to identify**
+
+### **12.3 Common tricks in Array**
+
+1. Inplace operations
+2. Value compare / Max compare
+    * the absolute min value is not very important
+    * important to generate test cases fast. How?
+        * increasing / decreasing example
+
+            ```python
+            [1,2,2,4,5]
+            [5,3,2,1,1]
+            ```
+
+        * multi valley/peak example and test whether knowing global min/max is important
+
+            ```python
+            # global max is 8 and min is 1 but not important
+            # generate exmaples by two biggest and smallest values side by side
+            [7,2,5,3,6,8,1,2]
+            ```
+
+3. Max subarray
+    * handle where to start, and handle where to end the subarray
+    * important to generate test cases fast. How?
+        * We notice that negative number matters a lot
+            * what if negative number at begining / middle / end
+
+                ```python
+                # [1, 1, -1] -> need to know when to stop including new ele to subarray
+                # [-1, -3, 5] -> need to know when to start including new ele to subarray ot start fresh
+                # [4,-1,2,1,] --> need to know when including negative value for long term
+                ```
+
+### **12.4 Common mistake points**
+
+1. Question Summary:
+    * Inplace change:
+        * #1089. Duplicate Zeros
+    * Value compare / Max compare / Max subarray
+        * #121. Best Time to Buy and Sell Stock
+        * #53. Maximum Subarray
+
+## Mock Interview Question Cover
+
+* Array
+  * 121. Best Time to Buy and Sell Stock
+  * 118. Pascal's Triangle
+  * 70. Climbing Stairs
+* Search
+  * 34. Find First and Last Position of Element in Sorted Array
+* LinkedList
+* Tree
+* Stack/Queue
+* Heap
+* Graph
+* DP
+* Hash Table

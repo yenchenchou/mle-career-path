@@ -18,7 +18,7 @@ class Solution:
         num = 0
         while l1 or l2 or num:
             if l1:
-                num += l1.val
+                num += l1.val  # use numto record all value together to solve when list with different length
                 l1 = l1.next
             if l2:
                 num += l2.val
@@ -29,3 +29,4 @@ class Solution:
             num //= 10
             # [1], [9] -> 10 -> [0,1]
         return head.next
+

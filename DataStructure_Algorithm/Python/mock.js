@@ -1,31 +1,38 @@
 /*
-Given an array of points where points[i] = [xi, yi] represents a point on the X-Y plane and an integer k, 
-return the k closest points to the origin (0, 0).
+1047. Remove All Adjacent Duplicates In String
 
-The distance between two points on the X-Y plane is the Euclidean distance (i.e., √(x1 - x2)2 + (y1 - y2)2).
+You are given a string s consisting of lowercase English letters. 
+A duplicate removal consists of choosing two adjacent and equal letters and removing them.
+ 
+We repeatedly make duplicate removals on s until we no longer can.
 
-You may return the answer in any order. The answer is guaranteed to be unique (except for the order that it is in).
+Return the final string after all such duplicate removals have been made. It can be proven that the answer is unique.
 
+Example 2:
+
+Input: s = "azxxzy" Output: "ay"
+
+s = "azxyz" 
+
+Hint1: 
+Use a stack to process everything greedily.
 
 */
 
 /**
- * @param {number[][]} points
- * @param {number} k
- * @return {number[][]}
+ * @param {string} s
+ * @return {string}
  */
- var kClosest = function(points, k) {
-    
-    let ans = [];
 
-    for(let i = 0; points.length; i++){
-        const distance = Math.pow(points[i][0], 2) + Math.pow(points[i][1], 2);
-
-        ans.push(Math.pow(distance, 0.5));
+ var removeDuplicates = function(s) {
+    const stack = [];
+    for(let i = 0; i < s.length; i++){
+        const char = s[i];
+        if(stack.length > 0 && stack[stack.length - 1] === char){
+            stack.pop();
+            continue;
+        }
+        stack.push(char);
     }
-
-    ans.sort((a, b) => b - a );
-
-    return ans.slice(0, k);
+    return stack.join("");
 };
-
