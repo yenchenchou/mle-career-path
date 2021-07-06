@@ -730,6 +730,9 @@ When you see objects has vertices(nodes) and pointers(edges)
 ### **10.4 Common mistake points**
 
 1. Need to avoid duplication so may use a set/hashtable to address the problem
+2. Question Summary:
+    * Value compare using zip
+        * #953. Verifying an Alien Dictionary
 
 ## **Dynamic Programming**
 
@@ -757,7 +760,7 @@ An array is a collection of items stored at contiguous memory locations.
 ### **12.3 Common tricks in Array**
 
 1. Inplace operations
-2. Value compare / Max compare
+2. Value compare / Max compare test case thinking
     * the absolute min value is not very important
     * important to generate test cases fast. How?
         * increasing / decreasing example
@@ -787,6 +790,12 @@ An array is a collection of items stored at contiguous memory locations.
                 # [4,-1,2,1,] --> need to know when including negative value for long term
                 ```
 
+4. remove elements (in place):
+    * two pointers
+        * both from start point
+            * one slow for real calculation and one fast for just iterate the object.
+        * one start one end
+
 ### **12.4 Common mistake points**
 
 1. Question Summary:
@@ -795,6 +804,9 @@ An array is a collection of items stored at contiguous memory locations.
     * Value compare / Max compare / Max subarray
         * #121. Best Time to Buy and Sell Stock
         * #53. Maximum Subarray
+    * two pointers
+        * 26. Remove Duplicates from Sorted Array
+        * #27. Remove Element
 
 ## Mock Interview Question Cover
 

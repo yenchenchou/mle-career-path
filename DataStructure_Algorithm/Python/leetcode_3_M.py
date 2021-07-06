@@ -1,9 +1,9 @@
 # 3. Longest Substring Without Repeating Characters
 
-
+# Solution1: brute fource
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
-        # solution 2
+        # solution 
         # abcabcbb, pwwkew
         charSet = set()
         left, res = 0, 0
@@ -14,3 +14,16 @@ class Solution:
             charSet.add(s[right])
             res = max(len(charSet), res)
         return res
+
+# Solution2: sliding window
+
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        seen = dict()
+        res = start = 0
+        for i, val in enumerate(s):
+            if val in seen:
+                start = max(start, seen[val]+1)
+            res = max(res, i - start + 1)
+            seen[val] = i
+        return res  # O(n), O(n)
