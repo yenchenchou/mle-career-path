@@ -1,4 +1,17 @@
-# Reading materials for MLOps
+# MLOps Learning
 
-    - [Neptune Blog](https://neptune.ai/blog/category/mlops)
-    - 
+## Lists
+
+- CircleCI
+  - [CircleCI Notes](https://doc.clickup.com/p/h/81y26-175/3d9a9db083a16bf)
+- Docker
+- Kubernetes
+- Helm
+- Airflow
+- AWS
+
+## Reading materials for MLOps
+
+- [Neptune Blog](https://neptune.ai/blog/category/mlops)
+
+-

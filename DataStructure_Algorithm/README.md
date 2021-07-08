@@ -324,6 +324,7 @@ Queue is a linear structure that follow first-in-first-out policy. Queue some ho
         * #155. Min Stack
         * #716. Max Stack
         * #739. Daily Temperatures (stack as cache)
+        * #20. Valid Parentheses
     * Handle parentheses, calculator
         * #224. Basic Calculator
         * #227. Basic Calculator II
