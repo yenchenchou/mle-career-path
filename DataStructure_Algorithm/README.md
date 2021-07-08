@@ -246,11 +246,11 @@ Linked List will be specified during the question
          ```
 
 2. cycle/two pointers:
+
    - fast and slow pointer
    - Always examine if the node is null before you call the next field. When `fast = fast.next.next`, we need to examine `fast`, `fast.next` before to prevent null error.
 
-3. reverse
-   -
+3. ## reverse
 
 4. combine with common algorithms
    - mergesort a linked list
