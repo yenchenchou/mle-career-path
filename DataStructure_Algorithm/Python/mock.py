@@ -28,6 +28,7 @@
 
 # GL
 
+
 class Solution:
     def isRobotBounded(self, instructions: str) -> bool:
         # 0=north, 1=left, 2=south, 3=right
@@ -39,7 +40,7 @@ class Solution:
                 x += directions[i][0]  #
                 y += directions[i][1]  #
             elif val == "L":
-                i = (i + 1) % 4        #
+                i = (i + 1) % 4  #
             else:
                 i = (i + 3) % 4
         return (x == 0 and y == 0) or i != 0
