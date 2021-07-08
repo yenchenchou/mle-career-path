@@ -13,18 +13,18 @@
 
 1. Sort questions are commonly connect with heap or even replaced by heap
 2. Question summary
-    * Basics:
-        * the naive algorithm
-    * Limited Stacks:
-        * use 3 stacks to simulate selection sort
-        * use 2 stacks to simulate selection sort
-    * Linked List:
-        * Merge sort linked list
-        * Split the numbers and strings
-    * Intervals:
-        * #56. Merge Intervals
-        * #253. Meeting Rooms II (also a priority queue problem)
-        * #252. Meeting Rooms I
+   - Basics:
+     - the naive algorithm
+   - Limited Stacks:
+     - use 3 stacks to simulate selection sort
+     - use 2 stacks to simulate selection sort
+   - Linked List:
+     - Merge sort linked list
+     - Split the numbers and strings
+   - Intervals:
+     - #56. Merge Intervals
+     - #253. Meeting Rooms II (also a priority queue problem)
+     - #252. Meeting Rooms I
 
 ### **1.4 Common mistake points**
 
@@ -33,33 +33,33 @@
 ---
 
 1. Quick Sort:
-    * Def: An algorithm that steps through each element in a sequence data structure. Then, compare the adjacent element and swap if it is not in a ascending/descending order.
-    * Property: Each iteration, the largest/smallest element is sorted to the left most/right most side of the sequence.
-    * Complexity:
-        * Time: O(n^2)
-        * Space: O(1)
+   - Def: An algorithm that steps through each element in a sequence data structure. Then, compare the adjacent element and swap if it is not in a ascending/descending order.
+   - Property: Each iteration, the largest/smallest element is sorted to the left most/right most side of the sequence.
+   - Complexity:
+     - Time: O(n^2)
+     - Space: O(1)
 2. Selection Sort:
-    * Def: select the smallest element in an unsorted data structure and put it to the leftmost side of the unsorted section.
-    * Property: work with other data structure at the same time
-    * Complexity:
-        * Time: O(n^2)
-        * Space: O(1)
+   - Def: select the smallest element in an unsorted data structure and put it to the leftmost side of the unsorted section.
+   - Property: work with other data structure at the same time
+   - Complexity:
+     - Time: O(n^2)
+     - Space: O(1)
 3. Merge Sort:
-    * Def: Divide a sequential data structure from a certain point(usually mid point) repeatl until all the sub sections have one elements left. Then we pick the smaller one from the sub sections and merge the result repeatly until it is back to a sequential data structure
-    * Property: The most used. Usually with recursion
-    * Complexity:
-        * Time: O(nlogn) <- O(logn+n)
-        * Space: O(n) <- O(n/2+n/4+...1)
+   - Def: Divide a sequential data structure from a certain point(usually mid point) repeatl until all the sub sections have one elements left. Then we pick the smaller one from the sub sections and merge the result repeatly until it is back to a sequential data structure
+   - Property: The most used. Usually with recursion
+   - Complexity:
+     - Time: O(nlogn) <- O(logn+n)
+     - Space: O(n) <- O(n/2+n/4+...1)
 4. Quick Sort:
-    * Def: Rnadomly select a point in an sequential data structure and call it a pivot. Then, put the values that smaller than the pivot to the left and bigger ones to the right.
-    * Property:
-        * Merge sort is a special case of quick sort.
-        * Quick sort is an in-place sorting algorithm whereas Merge sort uses extra space.
-        * The worst case runtime of quick sort is O(n^2) can be avoided by using randomized quicksort as explained in the previous point.
-        * Quick Sort is also a cache friendly sorting algorithm as it has good locality of reference when used for arrays.
-    * Complexity:
-        * Time: O(n^2) but avg O(nlogn) since partitionw into two part then we only need logn layer * n elements
-        * Space: O(n) but avg O(logn) since the heigth of stack
+   - Def: Rnadomly select a point in an sequential data structure and call it a pivot. Then, put the values that smaller than the pivot to the left and bigger ones to the right.
+   - Property:
+     - Merge sort is a special case of quick sort.
+     - Quick sort is an in-place sorting algorithm whereas Merge sort uses extra space.
+     - The worst case runtime of quick sort is O(n^2) can be avoided by using randomized quicksort as explained in the previous point.
+     - Quick Sort is also a cache friendly sorting algorithm as it has good locality of reference when used for arrays.
+   - Complexity:
+     - Time: O(n^2) but avg O(nlogn) since partitionw into two part then we only need logn layer \* n elements
+     - Space: O(n) but avg O(logn) since the heigth of stack
 
 ## **2. Binary Search**
 
@@ -67,7 +67,7 @@
 
 ### **2.1 Definition**
 
-Binary Search operates on a contiguous sequence with a specified left and right index. The left, right, mid index helps us to compare the target. If the  index shows the condition deos not align with the target then that half part is eliminated. We do this repeatly then get the final result.
+Binary Search operates on a contiguous sequence with a specified left and right index. The left, right, mid index helps us to compare the target. If the index shows the condition deos not align with the target then that half part is eliminated. We do this repeatly then get the final result.
 
 When solving binary search, there are several things included most of the time:
 
@@ -85,99 +85,103 @@ Principles:
 
 When you need to find one or more targets from a sorted sequence or a sequence need to be sorted
 
-* Pre-processing - Sort if collection is unsorted.
-* Binary Search - Using a loop or recursion to divide search space in half after each comparison.
-* Post-processing - Determine viable candidates in the remaining space.
+- Pre-processing - Sort if collection is unsorted.
+- Binary Search - Using a loop or recursion to divide search space in half after each comparison.
+- Post-processing - Determine viable candidates in the remaining space.
 
 ### **2.3 Common types and tricks in Binary search**
 
 1. Type 1:
-    * Search Condition can be determined without comparing to the element's neighbors (or use specific elements around it)
-    * No post-processing required because at each step, you are checking to see if the element has been found. If you reach the end, then you know the element is not found
-    * Format:
 
-    ```Python
-    Initial Condition: left = 0, right = length-1
-    Termination: left > right
-    Searching Left: right = mid-1
-    Searching Right: left = mid+1
-    # final place for the pointers
-    # [1, 2, 3, 4]
-    #        l
-    #     r
-    ```
+   - Search Condition can be determined without comparing to the element's neighbors (or use specific elements around it)
+   - No post-processing required because at each step, you are checking to see if the element has been found. If you reach the end, then you know the element is not found
+   - Format:
+
+   ```Python
+   Initial Condition: left = 0, right = length-1
+   Termination: left > right
+   Searching Left: right = mid-1
+   Searching Right: left = mid+1
+   # final place for the pointers
+   # [1, 2, 3, 4]
+   #        l
+   #     r
+   ```
 
 2. Type 2:
-    * An advanced way to implement Binary Search.
-    * Search Condition needs to access element's immediate right neighbor
-    * Use element's right neighbor to determine if condition is met and decide whether to go left or right
-    * **Gurantees Search Space is at least 2 in size at each step (because left ,< right)**
-    * Post-processing required. Loop/Recursion ends when you **have 1 element left**, such as `while left < right`. Need to assess if the remaining element meets the condition.
-    * There is a chance that we need to examine right neignbor index
-    * Format:
 
-    ```Python
-    Initial Condition: left = 0, right = length-1
-    Termination: left == right
-    Searching Left: right = mid
-    Searching Right: left = mid+1
-    # final place for the pointers
-    # [1, 2, 3, 4]
-    #     l
-    #     r
-    ```
+   - An advanced way to implement Binary Search.
+   - Search Condition needs to access element's immediate right neighbor
+   - Use element's right neighbor to determine if condition is met and decide whether to go left or right
+   - **Gurantees Search Space is at least 2 in size at each step (because left ,< right)**
+   - Post-processing required. Loop/Recursion ends when you **have 1 element left**, such as `while left < right`. Need to assess if the remaining element meets the condition.
+   - There is a chance that we need to examine right neignbor index
+   - Format:
+
+   ```Python
+   Initial Condition: left = 0, right = length-1
+   Termination: left == right
+   Searching Left: right = mid
+   Searching Right: left = mid+1
+   # final place for the pointers
+   # [1, 2, 3, 4]
+   #     l
+   #     r
+   ```
 
 3. Type 3:
-    * An alternative way to implement Binary Search
-    * Search Condition needs to access element's immediate left and right neighbors
-    * Use element's neighbors to determine if condition is met and decide whether to go left or right
-    * Gurantees Search Space is at least 3 in size at each step
-    * Post-processing required. Loop/Recursion ends when you have 2 elements left. Need to assess if the remaining elements meet the condition.
-    * Format:
 
-    ```Python
-    Initial Condition: left = 0, right = length-1
-    Termination: left <> right
-    Searching Left: right = mid
-    Searching Right: left = mid
-    # final place for the pointers
-    # [1, 2, 3, 4]
-    #     l
-    #        r
-    ```
+   - An alternative way to implement Binary Search
+   - Search Condition needs to access element's immediate left and right neighbors
+   - Use element's neighbors to determine if condition is met and decide whether to go left or right
+   - Gurantees Search Space is at least 3 in size at each step
+   - Post-processing required. Loop/Recursion ends when you have 2 elements left. Need to assess if the remaining elements meet the condition.
+   - Format:
+
+   ```Python
+   Initial Condition: left = 0, right = length-1
+   Termination: left <> right
+   Searching Left: right = mid
+   Searching Right: left = mid
+   # final place for the pointers
+   # [1, 2, 3, 4]
+   #     l
+   #        r
+   ```
 
 4. Other tricks or self summary
-    * Check if `left <= right`, `left < right`, or `left < right - 1`
-    * **Compare with the target value or left most, right most, left neighbor, right neighbor**
-    * Whether skipping the mid is correct way
-    * Becareful of index out of bound when point 1 is specified
+
+   - Check if `left <= right`, `left < right`, or `left < right - 1`
+   - **Compare with the target value or left most, right most, left neighbor, right neighbor**
+   - Whether skipping the mid is correct way
+   - Becareful of index out of bound when point 1 is specified
 
 5. Question summary
-    * square root/pow/product related problems, guess number (usually `left <= right`):
-        * #69 Sqrt
-        * #367 Valid Perfect Square
-        * #50 Pow
-        * #374. Guess Number Higher or Lower
-    * Rotated:
-        * #33. Search in Rotated Sorted Array
-        * #153. Find Minimum in Rotated Sorted Array (distinct: use left < right)
-        * #154. Find Minimum in Rotated Sorted Array II
-    * Comparing left/right index in comparision, neighbor, return left/right index instead, First/last occurence (range):
-        * #35. Search Insert Position
-        * #162. Find Peak Element
-        * #278. First Bad Version
-        * #34. Find First and Last Position of Element in Sorted Array (two ways of thinking first/last)
-    * Unknown size:
-        * #702. Search in a Sorted Array of Unknown Size
-    * Findclosest number:
-        * #658. Find K Closest Elements
-        * #270. Closest Binary Search Tree Value
-    * Intersection:
-        * #349 Intersection of Two Arrays  
-        * #350 Intersection of Two Arrays II
-    * Others:
-        * #287 Find the Duplicate Number
-        * #4 Median of two sorted array
+   - square root/pow/product related problems, guess number (usually `left <= right`):
+     - #69 Sqrt
+     - #367 Valid Perfect Square
+     - #50 Pow
+     - #374. Guess Number Higher or Lower
+   - Rotated:
+     - #33. Search in Rotated Sorted Array
+     - #153. Find Minimum in Rotated Sorted Array (distinct: use left < right)
+     - #154. Find Minimum in Rotated Sorted Array II
+   - Comparing left/right index in comparision, neighbor, return left/right index instead, First/last occurence (range):
+     - #35. Search Insert Position
+     - #162. Find Peak Element
+     - #278. First Bad Version
+     - #34. Find First and Last Position of Element in Sorted Array (two ways of thinking first/last)
+   - Unknown size:
+     - #702. Search in a Sorted Array of Unknown Size
+   - Findclosest number:
+     - #658. Find K Closest Elements
+     - #270. Closest Binary Search Tree Value
+   - Intersection:
+     - #349 Intersection of Two Arrays
+     - #350 Intersection of Two Arrays II
+   - Others:
+     - #287 Find the Duplicate Number
+     - #4 Median of two sorted array
 
 ### **2.4 Common mistake points**
 
@@ -199,74 +203,82 @@ Linked List will be specified during the question
 2. Never lost conrol of the head pointer
 3. Usually, we have no idea where is the head, we need a dummy node to handle that
 4. Adding string digits problems
-    * Becareful of carry number after the digit computing on the list/linkedlist is complete
 
-    ```python
-    "2" + "9" -> "1" + "1"
-    ```
+   - Becareful of carry number after the digit computing on the list/linkedlist is complete
 
-    * Other similar questions:
-        * #67. Add Binary
-        * #445. Add Two Numbers II
-        * #43. Multiply Strings
+   ```python
+   "2" + "9" -> "1" + "1"
+   ```
+
+   - Other similar questions:
+     - #67. Add Binary
+     - #445. Add Two Numbers II
+     - #43. Multiply Strings
 
 ### **3.4 Common mistake points**
 
 1. design linked list:
-    * delete node in linkedlist:
-        * unique/duplicates node to delete:
-            * two pointer: one `cur` and one `prev` + let `prev.next` pointer point to `cur.next`
-            * value replacement:
 
-                ```Python
-                node.val = node.next.val
-                node.next = node.next.next
-                ```
+   - delete node in linkedlist:
 
-    * insert node:
-        * with cycle:
-            * same as inserting on arch cycle but consider:
+     - unique/duplicates node to delete:
 
-                ```Python
-                if prevNode.val <= insertVal <= curNode.val:
-                # min / max value is serted
-                elif preNode.val > curNode.val and (insertVal < curNode.val or insertVal > preNode.val)
-                
-                # remember to stop when all nodes are smaller / bigger than the inserted one
-                ```
+       - two pointer: one `cur` and one `prev` + let `prev.next` pointer point to `cur.next`
+       - value replacement:
+
+         ```Python
+         node.val = node.next.val
+         node.next = node.next.next
+         ```
+
+   - insert node:
+
+     - with cycle:
+
+       - same as inserting on arch cycle but consider:
+
+         ```Python
+         if prevNode.val <= insertVal <= curNode.val:
+         # min / max value is serted
+         elif preNode.val > curNode.val and (insertVal < curNode.val or insertVal > preNode.val)
+
+         # remember to stop when all nodes are smaller / bigger than the inserted one
+         ```
 
 2. cycle/two pointers:
-    * fast and slow pointer
-    * Always examine if the node is null before you call the next field. When `fast = fast.next.next`, we need to examine `fast`, `fast.next` before to prevent null error.
-3. reverse
-    *
+
+   - fast and slow pointer
+   - Always examine if the node is null before you call the next field. When `fast = fast.next.next`, we need to examine `fast`, `fast.next` before to prevent null error.
+
+3. ## reverse
+
 4. combine with common algorithms
-    * mergesort a linked list
+   - mergesort a linked list
 5. Floyd's Tortoise and Hare
 6. Question summary
-    * design linked list:
-        * #707 Design a Singly/Double LinkedList
-        * #21: Merge Two Sorted
-        * #203 Remove Linked List Elements
-        * #19 Remove Nth Node From End of List
-        * #237. Delete Node in a Linked List
-        * #328 Odd Even Linked
-        * #708. Insert into a Sorted Circular Linked List (insertation)
-    * cycle / fast slow pointer / two pointers
-        * #141 Cycle in LinkedList
-        * #142 LinkedList Cycle II (**)
-        * #160 Intersection of Two Linked
-        * #19. Remove Nth Node From End of List
-    * reverse
-        * #206 Reverse a LinkedList
-        * #344 Reverse a string and swap the string in place(344 M): sentinel node concept, rescurion
-        * #234 Palindrome Linked List
-    * combine with common algorithms
-        * stack:
-            * #430. Flatten a Multilevel Doubly Linked List
-    * Adding digits/number
-        * #2. Add Two Numbers
-        * #445. Add Two Numbers II
+   - design linked list:
+     - #707 Design a Singly/Double LinkedList
+     - #21: Merge Two Sorted
+     - #203 Remove Linked List Elements
+     - #19 Remove Nth Node From End of List
+     - #237. Delete Node in a Linked List
+     - #328 Odd Even Linked
+     - #708. Insert into a Sorted Circular Linked List (insertation)
+   - cycle / fast slow pointer / two pointers
+     - #141 Cycle in LinkedList
+     - #142 LinkedList Cycle II (\*\*)
+     - #160 Intersection of Two Linked
+     - #19. Remove Nth Node From End of List
+   - reverse
+     - #206 Reverse a LinkedList
+     - #344 Reverse a string and swap the string in place(344 M): sentinel node concept, rescurion
+     - #234 Palindrome Linked List
+   - combine with common algorithms
+     - stack:
+       - #430. Flatten a Multilevel Doubly Linked List
+   - Adding digits/number
+     - #2. Add Two Numbers
+     - #445. Add Two Numbers II
 
 ### **Recursion**
 
@@ -279,12 +291,12 @@ Linked List will be specified during the question
 ### **4.3 ommon tricks in Recursion**
 
 1. How to construct the recursion solution:
-    * Base case (KNOWING WHEN TO SATOP!!)
-    * What is will the recursive function looked like
-    * what to return to pass the info to the next stack
-    * which traverse order will benefit (pre-order, in-order, post-order)
+   - Base case (KNOWING WHEN TO SATOP!!)
+   - What is will the recursive function looked like
+   - what to return to pass the info to the next stack
+   - which traverse order will benefit (pre-order, in-order, post-order)
 2. When can we use:
-    * When you can solve the question using functiona and solve it repeatly
+   - When you can solve the question using functiona and solve it repeatly
 
 ### **4.4 Common mistake points**
 
@@ -310,32 +322,32 @@ Queue is a linear structure that follow first-in-first-out policy. Queue some ho
 ### **5.4 Common mistake points**
 
 1. Question summary
-    * Tree point by level
-    * Sliding window
-    * The largest rectangle in histogram
-    * reverse polish notation
-    * repeat deduplication of a String
-    * Classic Queue:
-        * #346. Moving Average from Data Stream
-    * Classic Stack:
-        * #125. Valid Palindrome (stack as cache)
-        * #1047. Remove All Adjacent Duplicates In String (stack as cache)
-        * #1209. Remove All Adjacent Duplicates in String II (stack as count)
-        * #155. Min Stack
-        * #716. Max Stack
-        * #739. Daily Temperatures (stack as cache)
-        * #20. Valid Parentheses
-    * Handle parentheses, calculator
-        * #224. Basic Calculator
-        * #227. Basic Calculator II
-        * #394. Decode String
-    * Greedy, duplicates:
-        * #316. Remove Duplicate Letters
-    * mix with heap, linkedlist:
-        * #716. Max Stack
-    * stack/queue with dfs/bfs
-        * #286. Walls and Gates
-        * #622. Design Circular Queue
+    - Tree point by level
+    - Sliding window
+    - The largest rectangle in histogram
+    - reverse polish notation
+    - repeat deduplication of a String
+    - Classic Queue:
+        - #346. Moving Average from Data Stream
+    - Classic Stack:
+        - #125. Valid Palindrome (stack as cache)
+        - #1047. Remove All Adjacent Duplicates In String (stack as cache)
+        - #1209. Remove All Adjacent Duplicates in String II (stack as count)
+        - #155. Min Stack
+        - #716. Max Stack
+        - #739. Daily Temperatures (stack as cache)
+        - #20. Valid Parentheses
+    - Handle parentheses, calculator
+        - #224. Basic Calculator
+        - #227. Basic Calculator II
+        - #394. Decode String
+    - Greedy, duplicates:
+        - #316. Remove Duplicate Letters
+    - mix with heap, linkedlist:
+        - #716. Max Stack
+    - stack/queue with dfs/bfs
+        - #286. Walls and Gates
+        - #622. Design Circular Queue
 
 ---
 
@@ -347,29 +359,29 @@ Binary tree is a tree data structure in which each node has at most two children
 
 1. **Binary Search Tree**:
 
-    Def: A node based binary tree with the following properties:
+   Def: A node based binary tree with the following properties:
 
-    1. The left subtree of a node should only contains node with keys smaller than the node's key
-    2. The right subtree of a node should only contains nide with keys greater than the node's key
-    3. The left and right subtree each must also be a binary search tree
-    4. Some rare cases the right index doen't need to be len(arr)-1
+   1. The left subtree of a node should only contains node with keys smaller than the node's key
+   2. The right subtree of a node should only contains nide with keys greater than the node's key
+   3. The left and right subtree each must also be a binary search tree
+   4. Some rare cases the right index doen't need to be len(arr)-1
 
 2. **Full Binary Tree**
 
-    Def: A node based biary tree  if every node has 0 or 2 children.
+   Def: A node based biary tree if every node has 0 or 2 children.
 
 3. **Complete Binary Tree**
 
-    Def: All nodes other than the last level has two children occupied. The nodes in the last layer are as far left as possible. A binary heap is a complete binary tree that satisfies the heap order prperty.
+   Def: All nodes other than the last level has two children occupied. The nodes in the last layer are as far left as possible. A binary heap is a complete binary tree that satisfies the heap order prperty.
 
-4. **Balanced Binary Tree*
-    A binary tree is balanced if the height of the tree is O(logn) and will have the following prperties:
+4. \*_Balanced Binary Tree_
+   A binary tree is balanced if the height of the tree is O(logn) and will have the following prperties:
 
-    1. the difference between the height of the left and the right subtrees is at most 1.
+   1. the difference between the height of the left and the right subtrees is at most 1.
 
 5. **Perfect Binary Tree**
 
-    Def: A binary tree when all the internal nodes have two children and all leaf nodes are at the same level.
+   Def: A binary tree when all the internal nodes have two children and all leaf nodes are at the same level.
 
 ### **6.2 How to identify**
 
@@ -380,90 +392,94 @@ Tree data structure in which each node has at most two children
 1. Notice on the order. pre-order, in-order, and post-order use dfs while level order use bfs
 2. Almost all questions can do on iterative and recursive methods
 3. Knowing when to return value from recursion, what to expect when you return the value from the recursive function
-    * When just output the node by traversing, no need to return
-    * When calculation height then we need to return
+   - When just output the node by traversing, no need to return
+   - When calculation height then we need to return
 4. Level Order Traversal Tricks:
-    * When using iterative approach, how do we keep track of the level and value
 
-    ```Python
-    # for iterative approach on question like max depth, SymmetrFic Tree
-    #1. put node in stack or Iterative traversal starting point
-    stack = [(root, 1)  # #104. Maximum Depth of Binary Tree
-    stack = [(root.left, root.right)]  # 101. Symmetric Tree
-    stack = [(root, numSum-node.val)]  # #112. Path Sum
-    stack = [root]  #144. Binary Tree Preorder Traversal
-    ```
+   - When using iterative approach, how do we keep track of the level and value
 
-    * Thick how to reduce the space while need to track the level -> depth problem, hybrid problems
+   ```Python
+   # for iterative approach on question like max depth, SymmetrFic Tree
+   #1. put node in stack or Iterative traversal starting point
+   stack = [(root, 1)  # #104. Maximum Depth of Binary Tree
+   stack = [(root.left, root.right)]  # 101. Symmetric Tree
+   stack = [(root, numSum-node.val)]  # #112. Path Sum
+   stack = [root]  #144. Binary Tree Preorder Traversal
+   ```
+
+   - Thick how to reduce the space while need to track the level -> depth problem, hybrid problems
+
 5. Tips to decide when write to the process code
 
-    ```Python
-    def dfs(root):
-        # Write the steps here if you want to do something top to down
-        dfs(root.left)
-        dfs(root.right)
-        # Write the steps here if you wanr too something down to top -> path, counting
-    ```
+   ```Python
+   def dfs(root):
+       # Write the steps here if you want to do something top to down
+       dfs(root.left)
+       dfs(root.right)
+       # Write the steps here if you wanr too something down to top -> path, counting
+   ```
 
 6. When to something for the recursion tree
-    * When expecting something to return at root.left / root.right
 
-    ```Python
-    def dfs(root):
-        if not root: return <val>  # the data type align with the lower return 
-        left = dfs(root.left)  # You are hoping to return from root.left
-        right = dfs(root.right)  # You are hoping to return from root.right
-        return left/right  # The return here decide what to return to left/right
-    ```
+   - When expecting something to return at root.left / root.right
 
-    * Example1: When just returning True/False
+   ```Python
+   def dfs(root):
+       if not root: return <val>  # the data type align with the lower return
+       left = dfs(root.left)  # You are hoping to return from root.left
+       right = dfs(root.right)  # You are hoping to return from root.right
+       return left/right  # The return here decide what to return to left/right
+   ```
 
-    ```Python
-    # Instead of this
-    def dfs(root):
-        if not root: return <val> 
-        left = dfs(root.left)
-        right = dfs(root.right)
-        return left or/and right
-    ```
+   - Example1: When just returning True/False
 
-    ```Python
-    # Do this
-    def dfs(root):
-        if not root: return <val> 
-        return dfs(root.left) or/and dfs(root.right)
-    ```
+   ```Python
+   # Instead of this
+   def dfs(root):
+       if not root: return <val>
+       left = dfs(root.left)
+       right = dfs(root.right)
+       return left or/and right
+   ```
+
+   ```Python
+   # Do this
+   def dfs(root):
+       if not root: return <val>
+       return dfs(root.left) or/and dfs(root.right)
+   ```
 
 7. When comparing value with child/parent/neighbors
-    * Think of creating a new helper function and use `max/min` to compare
-    * the helper function may cointains more than the node, such as the value `helper(root, root.val)`
+
+   - Think of creating a new helper function and use `max/min` to compare
+   - the helper function may cointains more than the node, such as the value `helper(root, root.val)`
 
 8. Question summary
-    * Basics
-        * #144. Binary Tree Preorder Traversal
-        * #94. Binary Tree Inorder Traversal
-        * #145. Binary Tree Postorder Traversal: Note that the iterative method between #94 and #145 are very similar
-        * #102. Binary Tree Level Order Traversal
-        * #572. Subtree of Another Tree
-        * #236. Lowest Common Ancestor of a Binary Tree
-        * #103. Binary Tree Zigzag Level Order Traversal
-    * Tree depth related
-        * #104. Maximum Depth of Binary Tree
-        * #112. Path Sum
-        * #250. Count Univalue Subtrees
-    * Comparing value with child/parent/neighbors
-        * #543. Diameter of Binary Tree
-        * #98. Validate Binary Search Tree
-        * #1448. Count Good Nodes in Binary Tree
-    * Symmetric, Rotated Tree
-        * #101. Symmetric Tree
-        * #226. Invert Binary Tree
-    * Tree construction: observe the relationship btw two data structure
-        * #105. Construct Binary Tree from Preorder and Inorder Traversal
-        * #106. Construct Binary Tree from Inorder and Postorder Traversal
-    * Hybrid: (diff ways to keep track of layer)
-        * Tree+LinkedList+Queue: #116. Populating Next Right Pointers in Each Node
-        * #117. Populating Next Right Pointers in Each Node II
+   - Basics
+     - #144. Binary Tree Preorder Traversal
+     - #94. Binary Tree Inorder Traversal
+     - #145. Binary Tree Postorder Traversal: Note that the iterative method between #94 and #145 are very similar
+     - #102. Binary Tree Level Order Traversal
+     - #572. Subtree of Another Tree
+     - #236. Lowest Common Ancestor of a Binary Tree
+     - #103. Binary Tree Zigzag Level Order Traversal
+   - Tree depth related
+     - #104. Maximum Depth of Binary Tree
+     - #112. Path Sum
+     - #250. Count Univalue Subtrees
+   - Comparing value with child/parent/neighbors
+     - #543. Diameter of Binary Tree
+     - #98. Validate Binary Search Tree
+     - #1448. Count Good Nodes in Binary Tree
+   - Symmetric, Rotated Tree
+     - #101. Symmetric Tree
+     - #226. Invert Binary Tree
+   - Tree construction: observe the relationship btw two data structure
+     - #105. Construct Binary Tree from Preorder and Inorder Traversal
+     - #106. Construct Binary Tree from Inorder and Postorder Traversal
+   - Hybrid: (diff ways to keep track of layer)
+     - Tree+LinkedList+Queue: #116. Populating Next Right Pointers in Each Node
+     - #117. Populating Next Right Pointers in Each Node II
 
 ### **6.4 Common mistake points**
 
@@ -480,44 +496,46 @@ Heap has certain properties:
 1. Min/Max Heap: the smallest/biggest element at the root. A complete binary tree which the value in the node is smaller/bigger or equal to the children's node.
 2. What is the physicall rule of heap:
 
-    2.1 Zero index based
+   2.1 Zero index based
 
-    ``` Python
-    # For 0-index based
-    left_child_node_index = parent_node_index * 2 + 1
-    right_child_node_index = parent_node_index * 2 + 2
-    parent_node_index = (child_node_index - 1)//2
-    ```
+   ```Python
+   # For 0-index based
+   left_child_node_index = parent_node_index * 2 + 1
+   right_child_node_index = parent_node_index * 2 + 2
+   parent_node_index = (child_node_index - 1)//2
+   ```
 
-    2.2 One index based: **the index position is not used**
+   2.2 One index based: **the index position is not used**
 
-    ``` Python
-    # For 1-index based
-    left_child_node_index = parent_node_index * 2
-    right_child_node_index = parent_node_index * 2 + 1
-    parent_node_index = child_node_index // 2
-    ```
+   ```Python
+   # For 1-index based
+   left_child_node_index = parent_node_index * 2
+   right_child_node_index = parent_node_index * 2 + 1
+   parent_node_index = child_node_index // 2
+   ```
 
 3. Operations on heap (min heap for example since most are min heap)
 
-    3.1 Time complexity:
+   3.1 Time complexity:
 
-    * insert/offer O(logn): Since the height is logn in binary tree so the max steps that the insert node need to move is O(logn).
-    * update O(logn): it is possible that we need to traverse the node
-    * get O(1): Use the rule in the above
-    * pop/poll O(logn): Same reason as insert node to heap. Same as pop the min value
-    * heapify O(n): Need to walk through all element
+   - insert/offer O(logn): Since the height is logn in binary tree so the max steps that the insert node need to move is O(logn).
+   - update O(logn): it is possible that we need to traverse the node
+   - get O(1): Use the rule in the above
+   - pop/poll O(logn): Same reason as insert node to heap. Same as pop the min value
+   - heapify O(n): Need to walk through all element
 
-    3.2 How doe operation work
-    * insert/offer O(logn):  We first put the new node at the leaf node and keep swapping the value of the node if needed.
-    * pop/poll O(logn): remove the node and let the right most leaf go the place where it is deleted. Then do swap.
+     3.2 How doe operation work
+
+   - insert/offer O(logn): We first put the new node at the leaf node and keep swapping the value of the node if needed.
+   - pop/poll O(logn): remove the node and let the right most leaf go the place where it is deleted. Then do swap.
 
 4. How heap sort works:
-    * First create a max/min heap using array. By deleting a node each time and append the node in the released space. We will get a sorted heap. If max heap will get a ascending sorted array, whicle min heap will give us descending sorted array.
-    * O(nlogn) for creating max/min heap + O(logn) for pop max/min and rearrange the reamaining nodes. -> **But can we use heapify and what is the difference between the manuall created heap and heapify.**
+
+   - First create a max/min heap using array. By deleting a node each time and append the node in the released space. We will get a sorted heap. If max heap will get a ascending sorted array, whicle min heap will give us descending sorted array.
+   - O(nlogn) for creating max/min heap + O(logn) for pop max/min and rearrange the reamaining nodes. -> **But can we use heapify and what is the difference between the manuall created heap and heapify.**
 
 5. How heapify works:
-    * instead like creating heap manually from top to down and need swapping more times. We take from bottom(right most leaf) top approach which has less time to swap. So the time complexity is O(n)
+   - instead like creating heap manually from top to down and need swapping more times. We take from bottom(right most leaf) top approach which has less time to swap. So the time complexity is O(n)
 
 ### **7.2 How to identify**
 
@@ -527,71 +545,74 @@ By knowing that it is a complete binary tree with heap order.
 
 1. Max heap: most heap in programming languafe is min heap. So we use Counter with negative to do the count.
 2. Question summary
-    * Basic:
-        * Use array design heap
-    * Top K questions (You may sort to solve these problems):
-        * #973. K Closest Points to Origin
-        * #703. Kth Largest Element in a Stream
-        * #215. Kth Largest Element in an Array (alike 703)
-        * #347. Top K Frequent Elements
-        * #692. Top K Frequent Words (advanced of #347)
-        * #451. Sort Characters By Frequency (advanced of #347)
-    * Interval arrays:
-        * #253. Meeting Rooms II (priority queue)
+   - Basic:
+     - Use array design heap
+   - Top K questions (You may sort to solve these problems):
+     - #973. K Closest Points to Origin
+     - #703. Kth Largest Element in a Stream
+     - #215. Kth Largest Element in an Array (alike 703)
+     - #347. Top K Frequent Elements
+     - #692. Top K Frequent Words (advanced of #347)
+     - #451. Sort Characters By Frequency (advanced of #347)
+   - Interval arrays:
+     - #253. Meeting Rooms II (priority queue)
 
 ### **7.4 Common mistake points**
 
 1. `heapq.heappushpop()` vs `heapq.heapreplace() (assume min heap)`
-    * `heapq.heappushpop()` push the element first and pop the smallest, so the smallest is guaranteed but the heap will not maintain fix size.
-    * `heapq.heapreplace()` pop the element first the push the element, you may not save the smallest element but the heap is fix size.
+   - `heapq.heappushpop()` push the element first and pop the smallest, so the smallest is guaranteed but the heap will not maintain fix size.
+   - `heapq.heapreplace()` pop the element first the push the element, you may not save the smallest element but the heap is fix size.
 2. `heapq.heapify()`
-    * It tranform a list into heap but will NOT return the heap
 
-    ```Python
-    # wrong
-    nums = [15,2]
-    nums = heapq.heapify(nums)
+   - It tranform a list into heap but will NOT return the heap
 
-    # correct
-    nums = [15,2]
-    heapq.heapify(nums)
-    ```
+   ```Python
+   # wrong
+   nums = [15,2]
+   nums = heapq.heapify(nums)
+
+   # correct
+   nums = [15,2]
+   heapq.heapify(nums)
+   ```
 
 ## **DFS / BFS**
 
 ### **8.1 Definition**
 
 1. DFS: You start at the root node or starting position and explore as far as possible. Usually invlove with the followings, see [Python example](https://www.educative.io/edpresso/how-to-implement-depth-first-search-in-python):
-    * recusion (not required) / Iteration + stack
-    * mark current node as visited
-    * go through all adjacent node if not visited
 
-    ```bash
-    # Iterative
-    procedure DFS_iterative(G, v) is
-        let S be a stack
-        S.push(iterator of G.adjacentEdges(v))
-        while S is not empty do
-            if S.peek().hasNext() then
-                w = S.peek().next()
-                if w is not labeled as discovered then
-                    label w as discovered
-                    S.push(iterator of G.adjacentEdges(w))
-            else
-                S.pop()
+   - recusion (not required) / Iteration + stack
+   - mark current node as visited
+   - go through all adjacent node if not visited
 
-    # Recursive
-    procedure DFS(G, v) is
-        label v as discovered
-        for all directed edges from v to w that are in G.adjacentEdges(v) do
-            if vertex w is not labeled as discovered then
-                recursively call DFS(G, w)
-    ```
+   ```bash
+   # Iterative
+   procedure DFS_iterative(G, v) is
+       let S be a stack
+       S.push(iterator of G.adjacentEdges(v))
+       while S is not empty do
+           if S.peek().hasNext() then
+               w = S.peek().next()
+               if w is not labeled as discovered then
+                   label w as discovered
+                   S.push(iterator of G.adjacentEdges(w))
+           else
+               S.pop()
+
+   # Recursive
+   procedure DFS(G, v) is
+       label v as discovered
+       for all directed edges from v to w that are in G.adjacentEdges(v) do
+           if vertex w is not labeled as discovered then
+               recursively call DFS(G, w)
+   ```
 
 2. BFS: You start at the root node or starting position and explore the neighbors, see [Python example](https://www.educative.io/edpresso/how-to-implement-a-breadth-first-search-in-python)
-    * Iteration
-    * use quueue
-    * mark current node as visited
+
+   - Iteration
+   - use quueue
+   - mark current node as visited
 
    ```bash
     # Iterative appraoch
@@ -607,70 +628,71 @@ By knowing that it is a complete binary tree with heap order.
                 if w is not discovered
                     label w as discovered
                     Q.enqueue(w)
-    ```
+   ```
 
 ### **8.2 Properies and Applications**
 
 1 DFS:
 
-* Produce minumum spanning tree
-* Detect cycle
-* Path finding
-* Topological Sorting
-* [Others](https://www.geeksforgeeks.org/applications-of-depth-first-search/)
+- Produce minumum spanning tree
+- Detect cycle
+- Path finding
+- Topological Sorting
+- [Others](https://www.geeksforgeeks.org/applications-of-depth-first-search/)
 
 2 BFS:
 
 ### **8.3 Common tricks in DFS / BFS**
 
 1. DFS
-    * Use stacks
-    * Use hashmap/set
-    * Use recursion
+   - Use stacks
+   - Use hashmap/set
+   - Use recursion
 2. BFS
-    * Use queue
-    * use hashmap/set
+   - Use queue
+   - use hashmap/set
 3. Backtracking: happens in recursion a lot
-    * A general algorithm that finds all solutions to some problems, which incrementally build candidates and abandon candidates when it does not lead to a valid solution. The backtrack meaning is due to when you find the certain point that does not lead to a solution, and you "backtrack" to its parent for other opportunities.
-    * A better than bruce force if one remember to handle seen situations.
-    * In tree problems, it is also known as pruning.
-    * Example: N-Queen
-    * Template
 
-    ```Python
-    def backtrack(candidate):
-        if find_solution(candidate):
-            output(candidate)
-            return
-        
-        # iterate all possible candidates.
-        for next_candidate in list_of_candidates:
-            if is_valid(next_candidate):
-                # try this partial candidate solution
-                place(next_candidate)
-                # given the candidate, explore further.
-                backtrack(next_candidate)
-                # backtrack
-                remove(next_candidate)
-    ```
+   - A general algorithm that finds all solutions to some problems, which incrementally build candidates and abandon candidates when it does not lead to a valid solution. The backtrack meaning is due to when you find the certain point that does not lead to a solution, and you "backtrack" to its parent for other opportunities.
+   - A better than bruce force if one remember to handle seen situations.
+   - In tree problems, it is also known as pruning.
+   - Example: N-Queen
+   - Template
+
+   ```Python
+   def backtrack(candidate):
+       if find_solution(candidate):
+           output(candidate)
+           return
+
+       # iterate all possible candidates.
+       for next_candidate in list_of_candidates:
+           if is_valid(next_candidate):
+               # try this partial candidate solution
+               place(next_candidate)
+               # given the candidate, explore further.
+               backtrack(next_candidate)
+               # backtrack
+               remove(next_candidate)
+   ```
 
 ### **8.4 Common mistake points**
 
 1. It is not neccesary to create a set/hashmap to store seen flag everytime, instead just replace the original value
 
 2. Question Summary:
-    * Basics (simpla dfs/bfs, or island related problems):
-        * #200. Number of Islands
-        * #695. Max Area of Island
-        * #1727. Largest Submatrix With Rearrangements
-        * #463. Island Perimeter
-        * #547. Number of Provinces
-        * #733. Flood Fill
-    * Combinations:
-        * #17. Letter Combinations of a Phone Number
-    * Backtrack:
-        * #51. N-Queens
-        * #207. Course Schedule
+   - Basics (simpla dfs/bfs, or island related problems):
+     - #200. Number of Islands
+     - #695. Max Area of Island
+     - #1727. Largest Submatrix With Rearrangements
+     - #463. Island Perimeter
+     - #547. Number of Provinces
+     - #733. Flood Fill
+   - Combinations:
+     - #17. Letter Combinations of a Phone Number
+   - Backtrack:
+     - #51. N-Queens
+     - #207. Course Schedule
 
 ## **Graph**
 
@@ -699,20 +721,20 @@ When you see objects has vertices(nodes) and pointers(edges)
 1. Use adjacency matrix to record whether there are edges between vertices. But waste space and hard to add new vertex
 2. Use hashtable is better on flexibility, space, and speed
 3. Other common algorithms
-    * Topological sort/ordering
-        * Def: Topological ordering is a directed graph where the directed edge AB, the A will always comes before B
-        * Application:
-            * Finding cycle: use the def to find
-        * Implementation:
-            * Kahn's Algorithm
-                * Def: repeat to process of removing node without dependencies (and their outgoing edges)
-                * How:
-                    1. Calculate the dependencies(incoming edge) and start with the node with 0 dependencies,
-                    2. Then add to queue
-                    3. Process then remove from, update the dependencies array and add the new nodes with no dependencies
-                    4. use an index to count the nodes that put into sorting process
-                    5. check if # of nodes == index, if not then there is at least a cycle since some of the nodes are not processed
-    * Uinion find
+   - Topological sort/ordering
+     - Def: Topological ordering is a directed graph where the directed edge AB, the A will always comes before B
+     - Application:
+       - Finding cycle: use the def to find
+     - Implementation:
+       - Kahn's Algorithm
+         - Def: repeat to process of removing node without dependencies (and their outgoing edges)
+         - How:
+           1. Calculate the dependencies(incoming edge) and start with the node with 0 dependencies,
+           2. Then add to queue
+           3. Process then remove from, update the dependencies array and add the new nodes with no dependencies
+           4. use an index to count the nodes that put into sorting process
+           5. check if # of nodes == index, if not then there is at least a cycle since some of the nodes are not processed
+   - Uinion find
 
 ### **9.4 Common mistake points**
 
@@ -725,15 +747,12 @@ When you see objects has vertices(nodes) and pointers(edges)
 ### **10.3 Common tricks in Hash Table**
 
 1. remove, lookup operations that need hash table or set
-    1. Use list to save the result then use "".join instead
-    2. Use hash table or set for look up operations since it spend O(1) time
+   1. Use list to save the result then use "".join instead
+   2. Use hash table or set for look up operations since it spend O(1) time
 
 ### **10.4 Common mistake points**
 
 1. Need to avoid duplication so may use a set/hashtable to address the problem
-2. Question Summary:
-    * Value compare using zip
-        * #953. Verifying an Alien Dictionary
 
 ## **Dynamic Programming**
 
@@ -746,9 +765,9 @@ When you see objects has vertices(nodes) and pointers(edges)
 ### **11.4 Common mistake points**
 
 1. Question Summary:
-    * Value compare
-        * #121. Best Time to Buy and Sell Stock
-        * #53. Maximum Subarray
+   - Value compare
+     - #121. Best Time to Buy and Sell Stock
+     - #53. Maximum Subarray
 
 ## **Array**
 
@@ -761,66 +780,63 @@ An array is a collection of items stored at contiguous memory locations.
 ### **12.3 Common tricks in Array**
 
 1. Inplace operations
-2. Value compare / Max compare test case thinking
-    * the absolute min value is not very important
-    * important to generate test cases fast. How?
-        * increasing / decreasing example
+2. Value compare / Max compare
 
-            ```python
-            [1,2,2,4,5]
-            [5,3,2,1,1]
-            ```
+   - the absolute min value is not very important
+   - important to generate test cases fast. How?
 
-        * multi valley/peak example and test whether knowing global min/max is important
+     - increasing / decreasing example
 
-            ```python
-            # global max is 8 and min is 1 but not important
-            # generate exmaples by two biggest and smallest values side by side
-            [7,2,5,3,6,8,1,2]
-            ```
+       ```python
+       [1,2,2,4,5]
+       [5,3,2,1,1]
+       ```
+
+     - multi valley/peak example and test whether knowing global min/max is important
+
+       ```python
+       # global max is 8 and min is 1 but not important
+       # generate exmaples by two biggest and smallest values side by side
+       [7,2,5,3,6,8,1,2]
+       ```
 
 3. Max subarray
-    * handle where to start, and handle where to end the subarray
-    * important to generate test cases fast. How?
-        * We notice that negative number matters a lot
-            * what if negative number at begining / middle / end
 
-                ```python
-                # [1, 1, -1] -> need to know when to stop including new ele to subarray
-                # [-1, -3, 5] -> need to know when to start including new ele to subarray ot start fresh
-                # [4,-1,2,1,] --> need to know when including negative value for long term
-                ```
+   - handle where to start, and handle where to end the subarray
+   - important to generate test cases fast. How?
 
-4. remove elements (in place):
-    * two pointers
-        * both from start point
-            * one slow for real calculation and one fast for just iterate the object.
-        * one start one end
+     - We notice that negative number matters a lot
+
+       - what if negative number at begining / middle / end
+
+         ```python
+         # [1, 1, -1] -> need to know when to stop including new ele to subarray
+         # [-1, -3, 5] -> need to know when to start including new ele to subarray ot start fresh
+         # [4,-1,2,1,] --> need to know when including negative value for long term
+         ```
 
 ### **12.4 Common mistake points**
 
 1. Question Summary:
-    * Inplace change:
-        * #1089. Duplicate Zeros
-    * Value compare / Max compare / Max subarray
-        * #121. Best Time to Buy and Sell Stock
-        * #53. Maximum Subarray
-    * two pointers
-        * 26. Remove Duplicates from Sorted Array
-        * #27. Remove Element
+   - Inplace change:
+     - #1089. Duplicate Zeros
+   - Value compare / Max compare / Max subarray
+     - #121. Best Time to Buy and Sell Stock
+     - #53. Maximum Subarray
 
 ## Mock Interview Question Cover
 
-* Array
-  * 121. Best Time to Buy and Sell Stock
-  * 118. Pascal's Triangle
-  * 70. Climbing Stairs
-* Search
-  * 34. Find First and Last Position of Element in Sorted Array
-* LinkedList
-* Tree
-* Stack/Queue
-* Heap
-* Graph
-* DP
-* Hash Table
+- Array
+  - 121. Best Time to Buy and Sell Stock
+  - 118. Pascal's Triangle
+  - 70. Climbing Stairs
+- Search
+  - 34. Find First and Last Position of Element in Sorted Array
+  - 1041. Robot Bounded In Circle
+- LinkedList
+- Tree
+- Stack/Queue
+- Heap
+- Graph
+- DP
+- Hash Table
