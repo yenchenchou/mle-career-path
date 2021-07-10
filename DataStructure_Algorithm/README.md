@@ -784,6 +784,11 @@ An array is a collection of items stored at contiguous memory locations.
 ### **12.3 Common tricks in Array**
 
 1. Inplace operations
+    - start from the bottom sometimes will be easier
+    - use two pointer, one is for result and another is just for iteration (more often)
+        - Examples:
+            - remove duplicates
+            - swapping values
 2. Value compare / Max compare
 
     - the absolute min value is not very important
@@ -824,6 +829,9 @@ An array is a collection of items stored at contiguous memory locations.
 1. Question Summary:
     - Inplace change:
         - #1089. Duplicate Zeros
+        - #1299. Replace Elements with Greatest Element on Right Side
+        - #26. Remove Duplicates from Sorted Array (two pointers)
+        - #283. Move Zeroes (two pointers)
     - Value compare / Max compare / Max subarray
         - #121. Best Time to Buy and Sell Stock
         - #53. Maximum Subarray
