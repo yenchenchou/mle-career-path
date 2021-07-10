@@ -12,6 +12,7 @@ class Solution:
 
 # Solution2
 class Solution:
+    def removeElement(self, nums: List[int], val: int) -> int:
         # [3,2,2,3], val = 3
         slow = fast = 0
         while fast < len(nums):
