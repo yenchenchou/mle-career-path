@@ -785,7 +785,7 @@ An array is a collection of items stored at contiguous memory locations.
 
 1. Inplace operations
     - start from the bottom sometimes will be easier
-    - use two pointer, one is for result and another is just for iteration (more often)
+    - use two pointer, one is for result and another is just for iteration (more often). The pointers can be both from start/end or on start on tail
         - Examples:
             - remove duplicates
             - swapping values
@@ -832,6 +832,8 @@ An array is a collection of items stored at contiguous memory locations.
         - #1299. Replace Elements with Greatest Element on Right Side
         - #26. Remove Duplicates from Sorted Array (two pointers)
         - #283. Move Zeroes (two pointers)
+        - #905. Sort Array By Parity
+        -
     - Value compare / Max compare / Max subarray
         - #121. Best Time to Buy and Sell Stock
         - #53. Maximum Subarray
@@ -842,16 +844,62 @@ An array is a collection of items stored at contiguous memory locations.
 ## Mock Interview Question Cover
 
 - Array
+  - 1. Two Sum
   - 121. Best Time to Buy and Sell Stock
   - 118. Pascal's Triangle
   - 70. Climbing Stairs
+  - 27. Remove Element
+  - 56. Merge Intervals
+  - 252. Meeting Rooms
+
 - Search
   - 34. Find First and Last Position of Element in Sorted Array
   - 1041. Robot Bounded In Circle
+
 - LinkedList
+  - 2. Add Two Numbers
+  - 206. Reverse Linked List
+  - 21. Merge Two Sorted Lists
+  - 160. Intersection of Two Linked Lists
+
 - Tree
+  - 112. Path Sum
+  - 105. Construct Binary Tree from Preorder and Inorder Traversal
+  - 543. Diameter of Binary Tree
+  - 226. Invert Binary Tree
+  - 572. Subtree of Another Tree
+  - 104. Maximum Depth of Binary Tree
+  - 101. Symmetric Tree
+  - 938. Range Sum of BST
+  - 199. Binary Tree Right Side View
+
 - Stack/Queue
+  - 155. Min Stack
+  - 286. Walls and Gates
+
 - Heap
-- Graph
+  - 973. K Closest Points to Origin
+  - 253. Meeting Rooms II
+  - 215. Kth Largest Element in an Array
+
 - DP
+  - 121. Best Time to Buy and Sell Stock
+  - 70. Climbing Stairs
+  - 53. Maximum Subarray
+
 - Hash Table
+  - 17. Letter Combinations of a Phone Number
+  - 1086. High Five
+
+- String
+  - 1041. Robot Bounded In Circle
+  - 680. Valid Palindrome II
+  - 412. Fizz Buzz
+
+- DFS/BFS/Graph
+  - 200. Number of Islands
+  - 207. Course Schedule
+  - 490. The Maze
+  - 695. Max Area of Island
+  - 417. Pacific Atlantic Water Flow
+  - 733. Flood Fill
