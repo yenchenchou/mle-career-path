@@ -1,59 +1,97 @@
 # **Career_Learning_Path**
 
- Record a list of reading resource and progress from a entry level data scientist to a machine learning engineer or a better data science.
+This is the repo for anyone interested in the field of data science. Topic including people who wants to persue the followings:
+
+1. Software Engineer, Data Infra/Platform
+2. Data Engineer
+3. Data Scientist, Analytics
+4. Machine Learning Engineer (CS Focus)
 
 ## **Data Structure and Algorithm**
 
-----
-| Data Structure Topic | Concept | Coding Preparation | Interview practice | Application |
-|----------------------|---------|--------------------|--------------------|-------------|
-| LinkedList           | 100%    |                    | 0                  |             |
-| Stack & Queue        | 70%     |                    | 0                  |             |
-| Tree                 | 70%     |                    | 0                  |             |
-| Heap                 | 70%     |                    | 0                  |             |
-| Graph                | 0%      |                    | 0                  |             |
-| Hash Table           | 70%     |                    | 0                  |             |
-|                      |         |                    |                    |             |
+A collection if practice on Leetcode and other concepts include:
 
-| Algorithm Topic     | Concept | Coding Preparation | Interview practice | Application |
-|---------------------|---------|--------------------|--------------------|-------------|
-| Sorting             | 100%    |                    | 1                  |             |
-| Binary Search       | 100%    |                    | 0                  |             |
-| Recursion           | 70%     |                    | 0                  |             |
-| DFS / BFS           | 70%     |                    | 0                  |             |
-| Dynamic Programming | 0%      |                    | 0                  |             |
-|                     |         |                    |                    |             |
-|                     |         |                    |                    |             |
-|                     |         |                    |                    |             |
+1. Basic concepts
+2. Common tricks and patterns for each questions
+3. Covered questions so far
+4. Reference answer and analysis for each leetcode question
+5. Language specific concepts. A collection if practice on Leetcode and other concepts include:
 
 ## **MLOps**
 
-| MLOps Topic | Concept | Interview practice | Application Experience                                                                       |
-|-------------|---------|--------------------|----------------------------------------------------------------------------------------------|
-| Docker      | 60%     | 1                  | AWS ECR, Create image, docker-compse, GPU Tensorflow Development Env, Host API, Host Web App |
-| Kubernetes  | 50%     | 1                  | Host API                                                                                     |
-| Helm        | 30%     | 1                  | Host API                                                                                     |
-| Airflow     | 20%     | 0                  |                                                                                              |
-| KubeFlow    | 20%     | 0                  |                                                                                              |
+A collection of common tools related to MLOps
 
-## **ML**
+1. Airflow
+2. Docker
+3. Kubernetes
+4. Helm
+5. CI/CD pipieline, CircleCI
+
+## **Machine Learning**
+
+This topics covers several subtopics to fit people want to focus on different works:
+
+1. Regular Machine Learning
+2. Deep Learning
+    * Natural Language Processing
+        * Paper
+        * Concept
+        * Code
+    * Recommendation System
+        * Paper
+        * Concept
+        * Code
+3. Use MLOps to deploy ML
 
 ## **Case Study**
 
+This is more like a collections of case studies for all posistions. Each topic covers how to implemented in real practiced
+
+1. Software Engineer, Data Infra/Platform
+2. Data Engineer
+3. Data Scientist, Analytics
+    * Product Questions for Data Scientist
+4. Machine Learning Engineer (CS Focus)
+
 ## **Stats**
+
+This topic is solely covered for a Data Scientist, Analytics
 
 ## **Database**
 
+The topic will devided into:
+
+1. Relational Databses
+2. NoSQL
+3. Data Lake
+4. Other Readings
+
 ## **Distributed System**
+
+This will cover no only common distributed systems such as Spark but aslo other parellel processing tools like Dask.
 
 ## **Cloud**
 
+A collection of basic cloud computing conpects, computer networking, and AWS related topics
+
+1. Cloud
+2. Comuter Networking
+3. AWS
+
 ## **Shell**
+
+This is about some basic shell and file systems in Unix system. It helps you to get more familiar with topics like AWS or MLOPs.
 
 ## **Web Dev**
 
-## **ML System Design**
+## **System Design**
+
+This will cover regular system design and things that focus on ML system design.
 
 ## **General System Design**
 
 ## **Object Oriented Design**
+
+## Interiew Collection
+
+This a collection of past interview questions on a company level. Each Company may contain software engineer, data engineer, data scientist, or machine learning engineer, according to the company's open positions.
