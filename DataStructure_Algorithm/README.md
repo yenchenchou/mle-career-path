@@ -181,7 +181,7 @@ When you need to find one or more targets from a sorted sequence or a sequence n
      - #350 Intersection of Two Arrays II
    - Others:
      - #287 Find the Duplicate Number
-     - #4 Median of two sorted array
+     - #4 Median of two sorted array -> (x+y+1)/2 to represent median
 
 ### **2.4 Common mistake points**
 
@@ -783,12 +783,13 @@ An array is a collection of items stored at contiguous memory locations.
 
 ### **12.3 Common tricks in Array**
 
-1. Inplace operations
+1. Inplace operations (two pointer)
     - start from the bottom sometimes will be easier
-    - use two pointer, one is for result and another is just for iteration (more often). The pointers can be both from start/end or on start on tail
+    - use two pointer, one is for result and another is just for iteration (more often). The pointers can be both from start/end or on start on tail or sliding window
         - Examples:
             - remove duplicates
             - swapping values
+
 2. Value compare / Max compare
 
     - the absolute min value is not very important
@@ -809,9 +810,12 @@ An array is a collection of items stored at contiguous memory locations.
         [7,2,5,3,6,8,1,2]
         ```
 
-3. Max subarray
+3. Max subarray / substring
 
     - handle where to start, and handle where to end the subarray
+        - posiible solutions
+            - sliding window
+            - current subarray and final sub array compare everytime
     - important to generate test cases fast. How?
 
         - We notice that negative number matters a lot
@@ -824,6 +828,8 @@ An array is a collection of items stored at contiguous memory locations.
                 # [4,-1,2,1,] --> need to know when including negative value for long term
                 ```
 
+4. Start iteration from tail instead of head
+
 ### **12.4 Common mistake points**
 
 1. Question Summary:
@@ -834,10 +840,12 @@ An array is a collection of items stored at contiguous memory locations.
         - #283. Move Zeroes (two pointers)
         - #905. Sort Array By Parity
         -
-    - Value compare / Max compare / Max subarray
+    - Value compare / Max compare
         - #121. Best Time to Buy and Sell Stock
-        - #53. Maximum Subarray
         - #1346. Check If N and Its Double Exist
+    - Max subarray
+        - #53. Maximum Subarray
+        - #487. Max Consecutive Ones II
     - flags:
         - #941. Valid Mountain Array
 

@@ -61,12 +61,16 @@
 
 ### When to use case when
 
-1. Getting percentage from a column that numerator has stricter condition and the denominator with the looser condition. Usually questions involve **ration/percentage** For exmaple:
-    - From the sales that had a valid promotion, what % of transactions/sales occur on either the very first day or the very last day of a promotion campaign.
-    - Percentage of valid promotion in sales
-    - You're given a table that contains search results. If the 'position' column represents the position of the search results, write a query to calculate the percentage of search results that were in the top 3 position.
-    - Write a query to calculate the percentage of search results, out of all the results, that were positioned in the top 3 and clicked by the user.
-    - What percent of all products in the grocery chain's catalog are both low fat and recyclable?
+1. Getting percentage from a column that numerator has stricter condition and the denominator with the looser condition. Usually questions involve **ration/percentage**
+    - Tricks
+        - When you know you need to use the same data set with the same column. Then it means you need to do self (left) join then do case when
+    - For exmaple:
+        - From the sales that had a valid promotion, what % of transactions/sales occur on either the very first day or the very last day of a promotion campaign.
+        - Percentage of valid promotion in sales
+        - You're given a table that contains search results. If the 'position' column represents the position of the search results, write a query to calculate the percentage of search results that were in the top 3 position.
+        - Write a query to calculate the percentage of search results, out of all the results, that were positioned in the top 3 and clicked by the user.
+        - What percent of all products in the grocery chain's catalog are both low fat and recyclable?
+        - Acceptance Rate
 
 2. Filter on a column with multiple possible values
     - Customers Who Bought Products A and B but Not C: use case when to create tmp table first.
@@ -231,6 +235,11 @@
             group by 1
             order by 1
             ```
+
+    - left join
+        - acceptance rate
+            - Sol 1: `left join` then `count(a.accept)/count(b.request)`
+            - Sol 2: `left join` then `avg(case when a.accept in not null then 1 else 0 end)`
 
 ### When to use CTE (with)
 
