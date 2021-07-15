@@ -747,8 +747,16 @@ When you see objects has vertices(nodes) and pointers(edges)
 ### **10.3 Common tricks in Hash Table**
 
 1. remove, lookup operations that need hash table or set
-   1. Use list to save the result then use "".join instead
-   2. Use hash table or set for look up operations since it spend O(1) time
+    1. Use list to save the result then use "".join instead
+    2. Use hash table or set for look up operations since it spend O(1) time
+2. Question Summary:
+    - Classic
+        - hash table
+            - #3. Longest Substring Without Repeating Characters
+        - hash set
+            - #349. Intersection of Two Arrays
+            - #136. Single Number
+            - #349. Intersection of Two Arrays
 
 ### **10.4 Common mistake points**
 
@@ -846,6 +854,7 @@ An array is a collection of items stored at contiguous memory locations.
     - Max subarray
         - #53. Maximum Subarray
         - #487. Max Consecutive Ones II
+        - #3. Longest Substring Without Repeating Characters
     - flags:
         - #941. Valid Mountain Array
 

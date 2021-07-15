@@ -35,6 +35,7 @@
     ```SQL
     -- Write your MySQL query statement below
     -- not very generalized
+    -- when the question does not require you to return NULL
     SELECT
         (SELECT DISTINCT
             Salary
@@ -49,6 +50,7 @@
     where salary < (select max(salary) from Employee)
 
     -- 2. Better way
+    -- when the question does require you to return NULL
     select
         coalesce((
             select distinct salary as SecondHighestSalary 
@@ -349,6 +351,30 @@
             select 1
             from tmp2 b
             where a.student_id = b.student_id
+        )
+
+        --sol2
+        with tmp as (
+            select
+                *,
+                dense_rank() over(partition by exam_id order by score) as low,
+                dense_rank() over(partition by exam_id order by score desc) as high
+            from exam
+        ), tmp2 as (
+            select
+                student_id,
+                max(case when low = 1 or high = 1 then 1 else 0 end) as not_quiet
+            from tmp
+            group by 1
+        )
+
+        select a.student_id, a.student_name
+        from Student a
+        where exists (
+            select 1
+            from tmp2
+            where a.student_id = tmp2.student_id
+                and tmp2.not_quiet = 0
         )
         ```
 
