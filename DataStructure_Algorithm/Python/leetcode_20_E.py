@@ -50,3 +50,19 @@ class Solution:
                 else:
                     stack.pop()
         return not stack
+
+# Solution4: my try 2
+
+class Solution:
+    def isValid(self, s: str) -> bool:
+        # )
+        dic = {"(": ")", "{": "}", "[": "]"}
+        stack = []
+        for val in s:
+            if val in dic:
+                stack.append(val)
+            elif (val not in dic and not stack) or dic[stack[-1]] != val:
+                return False
+            elif dic[stack[-1]] == val:
+                stack.pop()
+        return not stack  # O(n), O(n)

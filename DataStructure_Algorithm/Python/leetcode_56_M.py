@@ -39,3 +39,31 @@ class Solution:
         return newIndex
 
 #O(n^2), O(n) -> store answer
+
+
+# Solution2: self answer
+class Solution:
+    def merge(self, intervals: List[List[int]]) -> List[List[int]]:
+        intervals = sorted(intervals, key=lambda x: (x[0], x[1]))
+        # [[1,4],[4,5], [6,8]]
+        stack = [intervals[0]]
+        for i, j in intervals[1:]:
+            if i <= stack[-1][-1] <= j:
+                stack[-1][-1] = j
+            elif stack[-1][-1] < i:
+                stack.append([i, j])
+        return stack
+
+
+# Solution3: A little better
+class Solution:
+    def merge(self, intervals: List[List[int]]) -> List[List[int]]:
+        intervals = sorted(intervals, key=lambda x: (x[0], x[1]))
+        # [[1,4],[4,5], [6,8]]
+        stack = []
+        for i, j in intervals:
+            if not stack or stack[-1][-1] < i:
+                stack.append([i, j])
+            else:
+                stack[-1][-1] = max(stack[-1][-1], j)
+        return stack

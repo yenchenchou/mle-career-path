@@ -16,3 +16,17 @@ class Solution:
             elif val - minVal > profit:
                 profit = val - minVal
         return profit  # O(n), O(1)
+
+
+# Solution2: thrid attempt by myself
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        # [1,1,1,1]
+        #. ip
+        p = profit = 0
+        for i in range(len(prices)):
+            if prices[i] < prices[p]:
+                p = i
+            else:
+                profit = max(profit, prices[i] - prices[p])
+        return profit

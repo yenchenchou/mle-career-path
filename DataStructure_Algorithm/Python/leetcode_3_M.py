@@ -19,6 +19,10 @@ class Solution:
 
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
+        # abcabcbb
+        # ababcdf
+        # aaa
+        # pwwkew
         seen = dict()
         res = start = 0
         for i, val in enumerate(s):
