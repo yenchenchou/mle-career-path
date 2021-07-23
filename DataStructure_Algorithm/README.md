@@ -13,18 +13,19 @@
 
 1. Sort questions are commonly connect with heap or even replaced by heap
 2. Question summary
-   - Basics:
-     - the naive algorithm
-   - Limited Stacks:
-     - use 3 stacks to simulate selection sort
-     - use 2 stacks to simulate selection sort
-   - Linked List:
-     - Merge sort linked list
-     - Split the numbers and strings
-   - Intervals:
-     - #56. Merge Intervals
-     - #253. Meeting Rooms II (also a priority queue problem)
-     - #252. Meeting Rooms I
+    - Basics:
+        - the naive algorithm
+    - Limited Stacks:
+        - use 3 stacks to simulate selection sort
+        - use 2 stacks to simulate selection sort
+    - Linked List:
+        - Merge sort linked list
+        - Split the numbers and strings
+    - Intervals:
+        - #56. Merge Intervals
+        - #452. Minimum Number of Arrows to Burst Balloons (very similar to #56)
+        - #253. Meeting Rooms II (also a priority queue / stack problem)
+        - #252. Meeting Rooms I
 
 ### **1.4 Common mistake points**
 
@@ -266,7 +267,7 @@ Linked List will be specified during the question
      - #708. Insert into a Sorted Circular Linked List (insertation)
    - cycle / fast slow pointer / two pointers
      - #141 Cycle in LinkedList
-     - #142 LinkedList Cycle II (\*\*)
+     - #142 LinkedList Cycle II
      - #160 Intersection of Two Linked
      - #19. Remove Nth Node From End of List
    - reverse
@@ -329,7 +330,7 @@ Queue is a linear structure that follow first-in-first-out policy. Queue some ho
     - repeat deduplication of a String
     - Classic Queue:
         - #346. Moving Average from Data Stream
-    - Classic Stack:
+    - Classic Stack, examine the last element in the stack:
         - #125. Valid Palindrome (stack as cache)
         - #1047. Remove All Adjacent Duplicates In String (stack as cache)
         - #1209. Remove All Adjacent Duplicates in String II (stack as count)
@@ -337,6 +338,7 @@ Queue is a linear structure that follow first-in-first-out policy. Queue some ho
         - #716. Max Stack
         - #739. Daily Temperatures (stack as cache)
         - #20. Valid Parentheses
+        - #1249. Minimum Remove to Make Valid Parentheses (also priority queue)
     - Handle parentheses, calculator
         - #224. Basic Calculator
         - #227. Basic Calculator II
@@ -348,6 +350,10 @@ Queue is a linear structure that follow first-in-first-out policy. Queue some ho
     - stack/queue with dfs/bfs
         - #286. Walls and Gates
         - #622. Design Circular Queue
+    - Intervals:
+        - #56. Merge Intervals
+        - #452. Minimum Number of Arrows to Burst Balloons (very similar to #56)
+        - #1094. Car Pooling, 1109. Corporate Flight Bookings, 253. Meeting Rooms II, 731. My Calendar II, 732. My Calendar III
 
 ---
 
@@ -374,7 +380,7 @@ Binary tree is a tree data structure in which each node has at most two children
 
    Def: All nodes other than the last level has two children occupied. The nodes in the last layer are as far left as possible. A binary heap is a complete binary tree that satisfies the heap order prperty.
 
-4. \*_Balanced Binary Tree_
+4. **Balanced Binary Tree**
    A binary tree is balanced if the height of the tree is O(logn) and will have the following prperties:
 
    1. the difference between the height of the left and the right subtrees is at most 1.
@@ -545,17 +551,17 @@ By knowing that it is a complete binary tree with heap order.
 
 1. Max heap: most heap in programming languafe is min heap. So we use Counter with negative to do the count.
 2. Question summary
-   - Basic:
-     - Use array design heap
-   - Top K questions (You may sort to solve these problems):
-     - #973. K Closest Points to Origin
-     - #703. Kth Largest Element in a Stream
-     - #215. Kth Largest Element in an Array (alike 703)
-     - #347. Top K Frequent Elements
-     - #692. Top K Frequent Words (advanced of #347)
-     - #451. Sort Characters By Frequency (advanced of #347)
-   - Interval arrays:
-     - #253. Meeting Rooms II (priority queue)
+    - Basic:
+        - Use array design heap
+    - Top K questions (You may sort to solve these problems):
+        - #973. K Closest Points to Origin
+        - #703. Kth Largest Element in a Stream
+        - #215. Kth Largest Element in an Array (alike 703)
+        - #347. Top K Frequent Elements
+        - #692. Top K Frequent Words (advanced of #347)
+        - #451. Sort Characters By Frequency (advanced of #347)
+    - Interval arrays:
+        - #253. Meeting Rooms II (priority queue), note that #252. Meeting Rooms is only sorting problems
 
 ### **7.4 Common mistake points**
 

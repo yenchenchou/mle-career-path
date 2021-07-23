@@ -15,3 +15,18 @@ class Solution:
             elif stack[-1][1] < x1:
                 stack.append([x1, x2])
         return len(stack)  # O(nlogn), O(n)
+
+
+# Solution2: This method will apply on #253 Meeting rooms II
+class Solution:
+    def minMeetingRooms(self, intervals: List[List[int]]) -> int:
+        stack = []
+        maxVal = tmp = 0
+        for start, end in intervals:
+            stack.append([start, 1])
+            stack.append([end, -1])
+
+        for t, i in sorted(stack):
+            tmp += i
+            maxVal = max(maxVal, tmp)
+        return maxVal

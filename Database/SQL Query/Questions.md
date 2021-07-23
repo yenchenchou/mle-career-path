@@ -397,3 +397,6 @@ likes ('id1', 'id2')
     ```
 
 #### Example 2
+
+```SQL
+```
