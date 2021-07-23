@@ -27,3 +27,18 @@ class Solution:
 # O(nlogn) -> sorting, O(n)-> size N array
 
 # Solution2: Priority queues
+# let's dry run first, we found that sorting the starting is the start to do the comparison
+# Also, we are not interested in which room is empty, it works as long as it is empty
+# So, we use min heap to implement the priority queue. 
+# Everytime we just check whether the new comming meeting has overlap with the top of the minheap
+import heapq
+class Solution:
+    def minMeetingRooms(self, intervals: List[List[int]]) -> int:
+        res = []
+        intervals.sort(key=lambda x: x[0])
+        heapq.heappush(res, intervals[0][1])
+        for session in intervals[1:]:
+            if res[0] <= session[0]:
+                heapq.heappop(res)
+            heapq.heappush(res, session[1])
+        return len(res)  # O(nlogn), O(n)

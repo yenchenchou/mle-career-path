@@ -49,3 +49,42 @@ class Solution:
             if i not in stack_right:
                 res.append(s[i])
         return "".join(res)  # O(n), O(n)
+
+
+# Solution 3: my try, record the position of the invalid parenthesis
+class Solution:
+    def minRemoveToMakeValid(self, s: str) -> str:
+        stack = []
+        res = []
+        # lee(t(c)o)de
+        for i, val in enumerate(s):
+            if stack and stack[-1][1] == "(" and val == ")":
+                stack.pop()
+            elif val == "(" or val == ")":
+                stack.append([i, val])
+        stack = set([i for i, val in stack])
+        for i, val in enumerate(s):
+            if i not in stack:
+                res.append(val)
+
+        return "".join(res)  # O(n), O(n)
+
+# Solution 3: smarter one pass, similar to my logic
+
+
+class Solution:
+    def minRemoveToMakeValid(self, s: str) -> str:
+        stack = []
+        s = list(s)
+        for i, val in enumerate(s):
+            if val == "(":
+                stack.append(i)
+            elif val == ")":
+                if stack:
+                    stack.pop()
+                else:
+                    s[i] = ""
+        while stack:
+            s[stack.pop()] = ""
+
+        return "".join(s)
