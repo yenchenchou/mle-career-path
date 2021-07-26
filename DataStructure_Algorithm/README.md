@@ -863,6 +863,10 @@ An array is a collection of items stored at contiguous memory locations.
         - #3. Longest Substring Without Repeating Characters
     - flags:
         - #941. Valid Mountain Array
+    - Mix dict / two pointers
+        - #1. Two Sum
+        - #15. 3Sum
+        - #167. Two Sum II - Input array is sorted
 
 ## Mock Interview Question Cover
 
@@ -884,7 +888,6 @@ An array is a collection of items stored at contiguous memory locations.
   - 206. Reverse Linked List
   - 21. Merge Two Sorted Lists
   - 160. Intersection of Two Linked Lists
-
 - Tree
   - 112. Path Sum
   - 105. Construct Binary Tree from Preorder and Inorder Traversal
