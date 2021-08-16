@@ -524,13 +524,6 @@ data modeling：用star schema可以解，面试官可以会引导你想出需�
 coding：之前也有担心过python coding，但是其实难度和phone screen差不多，也都是list和dictionary的一些基本loop之类的。地里可以在以前的面筋里面找到原题，如果没有信心的话可以找出来自己写写看，应该八九不离十
 BQ：其实也不知道BQ回答得到底如何，但是基本也都是常规的BQ问题，可以在准备的时候想想用什么例子之类的
 
-SQL：sales promotion product 的表。
-low fat和recyable的比例，记得换成float并且乘100
-top 5 media type，这题是要看你的debug，最后要filter掉原来的multi media的channel，面试官会提示
-sale在promotion第一天或者最后一天的比例，case when可以解
-有promotion的units和没有promotion的units 的ratio，这里要用left join
-做得太快还被加了一道SQL，最后没完全写出来就去做python了但是大致思路是对的，category里面有units sold和完全没有units sold的ratio
-
 sql : 三张表 people ( pid, companyid, pname..), company(cid, loc_id, cname...) , location(loc_id, lname..)
 找出company最多的location， 该location对应的company里的people， 返回 people name， company name
 
