@@ -1,34 +1,30 @@
 # 15. 3Sum
 
-# Solution1: two pointer and fix one value a time
-# Then becareful of duplicat results when you have duplicates numbers
+# Solution 1: two pointers, the key is to remove duplicates
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
-        # sort and fix one value at a time
-        # make the same two sume function
-        nums.sort()
         res = []
+        nums.sort()
         for i in range(len(nums)):
             if nums[i] > 0:
                 break
-            if i == 0 or nums[i] != nums[i-1]:
-                self.twoSum(nums, i, res)
+            if i == 0 or nums[i-1] != nums[i]:
+                self.twoSum(i, nums, res)
         return res
 
-    def twoSum(self, nums, i, res):
-        # [-2,1,1,1,1,1]
-        l ,r = i+1, len(nums)-1
+    def twoSum(self, i, nums, res):
+        l = i + 1
+        r = len(nums) - 1
         while l < r:
-            s = nums[l] + nums[r] + nums[i]
-            if s == 0:
+            tmp = nums[i] + nums[l] + nums[r]
+            if tmp < 0:
+                l += 1
+            elif tmp > 0:
+                r -= 1
+            else:
                 res.append([nums[i], nums[l], nums[r]])
                 l += 1
                 r -= 1
-                # the most difficult part is to notice cases like: [-2,1,1,1,1,1]
-                # this prevent duplicates results
+                #
                 while l < r and nums[l] == nums[l-1]:
-                    l += 1
-            elif s > 0:
-                r -= 1
-            else:
-                l += 1
+                    l += 1  # O(n^2), O(n)
