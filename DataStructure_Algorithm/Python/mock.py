@@ -116,3 +116,20 @@ class Solution:
 
 
 
+    def reverseList(self, head: ListNode) -> ListNode:
+        start_node = ListNode(val=-1)
+
+        # start_node -> 5 -> 4 ->3 -> 2 ->1
+        # start_node -> 1
+        #    V  
+        # [1,2,3,4,5]
+        while head:
+            next_head = head.next # head = 1 next_head = 2
+            # head = 2
+            # start_node 
+            # temp ->  
+            temp = start_node.next
+            start_node.next = head
+            start_node.next.next = temp
+            head = next_head
+        return start_node.next

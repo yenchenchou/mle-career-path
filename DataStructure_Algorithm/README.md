@@ -68,7 +68,7 @@
 
 ### **2.1 Definition**
 
-Binary Search operates on a contiguous sequence with a specified left and right index. The left, right, mid index helps us to compare the target. If the index shows the condition deos not align with the target then that half part is eliminated. We do this repeatly then get the final result.
+Binary Search operates on a contiguous sequence with a specified left and right index. The left, right, mid index helps us to compare the target. If the index shows the condition does not align with the target then that half part is eliminated. We do this repeatly then get the final result. **Core idea is to cut (near) half of the search space everytime. The input doesn't need to be sorted. As long as they can be classified into different cateories than binary serach is suitable.**
 
 When solving binary search, there are several things included most of the time:
 
@@ -185,6 +185,8 @@ When you need to find one or more targets from a sorted sequence or a sequence n
      - #4 Median of two sorted array -> (x+y+1)/2 to represent median
 
 ### **2.4 Common mistake points**
+1. Time complexity: The number of leaf node decide the time complexity
+3. Space complexity: How many call stacks are there in the recursion tree
 
 ## **3. LinkedList**
 
