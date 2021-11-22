@@ -39,23 +39,25 @@ class Deque:
 
     def popLeft(self):
         if not self.front:
-            for i in range(len(self.end)//2+1):
+            for i in range(len(self.end)//2):
                 self.tmp.append(self.end.pop())
             while self.end:
                 self.front.append(self.end.pop())
             while self.tmp:
                 self.end(self.tmp.pop())
+            self.front.pop()
         else:
             return self.front.pop()
 
     def popRight(self):
         if not self.end:
-            for i in range(len(self.front)//2+1):
+            for i in range(len(self.front)//2):
                 self.tmp.append(self.front.pop())
             while self.front:
                 self.end.append(self.front.pop())
             while self.tmp:
-                self.front.append(self.tmp)
+                self.front.append(self.tmp.pop())
+            self.end.pop()
         else:
             return self.end.pop()
 
@@ -82,7 +84,6 @@ def test1():
     deque.appendRight(6)
     deque.popLeft()
     deque.popRight()
-    print(deque.getDeque())
     assert deque.getDeque() == [1], "Should be [1]"
 
 
@@ -90,8 +91,8 @@ def test2():
     # [1]
     deque = Deque()
     deque.appendLeft(1)
-    deque.appendLeft(1)
-    deque.appendLeft(1)
+    deque.appendLeft(2)
+    deque.appendLeft(3)
     deque.popRight()
     deque.popRight()
     deque.popRight()
@@ -110,5 +111,5 @@ def test3():
 
 test1()
 test2()
-# test3()
+test3()
 # When to use stack? When you need to look at the latest value of the left side 
