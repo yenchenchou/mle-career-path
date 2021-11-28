@@ -20,6 +20,35 @@ Common problems for Queue/Stack
 # 3. Sort number with two stack, the input has no duplicates and all are int -> Use selection sort concept
 # Follow up: if it has duplicte and the value is float
     # use a counter until counter minus to 0
+def stack_sort(nums):
+    # use the concept of selection sort: pick the min for unsorted to put to the leftmost of the sorted part
+    # s1: unsorted values
+    # s2: sorted value
+    # cur_min: current min
+    # idx = record who many pushed from cur_min
+
+    # the input array push to s1 one by one
+    # repeat until idx == len(input_array):
+        # then pop + push from a1 to s2 one by one and record the min with the variable cur_min
+        # then pop and push it back to s1 except for the value that matches the cur_min
+        # push the cur_min to s2, and idx += 1
+    s1, s2 = [nums], []
+    cur_min = float("inf")
+    while s1:
+        val = s1.pop()
+        if val < cur_min:
+            cur_min = val # 1
+        s2.append(val) # 4, 1, 3, 2
+        while s2[-1] >= cur_min:
+            s1.append(s2.pop())
+        s2.append(cur_min)
+
+        
+
+        
+
+            
+
 
 
 # 4. How to use multiple stacks to implement a deque. Prefer O(1) amortized time for all operations
