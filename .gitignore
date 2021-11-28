@@ -31,3 +31,6 @@ __pycache__
 .python-version
 .idea
 .idea/*
+
+# python related
+.ipynb_checkpoints
