@@ -369,10 +369,18 @@ Binary tree is a tree data structure in which each node has at most two children
 
    Def: A node based binary tree with the following properties:
 
-   1. The left subtree of a node should only contains node with keys smaller than the node's key
-   2. The right subtree of a node should only contains nide with keys greater than the node's key
+   1. The left subtree of a node should only contains node with keys that are **ALL** smaller than the node's key
+   2. The right subtree of a node should only contains **ALL** nodes with keys greater than the node's key
    3. The left and right subtree each must also be a binary search tree
    4. Some rare cases the right index doen't need to be len(arr)-1
+   
+```
+          10
+         /  \
+        2    12
+       / \  /  \
+      1   711  50
+```
 
 2. **Full Binary Tree**
 
@@ -385,7 +393,14 @@ Binary tree is a tree data structure in which each node has at most two children
 4. **Balanced Binary Tree**
    A binary tree is balanced if the height of the tree is O(logn) and will have the following prperties:
 
-   1. the difference between the height of the left and the right subtrees is at most 1.
+      1. the difference between the height of the left and the right subtrees is at most 1.
+```
+        10
+       /  \
+      2    4
+     / \     \
+  null null   5
+```
 
 5. **Perfect Binary Tree**
 
@@ -490,6 +505,8 @@ Tree data structure in which each node has at most two children
      - #117. Populating Next Right Pointers in Each Node II
 
 ### **6.4 Common mistake points**
+1. The real base case for tree is the two null pointers (99% of time holds true). For thre below example, you reach to null and get the 2 then go the right null.
+2. When talking about tree types or ay properties, it means the property applies to all single not just the global tree
 
 ---
 
