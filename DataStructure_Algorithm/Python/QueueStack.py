@@ -18,7 +18,7 @@ Common problems for Queue/Stack
 # note that it's impossible to do that with one stack, so multiple stacks mix with other data structure is possible
 # 155. Min Stack
 
-# 3. Sort number with two stack, the input has no duplicates and all are int -> Use selection sort concept
+# 3. Sort number with two stack, the input has no duplicates and all are int -> Use selection sort concept (need test again)
 # Follow up: if it has duplicte and the value is float
     # use a counter until counter minus to 0
 
