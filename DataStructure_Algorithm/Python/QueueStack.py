@@ -21,37 +21,46 @@ Common problems for Queue/Stack
 # 3. Sort number with two stack, the input has no duplicates and all are int -> Use selection sort concept (need test again)
 # Follow up: if it has duplicte and the value is float
     # use a counter until counter minus to 0
-def stack_sort(nums):
-    # use the concept of selection sort: pick the min for unsorted to put to the leftmost of the sorted part
-    # s1: unsorted values
-    # s2: sorted value
-    # cur_min: current min
-    # idx = record who many pushed from cur_min
+# big picture: use the selection sort concept -> take the min value from unsorted array and put to the leftmost side of the unsorted array and do repeatly
+# s1, s2 = place for unsorted, place for sorte
+# global_min to record when we select the min when s1 to s2 and prevent from pushing back to s1
+# when global_min == the value -> don't push back
+# the s2 popping process stop when s2[-1] < global_min 
+# clean up global_min
+"""
+4,2,1,5
+s1 = [4,5]
+s2 = [1,2]
+global_min = None
+"""
+from typing import List
 
-    # the input array push to s1 one by one
-    # repeat until idx == len(input_array):
-        # then pop + push from a1 to s2 one by one and record the min with the variable cur_min
-        # then pop and push it back to s1 except for the value that matches the cur_min
-        # push the cur_min to s2, and idx += 1
-    s1, s2 = [nums], []
-    cur_min = float("inf")
-    while s1:
-        val = s1.pop()
-        if val < cur_min:
-            cur_min = val # 1
-        s2.append(val) # 4, 1, 3, 2
-        while s2[-1] >= cur_min:
-            s1.append(s2.pop())
-        s2.append(cur_min)
+def twoStackSortNonDuplicates(nums) -> List:
+    if not nums: return nums
+    s1, s2 = nums, []
+    
+    for _ in range(len(nums)):
+        global_min = float("inf")
+        while s1: 
+            val = s1.pop()  
+            if val < global_min: 
+                global_min = val # 4
+            s2.append(val)  
+        while s2:
+            if s2[-1] < global_min: # 4, 4
+                break
+            val2 = s2.pop() #
+            if val2 > global_min: 
+                s1.append(val2)
+        s2.append(global_min)
+    return s2
+
+assert twoStackSortNonDuplicates([4,1,5,2]) == [1,2,4,5], "should be [1,2,4,5]"
+assert twoStackSortNonDuplicates([4,2]) == [2,4], "should be [2,4]"
+assert twoStackSortNonDuplicates([1]) == [1], "should be [1]"
+assert twoStackSortNonDuplicates([]) == [], "should be []"
 
         
-
-        
-
-            
-
-
-
 
 # 4. How to use multiple stacks to implement a deque. Prefer O(1) amortized time for all operations
 # three stacks
@@ -142,3 +151,4 @@ test1()
 test2()
 test3()
 # When to use stack? When you need to look at the latest value of the left side 
+

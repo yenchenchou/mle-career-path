@@ -385,7 +385,6 @@ Binary tree is a tree data structure in which each node has at most two children
 2. **Full Binary Tree**
 
    Def: A node based biary tree if every node has 0 or 2 children.
-
 3. **Complete Binary Tree**
 
    Def: All nodes other than the last level has two children occupied. The nodes in the last layer are as far left as possible. A binary heap is a complete binary tree that satisfies the heap order prperty.
@@ -514,13 +513,12 @@ Tree data structure in which each node has at most two children
 
 ### **7.1 Definition**
 
-A special tree-based data structure in whicn tree is a complete binary tree. Heap is usually the way we build priority queue. It is logically a tree but implemented in an unsorted array with special rule to follow physicially.
+A special tree-based data structure in which tree is a complete binary tree. Heap is usually the way we build priority queue. It is logically a tree but implemented in an unsorted array with special rule to follow physicially.
 
 Heap has certain properties:
 
-1. Min/Max Heap: the smallest/biggest element at the root. A complete binary tree which the value in the node is smaller/bigger or equal to the children's node.
-2. What is the physicall rule of heap:
-
+1. Min/Max Heap: the smallest/biggest element at the root. A complete binary tree which the value in each node is smaller/bigger or equal to the children's node.
+2. What is the physicall rule of heap (physically store in linear data structure that can be indexed such as array -> O(1) search to parent):
    2.1 Zero index based
 
    ```Python
@@ -555,7 +553,6 @@ Heap has certain properties:
    - pop/poll O(logn): remove the node and let the right most leaf go the place where it is deleted. Then do swap.
 
 4. How heap sort works:
-
    - First create a max/min heap using array. By deleting a node each time and append the node in the released space. We will get a sorted heap. If max heap will get a ascending sorted array, whicle min heap will give us descending sorted array.
    - O(nlogn) for creating max/min heap + O(logn) for pop max/min and rearrange the reamaining nodes. -> **But can we use heapify and what is the difference between the manuall created heap and heapify.**
 
@@ -598,7 +595,7 @@ By knowing that it is a complete binary tree with heap order.
 
    # correct
    nums = [15,2]
-   heapq.heapify(nums)
+   heapq.heap ify(nums)
    ```
 
 ## **DFS / BFS**

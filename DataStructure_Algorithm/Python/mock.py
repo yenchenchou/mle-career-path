@@ -19,7 +19,6 @@ Output: 18
 """
 
 
-
 class Solution:
     def split_max(self, nums: List[int], m: int) -> int:
         # accumulated array to make it ordered
