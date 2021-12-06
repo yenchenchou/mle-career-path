@@ -11,3 +11,4 @@ A special tree-based data structure
 ### sol 2 and sol3 depends 
 #### if k is relitively small: min(n + logn)≈min(n), max(1 + nlogk)≈max(nlogk) -> depends
 #### if k is relitively big (worst case is n/2 not n) then O(n/2 + nlogn)≈O(n/2 + nlogn) -> depends
+# sol4: partially partition, the concept is from quick sort but not all process 

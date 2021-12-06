@@ -32,7 +32,7 @@ def isBalancedTree(root):
 
     left = heightRree(root.left) # get height
     right = heightRree(root.right) # get height
-    if abs(elft - right) > 1:
+    if abs(left - right) > 1:
         return False
     return isBalancedTree(root.left) and isBalancedTree(root.right)
 
@@ -131,7 +131,7 @@ k1 = 3
 k2 = 9
             10 [3,9]
           /   \
-[3,9]    5    15 [3,9]
+[3,9]    5     15 [3,9]
         /  \   / \ 
        2    7 12 20
 """
