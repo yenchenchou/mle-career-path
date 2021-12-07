@@ -1,171 +1,181 @@
-"""
-Intro
-1. To break the problem into small problems with size of half of the original problem
-"""
-
-# 1. Classic Binary Search
-def classic_binary_search(nums, target):
-    if not nums or len(nums) == 0: return -1
-    left, right = 0, len(nums) - 1
-    while left <= right:  # if the target equal to our only one element array, so we need =
-        mid = (left + right) // 2
-        if nums[mid] == target:
-            return mid
-        elif nums[mid] < target:
-            left = mid + 1  # +1 because we are sure that mid is not the target
-        else:
-            right = mid - 1
-    return -1
+# 1. reverse a linked list
+from typing import Optional
 
 
-# 2. Classic Binary Search in 2D array
-def classic_binary_search_2d(nums, target):
-    if not nums or len(nums) == 0 or len(nums[0]) == 0: return -1
-    row, col = len(nums), len(nums[0])
-    left, right = 0, row * col - 1
-    while left <= right:
-        mid = (left + right) // 2
-        r, c = mid // col, mid % col
-        if nums[r][c] == target:
-            return mid
-        elif nums[r][c] < target:
-            left = mid + 1
-        else:
-            right = mid - 1
-    return -1
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
 
 
-# 3. closet to target number:
-def closet_target_number(nums, target):
-    """'
-    1. NO need for exact number -> FIND the interval that include the target
-    2. not sure whether the current value of left/right nunber is corrent -> need post processing
-    3. stop at when left and right are neigbor -> because we are finding the interval
-    """
-    if not nums or len(nums) == 0: return -1
-    left, right = 0, len(nums) - 1
-    while left + 1 < right:  # if the target equal to our only one element array, so we need =
-        mid = (left + right) // 2
-        if nums[mid] == target:
-            return mid
-        elif nums[mid] < target:
-            left = mid
-        else:
-            right = mid
-    if abs(nums[left] - target) < abs(nums[right] - target):
-        return left
-    else:
-        return right
+def printList(head):
+    ls = []
+    temp = head
+    while temp:
+        ls.append(temp.val)
+        temp = temp.next
+    return ls
 
+class Solution:
+    def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        """
+        Option1: iterative (from left to right)
+        1. corner case: when empty or only one node
+        2. need next pointer, and prev pointer 
+        3. Once create the next pointer, we are not afraid changing the cur pointer because next_node knows the remainings 
+        4. cur.next = prev
+        3. cur and prev go a step forward
+        Time: O(n)
+        Space: O(n)
 
-# 4.1 return index of first occurance of an sorted non decreased array
-def first_occurance(nums, target):
-    """
-    [1,2,2,2,2,3], t=2
-     l         
-       r  
-    m
+None    1   ->   2   ->   None
         
-    1. will find the value but keep index as left as possible
-    -> let the pointer compare the neghbor pointer to see which is current, the stop when left and right overlapped
-        -> left pointer: move a step further +1 after mid
-        -> right pointer: stop at where the mid point is since it is not the value
+         None <- prev  <- cur      next -> 
 
-    -> Option2: let the pointer be neigbor then see which one is the first one
-    """
-    # Option1
-    if not nums or len(nums) == 0: return -1
-    left, right = 0, len(nums) - 1
-    while left < right:
-        mid = (left + right) // 2
-        if nums[mid] >= target:
-            right = mid  # mid - 1 is not ok otherwise skip the value
-        else:
-            left = mid + 1  # mid is not ok otherwise infinite loop
-    return left if nums[left] == target else -1
+        None  <-   1   <-   2 
 
-    # Option2: the pros for this is because it the structure is the same compare to the finding last occurence problem
-    # if not nums or len(nums) == 0: return -1
-    # left, right = 0, len(nums) - 1
-    # while left + 1 < right:  # if the target equal to our only one element array, so we need =
-    #     mid = (left + right) // 2
-    #     if nums[mid] == target:
-    #         right = mid
-    #     elif nums[mid] < target:
-    #         left = mid  # mid + 1 is ok
-    #     else:
-    #         right = mid # mid - 1 is ok
-    # if nums[left] == target:
-    #     return left
-    # elif nums[right] == target:
-    #     return right
-    # else:
-    #     return -1
+        Option2: recursive (right to left)
+        1.    --------------
+        1 -> | 2 -> None   | 
+              --------------
+        None <- 1 <- | treat as one thing|
+        Time: O(n)
+        Space: O(1) -> only the pointer is changing, not the actual value
 
-# assert first_occurance([1,2,2,2,2,3], target=2) == 1
-# assert first_occurance([2,2,2,2], target=2) == 0
-# assert first_occurance([1,2,3], target=2) == 1
-# assert first_occurance([1,2,2,2,2,3], target=3) == 5
-# assert first_occurance([], target=2) == -1
-# assert first_occurance([1,3], target=10) == -1
+        """
+        # Option1
+        if not head or not head.next: return head
+        prev = None
+        while head:
+            next_node = head.next
+            head.next = prev
+            prev = head  # prev first, before the head moves to next node
+            head = next_node
+        return prev
+
+        # Option2
+        if not head or not head.next: return head
+        # newhead because the recursive function runs to the end of the linkedlist
+        # recursion stop at the last node, when this release from the stack, we are at the second last node, just like the above illustration
+        newHead = self.reverseList(head.next)
+        # let the last node point to second last (reverse happens at here)
+        head.next.next = head
+        # now one poiter to left + one to left -> we need to cancel the one points to the right
+        head.next = None
+        return newHead  # the newHead never changed since the first time we reach the base case
+
+def test1():
+
+    node1 = ListNode(1)
+    node2 = ListNode(2)
+    node3 = ListNode(3)
+    node1.next = node2
+    node2.next = node3
+
+    sol = Solution()
+
+    assert printList(sol.reverseList(node1)) == [3,2,1]
 
 
-# 4.2 return index of last occurance of an sorted non decreased array
-# def last_occurance(nums, target):
-#     """
-#     [1,2,2,2], t=2
-#            r
-#          m
-#          l 
-#     """
-#     if not nums or len(nums) == 0: return -1
-#     left, right = 0, len(nums) - 1
-#     while left + 1 < right:
-#         mid = (left + right) // 2
-#         if nums[mid] == target:
-#             left = mid
-#         elif nums[mid] > target:
-#             right = mid  # both mid - 1 is ok because we are sure the current value is not the target
-#         else:
-#             left = mid  # both mid + 1 is ok because we are sure the current value is not the target
-#     if nums[right] == target:
-#         return right
-#     elif nums[left] == target:
-#         return left
-#     else:
-#         return -1
-# assert last_occurance([1,2,2,2,2,3], target=2) == 4
-# assert last_occurance([2,2,2,2], target=2) == 3
-# assert last_occurance([1,2,3], target=2) == 1
-# assert last_occurance([1,2,2,2,2,3], target=3) == 5
-# assert last_occurance([], target=2) == -1
-# assert last_occurance([1,3], target=10) == -1
+def test2():
 
-# 5. How to find k elements closest to target number in a ascending array
-def find_k_closest_to_target(nums, target, k):
-    """
-    1. sliding window like problem with fix size window
-     -> find closest with O(logn) and expand left/right from the closest value O(k)
-     -> move the pointer left if the left one is closer, vise versa
-    """
-    mid = closet_target_number(nums, target)
-    left, right = mid, mid
-    
-    while right - left < k:
-        if left == 0:
-            return nums[:k]
-        elif right == len(nums):
-            return nums[-k:]
-        else:
-            # move if difference is smaller and beware of the array range limit
-            if target - nums[left-1] <= nums[right] - target:
-                left -= 1
-            else:
-                right += 1
-    return nums[left: right]
-                
-assert find_k_closest_to_target([1,2,2,3,4,5], target=2, k=3) == [1,2,2]
-assert find_k_closest_to_target([1,2,2,3,5,6], target=2, k=4) == [1,2,2,3]
-assert find_k_closest_to_target([1,2,2,3,5,6], target=1, k=3) == [1,2,2]
-assert find_k_closest_to_target([1,1,1,10,10,10], target=9, k=1) == [10]
-assert find_k_closest_to_target([1,1,1,10,10,10], target=9, k=4) == [1,10,10,10]
+    node1 = ListNode(1)
+
+    sol = Solution()
+
+    assert printList(sol.reverseList(node1)) == [1]
+
+test1()
+test2()
+ 
+# 2. 876. Middle of the Linked List
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        """
+        # If there are two middle nodes, return the second middle node.
+        1. corner cases: if not head or one node
+        2. use two pointers, one two steps a time and the other one is one step a time
+        1 -> 2 -> 3 -> 4 -> none
+                  s
+                            f
+
+        # follow up, what about first middle node this time?
+        1 -> 2 -> 3 -> 4 -> none
+             s
+                       f
+        1 -> 2 -> 3 -> 4 -> 5 -> none
+                  s
+                                  f
+        -> option1: make sure fast.next.next exist
+        -> option2: fast pointer with one step ahead staring point
+        """
+        # Option1
+        # if not head or not head.next: return head
+        # slow = fast = head
+        # while fast and fast.next:  #  fast.next is needed otherwise null poiter execption
+        #     slow = slow.next
+        #     fast = fast.next.next
+        # return slow
+
+        # Follow up - option1
+        if not head or not head.next: return head
+        slow = fast = head
+        while fast and fast.next and fast.next.next:
+            slow = slow.next
+            fast = fast.next.next
+        return slow
+
+        # Follow up - option2
+        if not head or not head.next: return head
+        slow = head
+        fast = head.next
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+        return slow
+
+
+# 3. Check if there is a cycle in the LinkedList
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution:
+    def hasCycle(self, head: Optional[ListNode]) -> bool:
+        """
+        1. corner case: if not and one node
+        2. when it is possible: when slow and fast pointer overlaps (Floyd's Cycle Finding Algorithm)
+            -> how to place fast / slow pointer
+
+        # no matter where we start slow/fast, they will eventually come together, 
+        # but the point is how about one element, it will not fit if they start at same position
+            -> need different starting point to get into loop
+        1 -> 2 -> 3 -> 4 
+                  <-----
+
+        1 -> None
+        s    f
+        """
+        if not head: return False
+        slow = head
+        fast = head.next
+        while slow != fast:
+            if not fast or not fast.next:
+                return False
+            slow = slow.next
+            fast = fast.next.next
+        return True
+
+# 4. insert a node in a sorted list
+
+# 5. How to merge two sorted list 
+
+# 6. Convert N1 -> N2 -> N3 -> N4 -> N5  -> N6 -> … -> Nn -> null to  (N1 -> Nn) -> (N2 -> Nn-1) -> ... 
+
+
+# 7. Partition List Given a linked list and a target value x, partition it such that all nodes less than x are linked before the node larger than or equal to target value x. (Keep the original relative order of nodes in each of the two partitions).
