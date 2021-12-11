@@ -15,6 +15,7 @@
 
 """
 # 1. pre, in ,post order traversal
+
 # 2. get height of tree
 def heightRree(root):
     # base case
@@ -23,6 +24,8 @@ def heightRree(root):
     left = heightRree(root.left)
     right = heightRree(root.right)
     return max(left, right) + 1
+
+
 # 3. How to determine whether the tree is balanced binary tree?
 # balanced: the height difference of the left subtree and the right subtree is less than or equal to 1
 # the below os not the optimal solution
