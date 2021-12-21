@@ -70,6 +70,11 @@ def isSymmetric(left, right):
 
 # Determine whether is identical, child rotation is allow
 def identicalTree(root):
+    """
+        root1             root1
+        /    /             \        \
+    LL, RL  LR RR        LL RR     LR RL
+    """
     if not root: return True
     return isIdentical(root.left, root.right)
 
@@ -83,11 +88,7 @@ def isIdentical(left, right):
             (isIdentical(left.right, right.left) and isIdentical(left.left, right.right))
             # a quadral tree
 
-"""
-      root1             root1
-     /    /             \        \
-  LL, RL  LR RR        LL RR     LR RL
-"""
+
 # Time: the original binary tree has log2N (assume balanced) layer, so quadral tree still has log2N (assume balanced)
 # because the original tree isIdentical(left, right) is log2N layer. There are O(4^log2N) = O(N^2) levels in this tree
 

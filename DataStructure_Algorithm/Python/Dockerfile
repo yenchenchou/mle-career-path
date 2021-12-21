@@ -11,6 +11,7 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+COPY ~/.ssh ~/.ssh
 # COPY requirements.txt .
 
 # RUN pip install -r requirements.txt
