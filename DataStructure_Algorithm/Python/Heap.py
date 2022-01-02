@@ -12,3 +12,24 @@ A special tree-based data structure
 #### if k is relitively small: min(n + logn)≈min(n), max(1 + nlogk)≈max(nlogk) -> depends
 #### if k is relitively big (worst case is n/2 not n) then O(n/2 + nlogn)≈O(n/2 + nlogn) -> depends
 # sol4: partially partition, the concept is from quick sort but not all process 
+
+
+# Option1: binary search
+    # Time: O(mlogn)
+# Option2: two pointers
+    # Time: O(m+n)
+    # Space: O(1)
+# Option3: hash table
+    # shorter array to hash map to optimize space
+    # for each element in longer array, check it with hashtable
+    # Time: O(m+n)
+    # Space: O(min(m, n))
+
+
+# 1. because i is dynamic, so when we erase a char we need to let i -- to stay on the same position
+# 2. erase is costly
+# if the size if fixed, the unseen array will shfit to left and cause out of index error
+"""
+   sedkljwe
+    i 
+"""

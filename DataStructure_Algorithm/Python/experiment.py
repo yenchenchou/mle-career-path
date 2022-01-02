@@ -1,84 +1,73 @@
-# 1. pre, in ,post order traversal
-
-# 2. 104. Maximum Depth of Binary Tree
-# Definition for a binary tree node.
-from typing import Optional
-
-
-class TreeNode:
-    def __init__(self, val=0, left=None, right=None):
-        self.val = val
-        self.left = left
-        self.right = right
-
-
+from typing import List
 class Solution:
-    def maxDepth(self, root: Optional[TreeNode]) -> int:
+    def string_encoding(self, string: str) -> List[List[int]]:
         """
-        1. If I want to know the max depth, ask the left max depth and right max depth then compare
-        2. Do the above repeatedly
+        1. Clarify the question
+            -> need to do counting
+            -> but what about the char has only one count and causing the need for extra space
+        2. Draw an example
+                a a a a b b b c c c c c e
+                a 4 b 3 c 5 e c c c c c e
+                                         f
+                              s
+                cnt=5
+                a4b3c5e1
 
-             1
-           /   \
-          2     3    1 + max(0, 0)
-         / \   / \
-        nullnull null  
+                a4bc4e
 
-        Time: O(n) -> number of nodes 
-        Space: O(n) -> max number of call stacks if extreme skewed
+        3. Two scans:
+            -> left to right scan, we only deal with patterns that make the encoding shorter <char><count>. 
+                -> Thats is to say leave single letter unchanged and count how many single chat for 
+                -> preparing extra space
+                    -> fast, slow pointer
+                        -> slow: all the chars on the left side (exclude slow) is the intermediate 
+                        -> fast: the pointer do the scanning
+            -> right to left scan to perform the pre-calculation based on the counter in step1
         """
-        # base case
-        if not root: return 0
-        left_height = self.maxDepth(root.left)
-        right_height = self.maxDepth(root.right)
+        # corner case
+        # bb3c5e1
+        # l
+        #f
+        if not string: return ""
+        string = list(string)
+        fast = self.pre_encode(string)
+        slow = len(string) - 1
+        while fast > 0:
+            if fast -1 > 0 and string[fast].isdigit() and string[fast-1].isalpha():
+                string[slow] = string[fast]
+                string[slow-1] = string[fast-1]
+                slow -= 2
+                fast -= 2
+            elif fast == 0:
+                string[slow] = string[fast]
+                slow -= 1
+                fast -= 1
+            else:
+                string[slow] = 1
+                slow -= 1
+                string[slow] = string[fast]
+                slow -= 1
+                fast -= 1
+        return string
 
-        return 1 + max(left_height, right_height)
+    def pre_encode(self, string):
+        # left to right
+        fast, slow, extra = 0 ,0, 0
+        while fast < len(string):
+            cnt = 0
+            string[slow] = string[fast]
+            while fast < len(string) and string[slow] == string[fast]:
+                fast += 1
+                cnt += 1
+            slow += 1
+            if cnt > 1:
+                string[slow] = str(cnt)
+                slow += 1
+            else:
+                extra += 1
+        string.extend([None]*extra*(2-1))
+        return len(string) - slow + 1
+            
 
-
-# 3. How to determine whether the tree is balanced binary tree? (110. Balanced Binary Tree)
-
-class Solution:
-    def isBalanced(self, root: Optional[TreeNode]) -> bool:
-        return self.isBalancedHelper(root)[1]
-        
-        
-    def isBalancedHelper(self, root):
-        """
-        1. Know the definition of balanced, every left/right sub tree height diff <= 1
-        2. How to know if balanced?
-            -> get max height from left/right, if height diff > 1 then flag False
-            -> the return value has height, boolean_flag
-        
-                1
-               / \
-              3   4    (3, F), 
-             / \ / \
-       (2,T)5  (0,T)
-           / \
-          7   1
-         (1,T) (1,T)
-        
-        """
-        # base case
-        if not root: return 0, True
-        
-        left_h, left_balanced = self.isBalancedHelper(root.left)
-        # this return will let the last stack (root level) release earlier and stop recusion process
-        if not left_balanced:  
-            return 0, False  # 0 can be left_h, it doesn't matter
-        right_h, right_balanced = self.isBalancedHelper(root.right)
-        # this return will let the last stack (root level) release earlier and stop recusion process
-        if not right_balanced:
-            return 0, False  # 0 can be right_h, it doesn't matter
-        
-        return 1 + max(left_h, right_h), abs(left_h - right_h) < 2
-
-
-# 4. Determine whether a binary tree is symmretric
-class Solution:
-    def isSymmetric(self, root) -> bool:
-        pass
-
-# 5. Determine whether is identical, child rotation is allow
-
-# 6. Determine a binary tree is BST 
+sol = Solution() 
+print(sol.string_encoding("aaaabbbccccce"))
