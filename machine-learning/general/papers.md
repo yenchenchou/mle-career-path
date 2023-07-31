@@ -10,5 +10,6 @@
 
 - [Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shif](https://arxiv.org/pdf/1502.03167.pdf)
 - [A Neural Probabilistic Language Model](https://www.jmlr.org/papers/volume3/bengio03a/bengio03a.pdf)
+- [Attention Is All You Need](https://arxiv.org/pdf/1706.03762.pdf)
 
 ### 1.3 Loss Function

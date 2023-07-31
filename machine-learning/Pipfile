@@ -1,5 +1,5 @@
 [[source]]
-url = "https://pypi.org/simple"
+url = "https://pypi.python.org/simple"
 verify_ssl = true
 name = "pypi"
 
@@ -15,6 +15,7 @@ torch = {version = "*", index = "downloadpytorch"}
 torchvision = {version = "*", index = "downloadpytorch"}
 torchaudio = {version = "*", index = "downloadpytorch"}
 matplotlib = "*"
+transformers = "~=4.29.1"
 
 [dev-packages]
 ipykernel = "*"
